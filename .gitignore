@@ -1,0 +1,13 @@
+# IntelliJ #
+############
+.idea/
+*.iml
+
+# Android #
+###########
+gen/
+gen-external-apklibs/
+
+# Maven #
+#########
+target/

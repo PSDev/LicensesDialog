@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notices_default_style">
+        p.license {
+        background:grey;
+        }
+        body {
+        font-family: sans-serif;
+        }
+        pre {
+        background-color: #eeeeee;
+        padding: 1em;
+        white-space: pre-wrap;
+        }
+    </string>
+    <string name="notices_for_files">Notice for files:</string>
+</resources>
