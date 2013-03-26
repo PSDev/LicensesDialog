@@ -29,7 +29,15 @@
         <dependency>
             <groupId>de.psdev.licensesdialog</groupId>
             <artifactId>licensesdialog</artifactId>
+            <version>${project.version}</version>
             <type>apklib</type>
+        </dependency>
+        <dependency>
+            <groupId>de.psdev.licensesdialog</groupId>
+            <artifactId>licensesdialog</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Apache Commons IO -->

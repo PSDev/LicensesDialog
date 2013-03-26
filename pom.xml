@@ -99,14 +99,6 @@
                 <version>${android-support.version}</version>
             </dependency>
 
-            <!-- Library -->
-            <dependency>
-                <groupId>de.psdev.licensesdialog</groupId>
-                <artifactId>licensesdialog</artifactId>
-                <version>${project.version}</version>
-                <type>apklib</type>
-            </dependency>
-
             <!-- Apache Commons IO -->
             <dependency>
                 <groupId>commons-io</groupId>
