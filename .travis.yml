@@ -10,8 +10,9 @@ before_install:
   - tar -zxf android-sdk_r20.0.3-linux.tgz
   - pwd
   - ls -al
-  - export ANDROID_HOME=~/builds/PSDev/LicensesDialog/android-sdk-linux
+  - export ANDROID_HOME=~/build/PSDev/LicensesDialog/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+  - echo $PATH
   - android update sdk --filter tool,platform-tool,android-16 --no-ui --force
 
 install: mvn install -Dgpg.skip=true
