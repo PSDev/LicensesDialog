@@ -8,8 +8,10 @@ before_install:
   - sudo apt-get install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch
   - wget http://dl.google.com/android/android-sdk_r20.0.3-linux.tgz
   - tar -zxf android-sdk_r20.0.3-linux.tgz
+  - pwd
+  - ls -al
   - export ANDROID_HOME=~/builds/PSDev/LicensesDialog/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
-  - ~/builds/PSDev/LicensesDialog/android-sdk-linux/tools/android update sdk --filter tool,platform-tool,android-16 --no-ui --force
+  - android update sdk --filter tool,platform-tool,android-16 --no-ui --force
 
 install: mvn install -Dgpg.skip=true
