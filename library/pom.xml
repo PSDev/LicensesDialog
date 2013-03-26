@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -12,7 +12,9 @@
     <packaging>apklib</packaging>
 
     <name>LicensesDialog</name>
-    <description>LicensesDialog is an open source library to display licenses used by third-party libraries in an Android app.</description>
+    <description>LicensesDialog is an open source library to display licenses used by third-party libraries in an
+        Android app.
+    </description>
 
     <dependencies>
         <!-- Android -->
@@ -46,9 +48,15 @@
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
                 <extensions>true</extensions>
-                <configuration>
-                    <nativeLibrariesDirectory>ignored</nativeLibrariesDirectory>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>runLint</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>lint</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>

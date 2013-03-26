@@ -149,6 +149,11 @@
                         <sdk>
                             <platform>${android.sdk.platform}</platform>
                         </sdk>
+                        <lintEnableLibraries>true</lintEnableLibraries>
+                        <lintFailOnError>false</lintFailOnError>
+                        <lintEnableHtml>true</lintEnableHtml>
+                        <lintConfig>${project.basedir}/lint.xml</lintConfig>
+                        <lintSkip>false</lintSkip>
                     </configuration>
                 </plugin>
 

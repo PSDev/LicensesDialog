@@ -29,6 +29,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class LicensesDialog {
     private static final String TAG = "LicensesDialog";
@@ -143,7 +144,7 @@ public class LicensesDialog {
     private License resolveLicense(final String license) {
         if (license == null)
             return null;
-        final String licenseName = license.toUpperCase().replaceAll(" ", "_").replaceAll("\\.", "_");
+        final String licenseName = license.toUpperCase(Locale.US).replaceAll(" ", "_").replaceAll("\\.", "_");
         License resolvedLicense = null;
         try {
             resolvedLicense = Licenses.valueOf(licenseName).getLicense();
