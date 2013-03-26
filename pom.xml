@@ -83,6 +83,7 @@
         <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
         <maven-javadoc-plugin.version>2.9</maven-javadoc-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+        <maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
     </properties>
 
     <dependencyManagement>
