@@ -11,7 +11,7 @@
     <artifactId>sample</artifactId>
     <packaging>apk</packaging>
 
-    <name>LicensesDialog - Sample</name>
+    <name>LicensesDialog (Sample)</name>
 
     <dependencies>
         <!-- Android -->

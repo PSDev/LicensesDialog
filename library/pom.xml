@@ -11,7 +11,7 @@
     <artifactId>licensesdialog</artifactId>
     <packaging>apklib</packaging>
 
-    <name>LicensesDialog</name>
+    <name>LicensesDialog (Library)</name>
     <description>LicensesDialog is an open source library to display licenses used by third-party libraries in an
         Android app.
     </description>
