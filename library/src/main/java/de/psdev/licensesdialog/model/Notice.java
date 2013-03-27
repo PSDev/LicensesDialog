@@ -14,14 +14,25 @@
  *    limitations under the License.
  */
 
-package de.psdev.licensesdialog;
+package de.psdev.licensesdialog.model;
 
 import de.psdev.licensesdialog.licenses.License;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
 
-public class Notice {
+import java.io.Serializable;
+
+@Root
+public class Notice implements Serializable {
+    private static final long serialVersionUID = -6257913944601445939L;
+
+    @Element(name = "name")
     private String mName;
+    @Element(name = "url", required = false)
     private String mUrl;
+    @Element(name = "copyright", required = false)
     private String mCopyright;
+    @Element(name = "license")
     private License mLicense;
 
     //

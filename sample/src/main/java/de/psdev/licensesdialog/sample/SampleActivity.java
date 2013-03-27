@@ -16,31 +16,49 @@
 
 package de.psdev.licensesdialog.sample;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import de.psdev.licensesdialog.Licenses;
 import de.psdev.licensesdialog.LicensesDialog;
-import de.psdev.licensesdialog.Notice;
+import de.psdev.licensesdialog.LicensesDialogFragment;
 import de.psdev.licensesdialog.SingleLicenseDialog;
+import de.psdev.licensesdialog.SingleLicenseDialogFragment;
+import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.licenses.License;
+import de.psdev.licensesdialog.model.Notice;
 
-public class SampleActivity extends Activity {
+public class SampleActivity extends FragmentActivity {
+
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_sample);
     }
 
     public void onSingleClick(final View view) {
-        final String name = "Philip Schiffer";
+        final String name = "LicensesDialog";
         final String url = "http://psdev.de";
         final String copyright = "Copyright 2013 Philip Schiffer <admin@psdev.de>";
-        final License license = Licenses.APACHE_SOFTWARE_LICENSE_2_0.getLicense();
+        final License license = new ApacheSoftwareLicense20();
         final Notice notice = new Notice(name, url, copyright, license);
-        new SingleLicenseDialog(this, notice).show();
+        new SingleLicenseDialog(this, notice, false).show();
     }
 
     public void onMultipleClick(final View view) {
-        new LicensesDialog(this, R.xml.notices).show();
+        new LicensesDialog(this, R.raw.notices, false).show();
+    }
+
+    public void onSingleFragmentClick(final View view) {
+        final String name = "LicensesDialog";
+        final String url = "http://psdev.de";
+        final String copyright = "Copyright 2013 Philip Schiffer <admin@psdev.de>";
+        final License license = new ApacheSoftwareLicense20();
+        final Notice notice = new Notice(name, url, copyright, license);
+        final SingleLicenseDialogFragment fragment = SingleLicenseDialogFragment.newInstance(notice);
+        fragment.show(getSupportFragmentManager(), null);
+    }
+
+    public void onMultipleFragmentClick(final View view) {
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstace(R.raw.notices);
+        fragment.show(getSupportFragmentManager(), null);
     }
 }

@@ -19,11 +19,13 @@ package de.psdev.licensesdialog.licenses;
 import android.content.Context;
 import de.psdev.licensesdialog.R;
 
-public class ApacheLicense2 extends License {
+public class ApacheSoftwareLicense20 extends License {
+
+    private static final long serialVersionUID = 4854000061990891449L;
 
     @Override
     public String getName() {
-        return "Apache License";
+        return "Apache Software License 2.0";
     }
 
     @Override
@@ -38,7 +40,7 @@ public class ApacheLicense2 extends License {
 
     @Override
     public String getVersion() {
-        return "Version 2.0";
+        return "2.0";
     }
 
     @Override
