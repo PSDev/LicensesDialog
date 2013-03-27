@@ -21,39 +21,42 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.content.res.XmlResourceParser;
-import android.util.Log;
 import android.webkit.WebView;
-import de.psdev.licensesdialog.licenses.License;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
-import java.util.Locale;
+import de.psdev.licensesdialog.model.Notices;
 
 public class LicensesDialog {
-    private static final String TAG = "LicensesDialog";
-
     private final Context mContext;
-    private final int mNoticesXml;
+    private final String mTitleText;
+    private final String mLicensesText;
+    private final String mCloseText;
 
-
-    private final String mStyle;
-    private final String mNoticesForFiles;
-    private boolean mShowFullLicenseText;
+    //
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    public LicensesDialog(final Context context, final int noticesXml) {
+    public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText) {
         mContext = context;
-        mNoticesXml = noticesXml;
         // Load defaults
-        mStyle = context.getString(R.string.notices_default_style);
-        mNoticesForFiles = context.getString(R.string.notices_for_files);
+        final String style = context.getString(R.string.notices_default_style);
+        mTitleText = context.getString(R.string.notices_title);
+        try {
+            final Resources resources = context.getResources();
+            if ("raw".equals(resources.getResourceTypeName(rawNoticesResourceId))) {
+                final Notices notices = NoticesXmlParser.parse(resources.openRawResource(rawNoticesResourceId));
+                mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style).build();
+            } else {
+                throw new IllegalStateException("not a raw resource");
+            }
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+        mCloseText = context.getString(R.string.notices_close);
     }
 
-    public LicensesDialog setShowFullLicenseText(final boolean showFullLicenseText) {
-        mShowFullLicenseText = showFullLicenseText;
-        return this;
+    public LicensesDialog(final Context context, final String titleText, final String licensesText, final String closeText) {
+        mContext = context;
+        mTitleText = titleText;
+        mLicensesText = licensesText;
+        mCloseText = closeText;
     }
 
     public LicensesDialog setOnDismissListener(final DialogInterface.OnDismissListener onDismissListener) {
@@ -61,122 +64,14 @@ public class LicensesDialog {
         return this;
     }
 
-    private String getNoticesHtml(final int resourceId, final Resources resources) {
-        final StringBuilder noticesHtmlBuilder = new StringBuilder(500);
-        appendNoticesContainerStart(noticesHtmlBuilder);
-        final XmlResourceParser xml = resources.getXml(resourceId);
-        try {
-            int eventType = xml.getEventType();
-            Notice currentNotice = null;
-            while (XmlPullParser.END_DOCUMENT != eventType) {
-                final String xmlName = xml.getName();
-                switch (eventType) {
-                    case XmlPullParser.START_TAG:
-                        if ("notice".equals(xmlName)) {
-                            currentNotice = new Notice();
-                        } else if ("name".equals(xmlName)) {
-                            eventType = xml.next();
-                            currentNotice.setName(xml.getText());
-                        } else if ("url".equals(xmlName)) {
-                            eventType = xml.next();
-                            currentNotice.setUrl(xml.getText());
-                        } else if ("copyright".equals(xmlName)) {
-                            eventType = xml.next();
-                            currentNotice.setCopyright(xml.getText());
-                        } else if ("license".equals(xmlName)) {
-                            eventType = xml.next();
-                            currentNotice.setLicense(resolveLicense(xml.getText()));
-                        }
-                        break;
-                    case XmlPullParser.END_TAG:
-                        if ("notice".equals(xmlName)) {
-                            appendNoticeBlock(noticesHtmlBuilder, currentNotice);
-                        }
-                }
-                eventType = xml.next();
-            }
-        } catch (XmlPullParserException e) {
-            Log.e(TAG, e.getMessage(), e);
-            return "";
-        } catch (IOException e) {
-            Log.e(TAG, e.getMessage(), e);
-            return "";
-        } finally {
-            xml.close();
-        }
-
-        appendNoticesContainerEnd(noticesHtmlBuilder);
-
-        return noticesHtmlBuilder.toString();
-    }
-
-    protected void appendNoticesContainerEnd(final StringBuilder noticesHtmlBuilder) {
-        noticesHtmlBuilder.append("</body></html>");
-    }
-
-    protected void appendNoticesContainerStart(final StringBuilder noticesHtmlBuilder) {
-        noticesHtmlBuilder.append("<!DOCTYPE html><html><head>").append(getStyle()).append("</head><body>").append("<h3>").append(mNoticesForFiles).append("</h3>");
-    }
-
-    protected void appendNoticeBlock(final StringBuilder noticesHtmlBuilder, final Notice currentNotice) {
-        noticesHtmlBuilder.append("<ul><li>").append(currentNotice.getName());
-        final String currentNoticeUrl = currentNotice.getUrl();
-        if (currentNoticeUrl != null && currentNoticeUrl.length() > 0) {
-            noticesHtmlBuilder.append(" (<a href=\"").append(currentNoticeUrl).append("\">").append(currentNoticeUrl).append("</a>)");
-        }
-        noticesHtmlBuilder.append("</li></ul>");
-        noticesHtmlBuilder.append("<pre>");
-        final String copyright = currentNotice.getCopyright();
-        if(copyright != null) {
-            noticesHtmlBuilder.append(copyright).append("<br/><br/>");
-        }
-        noticesHtmlBuilder.append(getLicenseText(currentNotice.getLicense(), mShowFullLicenseText)).append("</pre>");
-    }
-
-    protected String getLicenseText(final License license, final boolean showFullLicenseText) {
-        if (license != null) {
-            return showFullLicenseText ? license.getFullText(mContext) : license.getSummaryText(mContext);
-        }
-
-        return "";
-    }
-
-    private License resolveLicense(final String license) {
-        if (license == null)
-            return null;
-        final String licenseName = license.toUpperCase(Locale.US).replaceAll(" ", "_").replaceAll("\\.", "_");
-        License resolvedLicense = null;
-        try {
-            resolvedLicense = Licenses.valueOf(licenseName).getLicense();
-        } catch (IllegalArgumentException e) {
-            Log.e(TAG, e.getMessage(), e);
-            // TODO Implemented custom license resolver (mLicenseResolver.resolveCustomLicense(String name)
-        }
-        return resolvedLicense;
-    }
-
-    protected String getStyle() {
-        return String.format("<style type=\"text/css\">%s</style>", mStyle);
-    }
-
-    public void show() {
+    public Dialog create() {
         //Get resources
-        final Resources resources = mContext.getResources();
-
-        final String titleString = resources.getString(R.string.notices_title);
-
-        //Get button strings
-        final String closeString = resources.getString(R.string.notices_close);
-
-        final String licenseText = getNoticesHtml(mNoticesXml, mContext.getResources());
-
         final WebView webView = new WebView(mContext);
-        webView.loadDataWithBaseURL(null, licenseText, "text/html", "utf-8", null);
-
+        webView.loadDataWithBaseURL(null, mLicensesText, "text/html", "utf-8", null);
         final AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                .setTitle(titleString)
+                .setTitle(mTitleText)
                 .setView(webView)
-                .setPositiveButton(closeString, new Dialog.OnClickListener() {
+                .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
                     public void onClick(final DialogInterface dialogInterface, final int i) {
                         dialogInterface.dismiss();
                     }
@@ -190,6 +85,14 @@ public class LicensesDialog {
                 }
             }
         });
-        dialog.show();
+        return dialog;
     }
+
+    public void show() {
+        create().show();
+    }
+
+    //
+
+
 }

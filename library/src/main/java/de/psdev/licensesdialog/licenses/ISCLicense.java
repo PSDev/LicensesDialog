@@ -20,6 +20,8 @@ import android.content.Context;
 import de.psdev.licensesdialog.R;
 
 public class ISCLicense extends License {
+    private static final long serialVersionUID = -4636435634132169860L;
+
     @Override
     public String getName() {
         return "ISC License";
