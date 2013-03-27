@@ -15,22 +15,9 @@
   ~    limitations under the License.
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="100000"
-    android:versionName="1.0.0-SNAPSHOT"
-    package="de.psdev.licensesdialog.sample">
-
-    <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="16" />
-    <application
-        android:label="LicensesDialog Sample"
-        android:allowBackup="true">
-        <activity android:name=".SampleActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
-</manifest>
+<resources>
+    <string name="single">Single</string>
+    <string name="multiple">Multiple</string>
+    <string name="single_fragment">Single (Fragment)</string>
+    <string name="multiple_fragment">Multiple (Fragment)</string>
+</resources>

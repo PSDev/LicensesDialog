@@ -28,6 +28,12 @@
             <artifactId>support-v4</artifactId>
         </dependency>
 
+        <!-- Simple Xml -->
+        <dependency>
+            <groupId>org.simpleframework</groupId>
+            <artifactId>simple-xml</artifactId>
+        </dependency>
+
         <!-- Apache Commons IO -->
         <dependency>
             <groupId>commons-io</groupId>

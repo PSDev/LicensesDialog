@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -73,6 +73,7 @@
         <!-- Dependency Versions -->
         <android.version>4.1.1.4</android.version>
         <android-support.version>r7</android-support.version>
+        <simple-xml.version>2.7</simple-xml.version>
         <commons-io.version>2.4</commons-io.version>
         <junit.version>4.10</junit.version>
 
@@ -98,6 +99,27 @@
                 <groupId>com.google.android</groupId>
                 <artifactId>support-v4</artifactId>
                 <version>${android-support.version}</version>
+            </dependency>
+
+            <!-- Simple Xml -->
+            <dependency>
+                <groupId>org.simpleframework</groupId>
+                <artifactId>simple-xml</artifactId>
+                <version>${simple-xml.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>stax</groupId>
+                        <artifactId>stax-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>stax</groupId>
+                        <artifactId>stax</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xpp3</groupId>
+                        <artifactId>xpp3</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- Apache Commons IO -->
