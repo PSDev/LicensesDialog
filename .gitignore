@@ -1,13 +1,28 @@
-# IntelliJ #
+# Intellij #
 ############
-.idea/
+.idea
 *.iml
+
+# Eclipse #
+###########
+.settings
+.project
+.classpath
+
+# Build Output #
+################
+target
+bin
 
 # Android #
 ###########
-gen/
-gen-external-apklibs/
+gen
 
-# Maven #
+# MacOsX #
+##########
+.DS_Store
+
+# Other #
 #########
-target/
+.~lock*
+tmp
