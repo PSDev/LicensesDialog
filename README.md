@@ -14,6 +14,7 @@ Download [the latest JAR][1] or grab via Maven:
   <groupId>de.psdev.licensesdialog</groupId>
   <artifactId>licensesdialog</artifactId>
   <version>1.0.0</version>
+  <type>apklib</type>
 </dependency>
 ```
 
