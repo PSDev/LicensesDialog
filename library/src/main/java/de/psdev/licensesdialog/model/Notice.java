@@ -22,7 +22,7 @@ import org.simpleframework.xml.Root;
 
 import java.io.Serializable;
 
-@Root
+@Root(name = "notice")
 public class Notice implements Serializable {
     private static final long serialVersionUID = -6257913944601445939L;
 
