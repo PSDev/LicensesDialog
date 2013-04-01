@@ -21,7 +21,7 @@ import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
-public class NoticesHtmlBuilder {
+public final class NoticesHtmlBuilder {
 
     private final Context mContext;
     private Notices mNotices;

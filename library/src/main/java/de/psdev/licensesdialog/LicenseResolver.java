@@ -22,10 +22,13 @@ import de.psdev.licensesdialog.licenses.License;
 import org.simpleframework.xml.transform.Transform;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class LicenseResolver implements Transform<License> {
 
-    private static HashMap<String, License> sLicenses = new HashMap<String, License>(5);
+    private static final int INITIAL_LICENSES_COUNT = 2;
+
+    private static Map<String, License> sLicenses = new HashMap<String, License>(INITIAL_LICENSES_COUNT);
 
     static {
         registerLicense(new ApacheSoftwareLicense20());
@@ -42,7 +45,7 @@ public class LicenseResolver implements Transform<License> {
     }
 
     @Override
-    public License read(final String license) throws IllegalStateException {
+    public License read(final String license) {
         if (sLicenses.containsKey(license)) {
             return sLicenses.get(license);
         } else {

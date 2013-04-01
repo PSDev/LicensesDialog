@@ -26,7 +26,10 @@ import org.simpleframework.xml.transform.Transform;
 
 import java.io.InputStream;
 
-public class NoticesXmlParser {
+public final class NoticesXmlParser {
+
+    private NoticesXmlParser() {
+    }
 
     public static Notices parse(final InputStream inputStream) throws Exception {
         final Serializer serializer = new Persister(new AnnotationStrategy(), new Matcher() {
