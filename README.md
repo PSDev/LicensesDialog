@@ -4,7 +4,7 @@ LicensesDialog  [![Build Status](https://travis-ci.org/PSDev/LicensesDialog.png?
 LicensesDialog is an open source library to display licenses of third-party libraries in an Android app.
 
 
-Download (not yet working)
+Download
 --------
 
 Download [the latest JAR][1] or grab via Maven:
