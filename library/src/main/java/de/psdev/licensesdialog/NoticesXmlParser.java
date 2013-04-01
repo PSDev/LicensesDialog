@@ -34,7 +34,7 @@ public final class NoticesXmlParser {
     public static Notices parse(final InputStream inputStream) throws Exception {
         final Serializer serializer = new Persister(new AnnotationStrategy(), new Matcher() {
             @Override
-            public Transform match(final Class type) throws Exception {
+            public Transform match(final Class type) {
                 if (type.equals(License.class)) {
                     return new LicenseResolver();
                 } else {
