@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2013 Philip Schiffer <admin@psdev.de>
+  ~ Copyright 2013 Philip Schiffer
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
   ~    you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@
 <resources>
     <string name="single">Single</string>
     <string name="multiple">Multiple</string>
+    <string name="multiple_include_own">Multiple with own License</string>
     <string name="single_fragment">Single (Fragment)</string>
     <string name="multiple_fragment">Multiple (Fragment)</string>
+    <string name="multiple_include_own_fragment">Multiple with own License (Fragment)</string>
 </resources>

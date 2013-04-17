@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2013 Philip Schiffer <admin@psdev.de>
+  ~ Copyright 2013 Philip Schiffer
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
   ~    you may not use this file except in compliance with the License.
@@ -37,6 +37,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/multiple_include_own"
+        android:onClick="onMultipleIncludeOwnClick"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/single_fragment"
         android:onClick="onSingleFragmentClick"
         android:layout_weight="1" />
@@ -46,5 +53,12 @@
         android:layout_height="wrap_content"
         android:text="@string/multiple_fragment"
         android:onClick="onMultipleFragmentClick"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/multiple_include_own_fragment"
+        android:onClick="onMultipleIncludeOwnFragmentClick"
         android:layout_weight="1" />
 </LinearLayout>

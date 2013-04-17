@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Philip Schiffer <admin@psdev.de>
+ * Copyright 2013 Philip Schiffer
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.

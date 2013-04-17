@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Philip Schiffer <admin@psdev.de>
+ * Copyright 2013 Philip Schiffer
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import de.psdev.licensesdialog.model.Notices;
 public class LicensesDialogFragment extends DialogFragment {
 
     private static final String ARGUMENT_NOTICES_XML_ID = "ARGUMENT_NOTICES_XML_ID";
+    private static final String ARGUMENT_INCLUDE_OWN_LICENSE = "ARGUMENT_INCLUDE_OWN_LICENSE";
     private static final String STATE_TITLE_TEXT = "title_text";
     private static final String STATE_LICENSES_TEXT = "licenses_text";
     private static final String STATE_CLOSE_TEXT = "close_text";
@@ -37,10 +38,11 @@ public class LicensesDialogFragment extends DialogFragment {
 
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    public static LicensesDialogFragment newInstace(final int overrideDefaultNoticesXmlResource) {
+    public static LicensesDialogFragment newInstace(final int rawNoticesResourceId, final boolean includeOwnLicense) {
         final LicensesDialogFragment licensesDialogFragment = new LicensesDialogFragment();
         final Bundle args = new Bundle();
-        args.putInt(ARGUMENT_NOTICES_XML_ID, overrideDefaultNoticesXmlResource);
+        args.putInt(ARGUMENT_NOTICES_XML_ID, rawNoticesResourceId);
+        args.putBoolean(ARGUMENT_INCLUDE_OWN_LICENSE, includeOwnLicense);
         licensesDialogFragment.setArguments(args);
         return licensesDialogFragment;
     }
@@ -62,6 +64,9 @@ public class LicensesDialogFragment extends DialogFragment {
             mCloseButtonText = resources.getString(R.string.notices_close);
             try {
                 final Notices notices = NoticesXmlParser.parse(resources.openRawResource(getNoticesXmlResourceId()));
+                if(getArguments() != null && getArguments().getBoolean(ARGUMENT_INCLUDE_OWN_LICENSE, false)) {
+                    notices.getNotices().add(LicensesDialog.LICENSES_DIALOG_NOTICE);
+                }
                 mLicensesText = NoticesHtmlBuilder.create(getActivity()).setNotices(notices).build();
             } catch (final Exception e) {
                 throw new IllegalStateException(e);

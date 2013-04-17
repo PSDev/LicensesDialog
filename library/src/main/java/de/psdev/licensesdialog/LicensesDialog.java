@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Philip Schiffer <admin@psdev.de>
+ * Copyright 2013 Philip Schiffer
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -22,9 +22,16 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.webkit.WebView;
+import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
+import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
+import java.util.List;
+
 public class LicensesDialog {
+    public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog", "Copyright 2013 Philip Schiffer",
+            new ApacheSoftwareLicense20());
+
     private final Context mContext;
     private final String mTitleText;
     private final String mLicensesText;
@@ -33,7 +40,7 @@ public class LicensesDialog {
     //
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText) {
+    public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText, boolean includeOwnLicense) {
         mContext = context;
         // Load defaults
         final String style = context.getString(R.string.notices_default_style);
@@ -42,6 +49,10 @@ public class LicensesDialog {
             final Resources resources = context.getResources();
             if ("raw".equals(resources.getResourceTypeName(rawNoticesResourceId))) {
                 final Notices notices = NoticesXmlParser.parse(resources.openRawResource(rawNoticesResourceId));
+                if (includeOwnLicense) {
+                    final List<Notice> noticeList = notices.getNotices();
+                    noticeList.add(LICENSES_DIALOG_NOTICE);
+                }
                 mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style).build();
             } else {
                 throw new IllegalStateException("not a raw resource");

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Philip Schiffer <admin@psdev.de>
+ * Copyright 2013 Philip Schiffer
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -44,7 +44,11 @@ public class SampleActivity extends FragmentActivity {
     }
 
     public void onMultipleClick(final View view) {
-        new LicensesDialog(this, R.raw.notices, false).show();
+        new LicensesDialog(this, R.raw.notices, false, false).show();
+    }
+
+    public void onMultipleIncludeOwnClick(final View view) {
+        new LicensesDialog(this, R.raw.notices, false, true).show();
     }
 
     public void onSingleFragmentClick(final View view) {
@@ -58,7 +62,12 @@ public class SampleActivity extends FragmentActivity {
     }
 
     public void onMultipleFragmentClick(final View view) {
-        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstace(R.raw.notices);
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstace(R.raw.notices, false);
+        fragment.show(getSupportFragmentManager(), null);
+    }
+
+    public void onMultipleIncludeOwnFragmentClick(final View view) {
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstace(R.raw.notices, true);
         fragment.show(getSupportFragmentManager(), null);
     }
 }
