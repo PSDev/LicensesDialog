@@ -1,4 +1,4 @@
-LicensesDialog  [![Build Status](https://travis-ci.org/PSDev/LicensesDialog.png?branch=master)](https://travis-ci.org/PSDev/LicensesDialog) [![Build Status](http://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](http://ci.psdev.de/job/PSDevLicensesDialog/)
+LicensesDialog  [![Build Status](http://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](http://ci.psdev.de/job/PSDevLicensesDialog/)
 ==============
 
 LicensesDialog is an open source library to display licenses of third-party libraries in an Android app.
