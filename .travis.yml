@@ -13,4 +13,4 @@ before_install:
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
   - android update sdk --filter tool,platform-tool,android-16 --no-ui --force
 
-install: mvn install -DskipTests=true -Dgpg.skip=true
+install: mvn clean install -DskipTests=true -Dgpg.skip=true
