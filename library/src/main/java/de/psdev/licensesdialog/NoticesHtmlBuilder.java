@@ -16,6 +16,8 @@
 
 package de.psdev.licensesdialog;
 
+import java.util.Arrays;
+
 import android.content.Context;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
@@ -28,6 +30,9 @@ public final class NoticesHtmlBuilder {
     private Notice mNotice;
     private String mStyle;
     private boolean mShowFullLicenseText;
+    private String mHtmlHeader;
+    private String[] mBeginLicencesTitles;
+    private String mDividerHtml;
 
     public static NoticesHtmlBuilder create(final Context context) {
         return new NoticesHtmlBuilder(context);
@@ -61,13 +66,41 @@ public final class NoticesHtmlBuilder {
         return this;
     }
 
+    public NoticesHtmlBuilder setHtmlHeader(final String header) {
+        mHtmlHeader = header;
+        return this;
+    }
+
+    public NoticesHtmlBuilder setBeginLicencesTitle(String title) {
+        mBeginLicencesTitles = new String[0];
+        Arrays.fill(mBeginLicencesTitles, title);
+        return this;
+    }
+
+    public NoticesHtmlBuilder setBeginLicencesTitles(String[] titles) {
+        mBeginLicencesTitles = titles;
+        return this;
+    }
+
+    public NoticesHtmlBuilder setDividerHtml(String dividerHtml) {
+        mDividerHtml = dividerHtml;
+        return this;
+    }
+
     public String build() {
         final StringBuilder noticesHtmlBuilder = new StringBuilder(500);
         appendNoticesContainerStart(noticesHtmlBuilder);
+        appendHtmlHeaderIfNotNull(noticesHtmlBuilder);
+        if (mBeginLicencesTitles != null) {
+            for (String title : mBeginLicencesTitles) {
+                noticesHtmlBuilder.append("<h3>").append(title).append("</h3>");
+            }
+        }
         if (mNotice != null) {
             appendNoticeBlock(noticesHtmlBuilder, mNotice);
         } else if (mNotices != null) {
             for (final Notice notice : mNotices.getNotices()) {
+                appendDividerHtmlIfNotNull(noticesHtmlBuilder);
                 appendNoticeBlock(noticesHtmlBuilder, notice);
             }
         } else {
@@ -75,6 +108,12 @@ public final class NoticesHtmlBuilder {
         }
         appendNoticesContainerEnd(noticesHtmlBuilder);
         return noticesHtmlBuilder.toString();
+    }
+
+    private void appendHtmlHeaderIfNotNull(StringBuilder noticesHtmlBuilder) {
+        if (mHtmlHeader != null) {
+            noticesHtmlBuilder.append(mHtmlHeader);
+        }
     }
 
     //
@@ -98,6 +137,12 @@ public final class NoticesHtmlBuilder {
             noticesHtmlBuilder.append(copyright).append("<br/><br/>");
         }
         noticesHtmlBuilder.append(getLicenseText(notice.getLicense())).append("</pre>");
+    }
+
+    private void appendDividerHtmlIfNotNull(final StringBuilder noticesHtmlBuilder) {
+        if (mDividerHtml != null) {
+            noticesHtmlBuilder.append(mDividerHtml);
+        }
     }
 
     private void appendNoticesContainerEnd(final StringBuilder noticesHtmlBuilder) {
