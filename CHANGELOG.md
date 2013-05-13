@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 1.1.0 *(In Development)*
+Version 1.1.0 *(2013-05-09)*
 ----------------------------
 
 * Option to include license information of this library in shown Dialog
