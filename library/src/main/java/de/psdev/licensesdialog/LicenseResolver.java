@@ -18,7 +18,7 @@ package de.psdev.licensesdialog;
 
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.licenses.ISCLicense;
-import de.psdev.licensesdialog.licenses.MitLicense;
+import de.psdev.licensesdialog.licenses.MITLicense;
 import de.psdev.licensesdialog.licenses.License;
 import org.simpleframework.xml.transform.Transform;
 
