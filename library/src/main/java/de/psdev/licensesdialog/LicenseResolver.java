@@ -18,6 +18,7 @@ package de.psdev.licensesdialog;
 
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.licenses.ISCLicense;
+import de.psdev.licensesdialog.licenses.MitLicense;
 import de.psdev.licensesdialog.licenses.License;
 import org.simpleframework.xml.transform.Transform;
 
@@ -33,6 +34,7 @@ public class LicenseResolver implements Transform<License> {
     static {
         registerLicense(new ApacheSoftwareLicense20());
         registerLicense(new ISCLicense());
+        registerLicense(new MitLicense());
     }
 
     /**
