@@ -34,7 +34,7 @@ public class LicenseResolver implements Transform<License> {
     static {
         registerLicense(new ApacheSoftwareLicense20());
         registerLicense(new ISCLicense());
-        registerLicense(new MitLicense());
+        registerLicense(new MITLicense());
     }
 
     /**
