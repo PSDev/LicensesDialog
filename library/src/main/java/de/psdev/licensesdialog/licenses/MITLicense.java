@@ -19,7 +19,7 @@ package de.psdev.licensesdialog.licenses;
 import android.content.Context;
 import de.psdev.licensesdialog.R;
 
-public class ApacheSoftwareLicense20 extends License {
+public class MITLicense extends License {
 
     private static final long serialVersionUID = 5673599951781482594L;
 
