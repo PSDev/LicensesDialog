@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/psdev/LicensesDialog.png)](http://waffle.io/psdev/LicensesDialog)  
 LicensesDialog  [![Build Status](http://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](http://ci.psdev.de/job/PSDevLicensesDialog/)
 ==============
 
