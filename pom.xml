@@ -72,12 +72,12 @@
         <!-- Dependency Versions -->
         <android.version>4.1.1.4</android.version>
         <android-support.version>r7</android-support.version>
-        <simple-xml.version>2.7</simple-xml.version>
+        <simple-xml.version>2.7.1</simple-xml.version>
         <commons-io.version>2.4</commons-io.version>
         <junit.version>4.10</junit.version>
 
         <!-- Plugin Versions -->
-        <android-maven-plugin.version>3.6.0</android-maven-plugin.version>
+        <android-maven-plugin.version>3.6.1</android-maven-plugin.version>
         <build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
         <maven-release-plugin.version>2.3.2</maven-release-plugin.version>
         <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
