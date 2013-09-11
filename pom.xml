@@ -74,14 +74,14 @@
         <android-support.version>r7</android-support.version>
         <simple-xml.version>2.7.1</simple-xml.version>
         <commons-io.version>2.4</commons-io.version>
-        <junit.version>4.10</junit.version>
+        <junit.version>4.11</junit.version>
 
         <!-- Plugin Versions -->
         <android-maven-plugin.version>3.6.1</android-maven-plugin.version>
-        <build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
-        <maven-release-plugin.version>2.3.2</maven-release-plugin.version>
-        <maven-compiler-plugin.version>3.0</maven-compiler-plugin.version>
-        <maven-javadoc-plugin.version>2.9</maven-javadoc-plugin.version>
+        <build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
+        <maven-release-plugin.version>2.4.1</maven-release-plugin.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
     </properties>
