@@ -47,7 +47,8 @@ public class LicenseResolver implements Transform<License> {
     }
 
     @Override
-    public License read(final String license) {
+    public License read(String license) {
+	    license = license.trim();
         if (sLicenses.containsKey(license)) {
             return sLicenses.get(license);
         } else {
