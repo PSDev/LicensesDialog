@@ -48,12 +48,12 @@ public class LicenseResolver implements Transform<License> {
     }
 
     @Override
-    public License read(String license) {
-	    license = license.trim();
-        if (sLicenses.containsKey(license)) {
-            return sLicenses.get(license);
+    public License read(final String license) {
+    	String trimmedLicense = license.trim();
+        if (sLicenses.containsKey(trimmedLicense)) {
+            return sLicenses.get(trimmedLicense);
         } else {
-            throw new IllegalStateException("no such license available: " + license + ", did you forget to register it?");
+            throw new IllegalStateException("no such license available: " + trimmedLicense + ", did you forget to register it?");
         }
     }
 
