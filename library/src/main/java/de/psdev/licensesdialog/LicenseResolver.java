@@ -17,9 +17,10 @@
 package de.psdev.licensesdialog;
 
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
+import de.psdev.licensesdialog.licenses.BSD3ClauseLicense;
 import de.psdev.licensesdialog.licenses.ISCLicense;
-import de.psdev.licensesdialog.licenses.MITLicense;
 import de.psdev.licensesdialog.licenses.License;
+import de.psdev.licensesdialog.licenses.MITLicense;
 import org.simpleframework.xml.transform.Transform;
 
 import java.util.HashMap;
