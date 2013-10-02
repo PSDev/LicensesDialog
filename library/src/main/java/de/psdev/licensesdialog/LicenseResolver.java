@@ -27,14 +27,15 @@ import java.util.Map;
 
 public class LicenseResolver implements Transform<License> {
 
-    private static final int INITIAL_LICENSES_COUNT = 2;
+    private static final int INITIAL_LICENSES_COUNT = 4;
 
     private static Map<String, License> sLicenses = new HashMap<String, License>(INITIAL_LICENSES_COUNT);
 
     static {
         registerLicense(new ApacheSoftwareLicense20());
         registerLicense(new ISCLicense());
-        registerLicense(new MITLicense());
+        registerLicense(new MITLicense());		
+        registerLicense(new BSD3ClauseLicense());
     }
 
     /**
@@ -48,10 +49,11 @@ public class LicenseResolver implements Transform<License> {
 
     @Override
     public License read(final String license) {
-        if (sLicenses.containsKey(license)) {
-            return sLicenses.get(license);
+    	String trimmedLicense = license.trim();
+        if (sLicenses.containsKey(trimmedLicense)) {
+            return sLicenses.get(trimmedLicense);
         } else {
-            throw new IllegalStateException("no such license available: " + license + ", did you forget to register it?");
+            throw new IllegalStateException("no such license available: " + trimmedLicense + ", did you forget to register it?");
         }
     }
 
