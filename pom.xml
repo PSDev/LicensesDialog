@@ -77,10 +77,10 @@
         <junit.version>4.11</junit.version>
 
         <!-- Plugin Versions -->
-        <android-maven-plugin.version>3.6.1</android-maven-plugin.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <android-maven-plugin.version>3.7.0</android-maven-plugin.version>
         <build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
         <maven-release-plugin.version>2.4.1</maven-release-plugin.version>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
