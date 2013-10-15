@@ -62,12 +62,12 @@ public class SampleActivity extends FragmentActivity {
     }
 
     public void onMultipleFragmentClick(final View view) {
-        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstace(R.raw.notices, false);
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(R.raw.notices, false);
         fragment.show(getSupportFragmentManager(), null);
     }
 
     public void onMultipleIncludeOwnFragmentClick(final View view) {
-        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstace(R.raw.notices, true);
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(R.raw.notices, true);
         fragment.show(getSupportFragmentManager(), null);
     }
 }

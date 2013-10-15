@@ -38,7 +38,7 @@ public class LicensesDialogFragment extends DialogFragment {
 
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    public static LicensesDialogFragment newInstace(final int rawNoticesResourceId, final boolean includeOwnLicense) {
+    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId, final boolean includeOwnLicense) {
         final LicensesDialogFragment licensesDialogFragment = new LicensesDialogFragment();
         final Bundle args = new Bundle();
         args.putInt(ARGUMENT_NOTICES_XML_ID, rawNoticesResourceId);
