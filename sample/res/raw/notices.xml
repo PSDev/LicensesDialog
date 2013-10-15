@@ -55,7 +55,7 @@
     <notice>
         <name>Jackson JSON-processor</name>
         <url>http://jackson.codehaus.org/</url>
-        <copyright></copyright>
+        <copyright/>
         <license>Apache Software License 2.0</license>
     </notice>
     <notice>
@@ -111,5 +111,11 @@
         <url>https://github.com/MartinvanZ/Inscription</url>
         <copyright>(c) 2012 Martin van Zuilekom (http://martin.cubeactive.com)</copyright>
         <license>Apache Software License 2.0</license>
+    </notice>
+    <notice>
+        <name>Cool Project with BSD License</name>
+        <url>http://example.com</url>
+        <copyright>Author of Cool Project with BSD License</copyright>
+        <license>BSD 3-Clause License</license>
     </notice>
 </notices>
