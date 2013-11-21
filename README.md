@@ -7,7 +7,7 @@ LicensesDialog is an open source library to display licenses of third-party libr
 Download
 --------
 
-Download [the latest JAR][1] or grab via Maven:
+Download [the latest Release][1] or grab via Maven:
 
 ```xml
 <dependency>
@@ -42,5 +42,5 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
-[1]: http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=de.psdev.licensesdialog&a=licensesdialog&v=LATEST
+[1]: https://github.com/PSDev/LicensesDialog/releases
 [2]: https://github.com/MartinvanZ/Inscription
