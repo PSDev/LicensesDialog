@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+Version 1.3.0 *(2013-11-24)*
+----------------------------
+
+* Removed dependency to simple-xml and commons-io
+
 Version 1.2.1 *(2013-10-15)*
 ----------------------------
 

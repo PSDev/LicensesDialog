@@ -13,7 +13,7 @@ Download [the latest Release][1] or grab via Maven:
 <dependency>
   <groupId>de.psdev.licensesdialog</groupId>
   <artifactId>licensesdialog</artifactId>
-  <version>1.2.1</version>
+  <version>1.3.0</version>
   <type>apklib</type>
 </dependency>
 ```
