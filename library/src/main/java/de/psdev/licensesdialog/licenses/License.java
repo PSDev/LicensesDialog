@@ -17,14 +17,17 @@
 package de.psdev.licensesdialog.licenses;
 
 import android.content.Context;
-import android.util.Log;
-import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Serializable;
 
 public abstract class License implements Serializable {
+    private static final Logger LOG = LoggerFactory.getLogger(License.class);
 
     private static final long serialVersionUID = 3100331505738956523L;
 
@@ -41,15 +44,35 @@ public abstract class License implements Serializable {
     //
 
     protected String getContent(final Context context, final int contentResourceId) {
-        InputStream inputStream = null;
+        BufferedReader reader = null;
         try {
-            inputStream = context.getResources().openRawResource(contentResourceId);
-            return IOUtils.toString(inputStream);
-        } catch (IOException e) {
-            Log.e("LicenseDialog", e.getMessage(), e);
+            final InputStream inputStream = context.getResources().openRawResource(contentResourceId);
+            if (inputStream != null) {
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+                return toString(reader);
+            }
+            throw new IOException("Error opening license file.");
+        } catch (final IOException e) {
+            LOG.error(e.getMessage(), e);
             return "";
         } finally {
-            IOUtils.closeQuietly(inputStream);
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (final IOException e) {
+                    // Don't care.
+                }
+            }
         }
     }
+
+    private String toString(final BufferedReader reader) throws IOException {
+        final StringBuilder builder = new StringBuilder();
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+            builder.append(line);
+        }
+        return builder.toString();
+    }
+
 }

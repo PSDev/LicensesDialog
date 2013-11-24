@@ -72,9 +72,8 @@
         <!-- Dependency Versions -->
         <android.version>4.1.1.4</android.version>
         <android-support.version>r7</android-support.version>
-        <simple-xml.version>2.7.1</simple-xml.version>
-        <commons-io.version>2.4</commons-io.version>
         <junit.version>4.11</junit.version>
+        <slf4j-api.version>1.7.5</slf4j-api.version>
 
         <!-- Plugin Versions -->
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
@@ -88,6 +87,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Testing -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
             <!-- Android -->
             <dependency>
                 <groupId>com.google.android</groupId>
@@ -100,40 +107,11 @@
                 <version>${android-support.version}</version>
             </dependency>
 
-            <!-- Simple Xml -->
+            <!-- Logging -->
             <dependency>
-                <groupId>org.simpleframework</groupId>
-                <artifactId>simple-xml</artifactId>
-                <version>${simple-xml.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>stax</groupId>
-                        <artifactId>stax-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>stax</groupId>
-                        <artifactId>stax</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>xpp3</groupId>
-                        <artifactId>xpp3</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <!-- Apache Commons IO -->
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
-
-            <!-- Testing -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

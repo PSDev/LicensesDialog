@@ -13,6 +13,13 @@
     <name>LicensesDialog (Sample)</name>
 
     <dependencies>
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Android -->
         <dependency>
             <groupId>com.google.android</groupId>
@@ -30,19 +37,6 @@
             <artifactId>licensesdialog</artifactId>
             <version>${project.version}</version>
             <type>apklib</type>
-        </dependency>
-
-        <!-- Apache Commons IO -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-
-        <!-- Testing -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -21,12 +21,11 @@ import de.psdev.licensesdialog.licenses.BSD3ClauseLicense;
 import de.psdev.licensesdialog.licenses.ISCLicense;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
-import org.simpleframework.xml.transform.Transform;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LicenseResolver implements Transform<License> {
+public class LicenseResolver {
 
     private static final int INITIAL_LICENSES_COUNT = 4;
 
@@ -34,9 +33,9 @@ public class LicenseResolver implements Transform<License> {
 
     static {
         registerLicense(new ApacheSoftwareLicense20());
-        registerLicense(new ISCLicense());
-        registerLicense(new MITLicense());		
         registerLicense(new BSD3ClauseLicense());
+        registerLicense(new ISCLicense());
+        registerLicense(new MITLicense());
     }
 
     /**
@@ -48,18 +47,12 @@ public class LicenseResolver implements Transform<License> {
         sLicenses.put(license.getName(), license);
     }
 
-    @Override
-    public License read(final String license) {
-    	String trimmedLicense = license.trim();
+    public static License read(final String license) {
+        final String trimmedLicense = license.trim();
         if (sLicenses.containsKey(trimmedLicense)) {
             return sLicenses.get(trimmedLicense);
         } else {
-            throw new IllegalStateException("no such license available: " + trimmedLicense + ", did you forget to register it?");
+            throw new IllegalStateException(String.format("no such license available: %s, did you forget to register it?", trimmedLicense));
         }
-    }
-
-    @Override
-    public String write(final License value) {
-        return value.getName();
     }
 }
