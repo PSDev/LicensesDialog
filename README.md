@@ -18,6 +18,10 @@ Download [the latest Release][1] or grab via Maven:
 </dependency>
 ```
 
+Sample
+------
+
+You can get the latest sample from [Jenkins][3]
 
 Credits
 -------
@@ -44,3 +48,4 @@ License
 
 [1]: https://github.com/PSDev/LicensesDialog/releases
 [2]: https://github.com/MartinvanZ/Inscription
+[3]: https://ci.psdev.de/job/PSDevLicensesDialog/lastSuccessfulBuild/artifact/sample/target/
