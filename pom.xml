@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -70,9 +71,10 @@
         <android.sdk.platform>16</android.sdk.platform>
 
         <!-- Dependency Versions -->
+        <junit.version>4.11</junit.version>
+        <robolectric.version>2.2</robolectric.version>
         <android.version>4.1.1.4</android.version>
         <android-support.version>r7</android-support.version>
-        <junit.version>4.11</junit.version>
         <slf4j-api.version>1.7.5</slf4j-api.version>
 
         <!-- Plugin Versions -->
@@ -82,6 +84,7 @@
         <maven-release-plugin.version>2.4.1</maven-release-plugin.version>
         <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+        <jacoco-maven-plugin.version>0.6.4.201312101107</jacoco-maven-plugin.version>
         <maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
     </properties>
 
@@ -92,6 +95,18 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.robolectric</groupId>
+                <artifactId>robolectric</artifactId>
+                <version>${robolectric.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j-api.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -149,7 +164,7 @@
                             <platform>${android.sdk.platform}</platform>
                         </sdk>
                         <lintEnableLibraries>true</lintEnableLibraries>
-                        <lintFailOnError>false</lintFailOnError>
+                        <lintFailOnError>true</lintFailOnError>
                         <lintEnableHtml>true</lintEnableHtml>
                         <lintConfig>${project.basedir}/lint.xml</lintConfig>
                         <lintSkip>false</lintSkip>
@@ -182,6 +197,34 @@
                         <tagNameFormat>@{project.version}</tagNameFormat>
                         <autoVersionSubmodules>true</autoVersionSubmodules>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco-maven-plugin.version}</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/BuildConfig.class</exclude>
+                            <exclude>**/R*.class</exclude>
+                        </excludes>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>jacoco-initialize</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>prepare-agent</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>jacoco-site</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>report</goal>
+                            </goals>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>

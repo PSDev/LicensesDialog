@@ -25,13 +25,17 @@ import de.psdev.licensesdialog.licenses.MITLicense;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LicenseResolver {
+public final class LicenseResolver {
 
     private static final int INITIAL_LICENSES_COUNT = 4;
-
-    private static Map<String, License> sLicenses = new HashMap<String, License>(INITIAL_LICENSES_COUNT);
+    private static final Map<String, License> sLicenses = new HashMap<String, License>(INITIAL_LICENSES_COUNT);
 
     static {
+        registerDefaultLicenses();
+    }
+
+    static void registerDefaultLicenses() {
+        sLicenses.clear();
         registerLicense(new ApacheSoftwareLicense20());
         registerLicense(new BSD3ClauseLicense());
         registerLicense(new ISCLicense());
@@ -47,6 +51,13 @@ public class LicenseResolver {
         sLicenses.put(license.getName(), license);
     }
 
+    /**
+     * Get a license by name
+     *
+     * @param license license name
+     * @return License
+     * @throws java.lang.IllegalStateException when unknown license is requested
+     */
     public static License read(final String license) {
         final String trimmedLicense = license.trim();
         if (sLicenses.containsKey(trimmedLicense)) {
@@ -54,5 +65,8 @@ public class LicenseResolver {
         } else {
             throw new IllegalStateException(String.format("no such license available: %s, did you forget to register it?", trimmedLicense));
         }
+    }
+
+    private LicenseResolver() {
     }
 }
