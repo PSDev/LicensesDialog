@@ -19,7 +19,7 @@
     </description>
     <url>http://psdev.de/LicensesDialog</url>
     <inceptionYear>2013</inceptionYear>
-    <version>1.3.1-SNAPSHOT</version>
+    <version>1.4.0-SNAPSHOT</version>
 
     <modules>
         <module>library</module>
@@ -79,7 +79,7 @@
 
         <!-- Plugin Versions -->
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <android-maven-plugin.version>3.7.0</android-maven-plugin.version>
+        <android-maven-plugin.version>3.8.2</android-maven-plugin.version>
         <build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
         <maven-release-plugin.version>2.4.1</maven-release-plugin.version>
         <maven-javadoc-plugin.version>2.9.1</maven-javadoc-plugin.version>
