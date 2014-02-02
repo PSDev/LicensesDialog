@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 1.4.0 *(IN DEVELOPMENT)*
+Version 1.4.0 *(2014-02-02)*
 ----------------------------
 
 * Switch to aar packaging (#10)

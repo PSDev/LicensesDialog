@@ -13,9 +13,13 @@ Download [the latest Release][1] or grab via Maven:
 <dependency>
   <groupId>de.psdev.licensesdialog</groupId>
   <artifactId>licensesdialog</artifactId>
-  <version>1.3.0</version>
-  <type>apklib</type>
+  <version>1.4.0</version>
+  <type>aar</type>
 </dependency>
+```  
+or Gradle:
+```groovy
+compile 'de.psdev.licensesdialog:licensesdialog:1.4.0@aar'
 ```
 
 Sample
