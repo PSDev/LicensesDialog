@@ -22,6 +22,7 @@ import de.psdev.licensesdialog.licenses.CreativeCommonsAttributionNoDerivs30Unpo
 import de.psdev.licensesdialog.licenses.ISCLicense;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
+import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense21;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +42,7 @@ public final class LicenseResolver {
         registerLicense(new BSD3ClauseLicense());
         registerLicense(new ISCLicense());
         registerLicense(new MITLicense());
+        registerLicense(new GnuLesserGeneralPublicLicense21());
         registerLicense(new CreativeCommonsAttributionNoDerivs30Unported());
     }
 
