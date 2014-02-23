@@ -74,7 +74,7 @@
         <robolectric.version>2.2</robolectric.version>
         <android.version>4.1.1.4</android.version>
         <android-support.version>r7</android-support.version>
-        <slf4j-api.version>1.7.5</slf4j-api.version>
+        <slf4j-api.version>1.7.6</slf4j-api.version>
 
         <!-- Plugin Versions -->
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
