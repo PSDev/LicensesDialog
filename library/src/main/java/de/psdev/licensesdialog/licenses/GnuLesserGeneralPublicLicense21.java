@@ -17,8 +17,8 @@
 package de.psdev.licensesdialog.licenses;
 
 import android.content.Context;
+import de.psdev.licensesdialog.R;
 
-import de.medienDresden.illumina.R;
 
 public class GnuLesserGeneralPublicLicense21 extends License {
 
