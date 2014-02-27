@@ -16,12 +16,19 @@
 
 package de.psdev.licensesdialog.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Notices {
+public class Notices implements Parcelable {
 
-    private final List<Notice> mNotices = new ArrayList<Notice>();
+    private final List<Notice> mNotices;
+
+    public Notices() {
+        mNotices = new ArrayList<Notice>();
+    }
 
     // Setter / Getter
 
@@ -32,4 +39,31 @@ public class Notices {
     public List<Notice> getNotices() {
         return mNotices;
     }
+
+    // Parcelable
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(final Parcel dest, final int flags) {
+        dest.writeList(this.mNotices);
+    }
+
+    protected Notices(final Parcel in) {
+        mNotices = new ArrayList<Notice>();
+        in.readList(this.mNotices, Notice.class.getClassLoader());
+    }
+
+    public static Creator<Notices> CREATOR = new Creator<Notices>() {
+        public Notices createFromParcel(final Parcel source) {
+            return new Notices(source);
+        }
+
+        public Notices[] newArray(final int size) {
+            return new Notices[size];
+        }
+    };
 }

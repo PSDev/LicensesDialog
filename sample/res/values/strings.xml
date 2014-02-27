@@ -19,7 +19,9 @@
     <string name="single">Single</string>
     <string name="multiple">Multiple</string>
     <string name="multiple_include_own">Multiple with own License</string>
+    <string name="multiple_programmatic">Multiple programmaticly</string>
     <string name="single_fragment">Single (Fragment)</string>
     <string name="multiple_fragment">Multiple (Fragment)</string>
     <string name="multiple_include_own_fragment">Multiple with own License (Fragment)</string>
+    <string name="multiple_programmatic_fragment">Multiple programmaticly (Fragment)</string>
 </resources>

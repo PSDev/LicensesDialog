@@ -44,6 +44,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/multiple_programmatic"
+        android:onClick="onMultipleProgrammaticClick"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="@string/single_fragment"
         android:onClick="onSingleFragmentClick"
         android:layout_weight="1" />
@@ -60,5 +67,12 @@
         android:layout_height="wrap_content"
         android:text="@string/multiple_include_own_fragment"
         android:onClick="onMultipleIncludeOwnFragmentClick"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/multiple_programmatic_fragment"
+        android:onClick="onMultipleProgrammaticFragmentClick"
         android:layout_weight="1" />
 </LinearLayout>

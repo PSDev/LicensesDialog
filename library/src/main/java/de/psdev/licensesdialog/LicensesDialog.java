@@ -30,7 +30,7 @@ import java.util.List;
 
 public class LicensesDialog {
     public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog", "Copyright 2013 Philip Schiffer",
-            new ApacheSoftwareLicense20());
+        new ApacheSoftwareLicense20());
 
     private final Context mContext;
     private final String mTitleText;
@@ -40,7 +40,7 @@ public class LicensesDialog {
     //
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText, boolean includeOwnLicense) {
+    public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
         mContext = context;
         // Load defaults
         final String style = context.getString(R.string.notices_default_style);
@@ -57,7 +57,24 @@ public class LicensesDialog {
             } else {
                 throw new IllegalStateException("not a raw resource");
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
+            throw new IllegalStateException(e);
+        }
+        mCloseText = context.getString(R.string.notices_close);
+    }
+
+    public LicensesDialog(final Context context, final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense) {
+        mContext = context;
+        // Load defaults
+        final String style = context.getString(R.string.notices_default_style);
+        mTitleText = context.getString(R.string.notices_title);
+        try {
+            if (includeOwnLicense) {
+                final List<Notice> noticeList = notices.getNotices();
+                noticeList.add(LICENSES_DIALOG_NOTICE);
+            }
+            mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style).build();
+        } catch (final Exception e) {
             throw new IllegalStateException(e);
         }
         mCloseText = context.getString(R.string.notices_close);
@@ -80,13 +97,13 @@ public class LicensesDialog {
         final WebView webView = new WebView(mContext);
         webView.loadDataWithBaseURL(null, mLicensesText, "text/html", "utf-8", null);
         final AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                .setTitle(mTitleText)
-                .setView(webView)
-                .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
-                    public void onClick(final DialogInterface dialogInterface, final int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
+            .setTitle(mTitleText)
+            .setView(webView)
+            .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
+                public void onClick(final DialogInterface dialogInterface, final int i) {
+                    dialogInterface.dismiss();
+                }
+            });
         final AlertDialog dialog = builder.create();
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override

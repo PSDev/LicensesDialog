@@ -26,6 +26,7 @@ import de.psdev.licensesdialog.model.Notice;
 public class SingleLicenseDialogFragment extends DialogFragment {
 
     private static final String ARGUMENT_NOTICE = "ARGUMENT_NOTICE";
+    private static final String ARGUMENT_FULL_LICENSE_TEXT = "ARGUMENT_FULL_LICENSE_TEXT";
     private static final String STATE_LICENSE_TEXT = "license_text";
     private static final String STATE_TITLE_TEXT = "title_text";
     private static final String STATE_CLOSE_TEXT = "close_text";
@@ -40,9 +41,14 @@ public class SingleLicenseDialogFragment extends DialogFragment {
     private DialogInterface.OnDismissListener mOnDismissListener;
 
     public static SingleLicenseDialogFragment newInstance(final Notice notice) {
+        return newInstance(notice, false);
+    }
+
+    public static SingleLicenseDialogFragment newInstance(final Notice notice, final boolean showFullLicenseText) {
         final SingleLicenseDialogFragment fragment = new SingleLicenseDialogFragment();
         final Bundle args = new Bundle();
-        args.putSerializable(ARGUMENT_NOTICE, notice);
+        args.putParcelable(ARGUMENT_NOTICE, notice);
+        args.putBoolean(ARGUMENT_FULL_LICENSE_TEXT, showFullLicenseText);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,7 +71,8 @@ public class SingleLicenseDialogFragment extends DialogFragment {
 
             try {
                 final Notice notice = getNotice();
-                mLicenseText = NoticesHtmlBuilder.create(getActivity()).setNotice(notice).build();
+                final boolean showFullLicenseText = getArguments().getBoolean(ARGUMENT_FULL_LICENSE_TEXT, false);
+                mLicenseText = NoticesHtmlBuilder.create(getActivity()).setNotice(notice).setShowFullLicenseText(showFullLicenseText).build();
             } catch (final Exception e) {
                 throw new IllegalStateException(e);
             }
@@ -116,7 +123,7 @@ public class SingleLicenseDialogFragment extends DialogFragment {
     private Notice getNotice() {
         final Bundle arguments = getArguments();
         if (arguments != null && arguments.containsKey(ARGUMENT_NOTICE)) {
-            return (Notice) arguments.getSerializable(ARGUMENT_NOTICE);
+            return (Notice) arguments.getParcelable(ARGUMENT_NOTICE);
         }
 
         throw new IllegalStateException("no notice provided");

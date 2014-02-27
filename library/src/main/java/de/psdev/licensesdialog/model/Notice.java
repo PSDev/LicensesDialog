@@ -16,12 +16,13 @@
 
 package de.psdev.licensesdialog.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import de.psdev.licensesdialog.licenses.License;
 
 import java.io.Serializable;
 
-public class Notice implements Serializable {
-    private static final long serialVersionUID = -6257913944601445939L;
+public class Notice implements Parcelable {
 
     private String mName;
     private String mUrl;
@@ -73,4 +74,36 @@ public class Notice implements Serializable {
     public License getLicense() {
         return mLicense;
     }
+
+    // Parcelable
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(final Parcel dest, final int flags) {
+        dest.writeString(mName);
+        dest.writeString(mUrl);
+        dest.writeString(mCopyright);
+        dest.writeSerializable(mLicense);
+    }
+
+    private Notice(final Parcel in) {
+        mName = in.readString();
+        mUrl = in.readString();
+        mCopyright = in.readString();
+        mLicense = (License) in.readSerializable();
+    }
+
+    public static Creator<Notice> CREATOR = new Creator<Notice>() {
+        public Notice createFromParcel(final Parcel source) {
+            return new Notice(source);
+        }
+
+        public Notice[] newArray(final int size) {
+            return new Notice[size];
+        }
+    };
 }

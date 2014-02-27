@@ -24,8 +24,10 @@ import de.psdev.licensesdialog.LicensesDialogFragment;
 import de.psdev.licensesdialog.SingleLicenseDialog;
 import de.psdev.licensesdialog.SingleLicenseDialogFragment;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
+import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense21;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
+import de.psdev.licensesdialog.model.Notices;
 
 public class SampleActivity extends FragmentActivity {
 
@@ -51,6 +53,14 @@ public class SampleActivity extends FragmentActivity {
         new LicensesDialog(this, R.raw.notices, false, true).show();
     }
 
+    public void onMultipleProgrammaticClick(final View view) {
+        final Notices notices = new Notices();
+        notices.addNotice(new Notice("Test 1", "http://example.org", "Example Person", new ApacheSoftwareLicense20()));
+        notices.addNotice(new Notice("Test 2", "http://example.org", "Example Person 2", new GnuLesserGeneralPublicLicense21()));
+
+        new LicensesDialog(this, notices, false, true).show();
+    }
+
     public void onSingleFragmentClick(final View view) {
         final String name = "LicensesDialog";
         final String url = "http://psdev.de";
@@ -68,6 +78,15 @@ public class SampleActivity extends FragmentActivity {
 
     public void onMultipleIncludeOwnFragmentClick(final View view) {
         final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(R.raw.notices, true);
+        fragment.show(getSupportFragmentManager(), null);
+    }
+
+    public void onMultipleProgrammaticFragmentClick(final View view) {
+        final Notices notices = new Notices();
+        notices.addNotice(new Notice("Test 1", "http://example.org", "Example Person", new ApacheSoftwareLicense20()));
+        notices.addNotice(new Notice("Test 2", "http://example.org", "Example Person 2", new GnuLesserGeneralPublicLicense21()));
+
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(notices, false, true);
         fragment.show(getSupportFragmentManager(), null);
     }
 }
