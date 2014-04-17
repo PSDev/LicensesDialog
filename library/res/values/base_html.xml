@@ -16,7 +16,7 @@
   -->
 
 <resources>
-    <string name="notices_default_style">
+    <string name="notices_default_style" translatable="false">
         p.license {
         background:grey;
         }
