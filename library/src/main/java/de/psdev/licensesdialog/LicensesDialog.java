@@ -40,11 +40,11 @@ public class LicensesDialog {
     //
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
+    public LicensesDialog(final Context context, final int titleResourceId, final int rawNoticesResourceId, final int closeResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
         mContext = context;
         // Load defaults
         final String style = context.getString(R.string.notices_default_style);
-        mTitleText = context.getString(R.string.notices_title);
+        mTitleText = context.getString(titleResourceId);
         try {
             final Resources resources = context.getResources();
             if ("raw".equals(resources.getResourceTypeName(rawNoticesResourceId))) {
@@ -60,7 +60,11 @@ public class LicensesDialog {
         } catch (final Exception e) {
             throw new IllegalStateException(e);
         }
-        mCloseText = context.getString(R.string.notices_close);
+        mCloseText = context.getString(closeResourceId);
+    }
+
+    public LicensesDialog(final Context context, final int rawNoticesResourceId, final int titleResourceId, final int closeResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
+        this(context, R.string.notices_title, rawNoticesResourceId, R.string.notices_close, showFullLicenseText, includeOwnLicense);
     }
 
     public LicensesDialog(final Context context, final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense) {
