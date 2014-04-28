@@ -17,8 +17,6 @@
 package de.psdev.licensesdialog.licenses;
 
 import android.content.Context;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +25,6 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 
 public abstract class License implements Serializable {
-    private static final Logger LOG = LoggerFactory.getLogger(License.class);
 
     private static final long serialVersionUID = 3100331505738956523L;
 
@@ -53,8 +50,7 @@ public abstract class License implements Serializable {
             }
             throw new IOException("Error opening license file.");
         } catch (final IOException e) {
-            LOG.error(e.getMessage(), e);
-            return "";
+            throw new IllegalStateException(e);
         } finally {
             if (reader != null) {
                 try {

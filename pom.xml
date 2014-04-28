@@ -102,12 +102,6 @@
                 <version>${robolectric.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-simple</artifactId>
-                <version>${slf4j-api.version}</version>
-                <scope>test</scope>
-            </dependency>
 
             <!-- Android -->
             <dependency>
@@ -119,13 +113,6 @@
                 <groupId>com.google.android</groupId>
                 <artifactId>support-v4</artifactId>
                 <version>${android-support.version}</version>
-            </dependency>
-
-            <!-- Logging -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

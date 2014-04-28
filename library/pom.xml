@@ -24,11 +24,6 @@
             <artifactId>robolectric</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <!-- Android -->
         <dependency>
@@ -39,12 +34,6 @@
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>support-v4</artifactId>
-        </dependency>
-
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
         </dependency>
     </dependencies>
 
