@@ -63,7 +63,7 @@ public class LicensesDialog {
         mCloseText = context.getString(closeResourceId);
     }
 
-    public LicensesDialog(final Context context, final int rawNoticesResourceId, final int titleResourceId, final int closeResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
+    public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
         this(context, R.string.notices_title, rawNoticesResourceId, R.string.notices_close, showFullLicenseText, includeOwnLicense);
     }
 
