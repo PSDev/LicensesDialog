@@ -1,8 +1,11 @@
 Change Log
 ==========
 
-Version 1.5.0 *(IN DEVELOPMENT)*
+Version 1.6.0 *(IN DEVELOPMENT)*
 --------------------------------
+
+Version 1.5.0 *(2014-06-01)*
+----------------------------
 
 * Load notices into a List to allow programmatic modifications (#21)
 
