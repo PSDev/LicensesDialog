@@ -19,6 +19,7 @@ package de.psdev.licensesdialog;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.licenses.BSD3ClauseLicense;
 import de.psdev.licensesdialog.licenses.CreativeCommonsAttributionNoDerivs30Unported;
+import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense30;
 import de.psdev.licensesdialog.licenses.ISCLicense;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
@@ -44,6 +45,7 @@ public final class LicenseResolver {
         registerLicense(new MITLicense());
         registerLicense(new GnuLesserGeneralPublicLicense21());
         registerLicense(new CreativeCommonsAttributionNoDerivs30Unported());
+        registerLicense(new GnuGeneralPublicLicense30());
     }
 
     /**
