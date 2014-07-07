@@ -4,6 +4,7 @@ Change Log
 Version 1.5.1 *(IN DEVELOPMENT)*
 --------------------------------
 
+* Added GNU GPLv2 / GPLv3 License (#28)
 * Improve NoticesHtmlBuilder speed (#29)
 
 Version 1.5.0 *(2014-06-01)*
