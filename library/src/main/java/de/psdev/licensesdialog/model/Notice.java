@@ -20,8 +20,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import de.psdev.licensesdialog.licenses.License;
 
-import java.io.Serializable;
-
 public class Notice implements Parcelable {
 
     private String mName;

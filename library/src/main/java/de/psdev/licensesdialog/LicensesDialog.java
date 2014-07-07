@@ -16,6 +16,8 @@
 
 package de.psdev.licensesdialog;
 
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -26,10 +28,9 @@ import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
-import java.util.List;
-
 public class LicensesDialog {
-    public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog", "Copyright 2013 Philip Schiffer",
+    public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog",
+        "Copyright 2013 Philip Schiffer",
         new ApacheSoftwareLicense20());
 
     private final Context mContext;
@@ -40,7 +41,8 @@ public class LicensesDialog {
     //
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    public LicensesDialog(final Context context, final int titleResourceId, final int rawNoticesResourceId, final int closeResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
+    public LicensesDialog(final Context context, final int titleResourceId, final int rawNoticesResourceId, final int closeResourceId,
+                          final boolean showFullLicenseText, final boolean includeOwnLicense) {
         mContext = context;
         // Load defaults
         final String style = context.getString(R.string.notices_default_style);
@@ -53,7 +55,8 @@ public class LicensesDialog {
                     final List<Notice> noticeList = notices.getNotices();
                     noticeList.add(LICENSES_DIALOG_NOTICE);
                 }
-                mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style).build();
+                mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style)
+                    .build();
             } else {
                 throw new IllegalStateException("not a raw resource");
             }
@@ -77,7 +80,8 @@ public class LicensesDialog {
                 final List<Notice> noticeList = notices.getNotices();
                 noticeList.add(LICENSES_DIALOG_NOTICE);
             }
-            mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style).build();
+            mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style)
+                .build();
         } catch (final Exception e) {
             throw new IllegalStateException(e);
         }

@@ -19,9 +19,9 @@ package de.psdev.licensesdialog.licenses;
 import android.content.Context;
 import de.psdev.licensesdialog.R;
 
-public class GnuGeneralPublicLicense30 extends License{
-	
-	@Override
+public class GnuGeneralPublicLicense30 extends License {
+
+    @Override
     public String getName() {
         return "GNU General Public License 3.0";
     }

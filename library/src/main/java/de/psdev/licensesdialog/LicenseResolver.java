@@ -16,18 +16,18 @@
 
 package de.psdev.licensesdialog;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.licenses.BSD3ClauseLicense;
 import de.psdev.licensesdialog.licenses.CreativeCommonsAttributionNoDerivs30Unported;
 import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense20;
 import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense30;
+import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense21;
 import de.psdev.licensesdialog.licenses.ISCLicense;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
-import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense21;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public final class LicenseResolver {
 

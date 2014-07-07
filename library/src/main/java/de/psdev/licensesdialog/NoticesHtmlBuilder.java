@@ -16,6 +16,9 @@
 
 package de.psdev.licensesdialog;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.content.Context;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
@@ -24,6 +27,7 @@ import de.psdev.licensesdialog.model.Notices;
 public final class NoticesHtmlBuilder {
 
     private final Context mContext;
+    private final Map<License, String> mLicenseTextCache = new HashMap<License, String>();
     private Notices mNotices;
     private Notice mNotice;
     private String mStyle;
@@ -81,8 +85,8 @@ public final class NoticesHtmlBuilder {
 
     private void appendNoticesContainerStart(final StringBuilder noticesHtmlBuilder) {
         noticesHtmlBuilder.append("<!DOCTYPE html><html><head>")
-                .append("<style type=\"text/css\">").append(mStyle).append("</style>")
-                .append("</head><body>");
+            .append("<style type=\"text/css\">").append(mStyle).append("</style>")
+            .append("</head><body>");
     }
 
     private void appendNoticeBlock(final StringBuilder noticesHtmlBuilder, final Notice notice) {
@@ -106,7 +110,10 @@ public final class NoticesHtmlBuilder {
 
     private String getLicenseText(final License license) {
         if (license != null) {
-            return mShowFullLicenseText ? license.getFullText(mContext) : license.getSummaryText(mContext);
+            if (!mLicenseTextCache.containsKey(license)) {
+                mLicenseTextCache.put(license, mShowFullLicenseText ? license.getFullText(mContext) : license.getSummaryText(mContext));
+            }
+            return mLicenseTextCache.get(license);
         }
         return "";
     }

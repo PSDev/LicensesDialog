@@ -16,15 +16,16 @@
 
 package de.psdev.licensesdialog;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
 import android.util.Xml;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public final class NoticesXmlParser {
 
