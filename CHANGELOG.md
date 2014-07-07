@@ -4,6 +4,8 @@ Change Log
 Version 1.5.1 *(IN DEVELOPMENT)*
 --------------------------------
 
+* Improve NoticesHtmlBuilder speed (#29)
+
 Version 1.5.0 *(2014-06-01)*
 ----------------------------
 
