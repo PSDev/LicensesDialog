@@ -19,7 +19,9 @@ Download [the latest Release][1] or grab via Maven:
 ```  
 or Gradle:
 ```groovy
-compile 'de.psdev.licensesdialog:licensesdialog:1.5.0'
+compile('de.psdev.licensesdialog:licensesdialog:1.5.0') {
+    exclude module: 'support-v4'
+}
 ```
 
 Sample
