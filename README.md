@@ -1,4 +1,4 @@
-LicensesDialog  [![Build Status](http://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](http://ci.psdev.de/job/PSDevLicensesDialog/) [![Stories in Ready](https://badge.waffle.io/psdev/LicensesDialog.png)](http://waffle.io/psdev/LicensesDialog)  
+LicensesDialog  [![Build Status](http://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](http://ci.psdev.de/job/PSDevLicensesDialog/)  
 ==============
 
 LicensesDialog is an open source library to display licenses of third-party libraries in an Android app.
@@ -23,6 +23,12 @@ compile('de.psdev.licensesdialog:licensesdialog:1.5.0') {
     exclude module: 'support-v4'
 }
 ```
+
+Usage
+-----
+
+You can take a look at the [SampleActivity.java](sample/src/main/java/de/psdev/licensesdialog/sample/SampleActivity.java) 
+from the sample module for examples on how to create the dialogs. 
 
 Sample
 ------
