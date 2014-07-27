@@ -23,6 +23,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.view.ContextThemeWrapper;
+import android.view.View;
 import android.webkit.WebView;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.model.Notice;
@@ -40,9 +42,12 @@ public class LicensesDialog {
 
     //
     private DialogInterface.OnDismissListener mOnDismissListener;
+    private int mThemeResourceId;
+    private int mDividerColor;
 
     public LicensesDialog(final Context context, final int titleResourceId, final int rawNoticesResourceId, final int closeResourceId,
-                          final boolean showFullLicenseText, final boolean includeOwnLicense) {
+                          final boolean showFullLicenseText, final boolean includeOwnLicense,
+                          final int themeResourceId, final int dividerColor) {
         mContext = context;
         // Load defaults
         final String style = context.getString(R.string.notices_default_style);
@@ -64,10 +69,25 @@ public class LicensesDialog {
             throw new IllegalStateException(e);
         }
         mCloseText = context.getString(closeResourceId);
+        mThemeResourceId = themeResourceId;
+        mDividerColor = dividerColor;
+    }
+
+    public LicensesDialog(final Context context, final int titleResourceId, final int rawNoticesResourceId, final int closeResourceId,
+                          final boolean showFullLicenseText, final boolean includeOwnLicense,
+                          final int themeResourceId) {
+        this(context, titleResourceId, rawNoticesResourceId, closeResourceId, showFullLicenseText,
+                includeOwnLicense, themeResourceId, 0);
+    }
+
+    public LicensesDialog(final Context context, final int titleResourceId, final int rawNoticesResourceId, final int closeResourceId,
+                          final boolean showFullLicenseText, final boolean includeOwnLicense) {
+        this(context, titleResourceId, rawNoticesResourceId, closeResourceId, showFullLicenseText,
+                includeOwnLicense, 0, 0);
     }
 
     public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
-        this(context, R.string.notices_title, rawNoticesResourceId, R.string.notices_close, showFullLicenseText, includeOwnLicense);
+        this(context, R.string.notices_title, rawNoticesResourceId, R.string.notices_close, showFullLicenseText, includeOwnLicense, 0, 0);
     }
 
     public LicensesDialog(final Context context, final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense) {
@@ -95,6 +115,25 @@ public class LicensesDialog {
         mCloseText = closeText;
     }
 
+    public LicensesDialog(final Context context, final String titleText, final String licensesText, final String closeText,
+                          final int themeResourceId) {
+        mContext = context;
+        mTitleText = titleText;
+        mLicensesText = licensesText;
+        mCloseText = closeText;
+        mThemeResourceId = themeResourceId;
+    }
+
+    public LicensesDialog(final Context context, final String titleText, final String licensesText, final String closeText,
+                          final int themeResourceId, final int dividerColor) {
+        mContext = context;
+        mTitleText = titleText;
+        mLicensesText = licensesText;
+        mCloseText = closeText;
+        mThemeResourceId = themeResourceId;
+        mDividerColor = dividerColor;
+    }
+
     public LicensesDialog setOnDismissListener(final DialogInterface.OnDismissListener onDismissListener) {
         mOnDismissListener = onDismissListener;
         return this;
@@ -104,30 +143,54 @@ public class LicensesDialog {
         //Get resources
         final WebView webView = new WebView(mContext);
         webView.loadDataWithBaseURL(null, mLicensesText, "text/html", "utf-8", null);
-        final AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-            .setTitle(mTitleText)
-            .setView(webView)
-            .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
-                public void onClick(final DialogInterface dialogInterface, final int i) {
-                    dialogInterface.dismiss();
-                }
-            });
-        final AlertDialog dialog = builder.create();
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(final DialogInterface dialog) {
-                if (mOnDismissListener != null) {
-                    mOnDismissListener.onDismiss(dialog);
-                }
-            }
-        });
-        return dialog;
-    }
+		final AlertDialog.Builder builder;
+        if (mThemeResourceId != 0) {
+			builder = new AlertDialog.Builder(new ContextThemeWrapper(mContext, mThemeResourceId));
+        } else {
+            builder = new AlertDialog.Builder(mContext);
+        }
+        builder.setTitle(mTitleText)
+               .setView(webView)
+               .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
+                   public void onClick(final DialogInterface dialogInterface, final int i) {
+                       dialogInterface.dismiss();
+                   }
+               });
+	    final AlertDialog dialog = builder.create();
+	    dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+	        @Override
+	        public void onDismiss(final DialogInterface dialog) {
+	            if (mOnDismissListener != null) {
+	                mOnDismissListener.onDismiss(dialog);
+	            }
+	        }
+	    });
+	    return dialog;
+	}
 
     public void show() {
-        create().show();
+        Dialog dialog = create();
+        show(dialog);
     }
 
+    public void show(Dialog dialog) {
+        dialog.show();
+        if (mDividerColor != 0) {
+            // Set title divider color
+            int titleDividerId = mContext.getResources().getIdentifier("titleDivider", "id", "android");
+            View titleDivider = dialog.findViewById(titleDividerId);
+            if (titleDivider != null) {
+                titleDivider.setBackgroundColor(mDividerColor);
+            }
+        }
+    }
+
+    public Dialog createAndShow() {
+        Dialog dialog = create();
+        show(dialog);
+        return dialog;
+    }
+	
     //
 
 
