@@ -66,7 +66,7 @@ public abstract class License implements Serializable {
         final StringBuilder builder = new StringBuilder();
         String line = null;
         while ((line = reader.readLine()) != null) {
-            builder.append(line);
+            builder.append(line).append('\n');
         }
         return builder.toString();
     }
