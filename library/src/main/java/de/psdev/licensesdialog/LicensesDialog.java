@@ -76,57 +76,18 @@ public class LicensesDialog {
     public LicensesDialog(final Context context, final int titleResourceId, final int rawNoticesResourceId, final int closeResourceId,
                           final boolean showFullLicenseText, final boolean includeOwnLicense,
                           final int themeResourceId) {
-        mContext = context;
-        // Load defaults
-        final String style = context.getString(R.string.notices_default_style);
-        mTitleText = context.getString(titleResourceId);
-        try {
-            final Resources resources = context.getResources();
-            if ("raw".equals(resources.getResourceTypeName(rawNoticesResourceId))) {
-                final Notices notices = NoticesXmlParser.parse(resources.openRawResource(rawNoticesResourceId));
-                if (includeOwnLicense) {
-                    final List<Notice> noticeList = notices.getNotices();
-                    noticeList.add(LICENSES_DIALOG_NOTICE);
-                }
-                mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style)
-                        .build();
-            } else {
-                throw new IllegalStateException("not a raw resource");
-            }
-        } catch (final Exception e) {
-            throw new IllegalStateException(e);
-        }
-        mCloseText = context.getString(closeResourceId);
-        mThemeResourceId = themeResourceId;
+        this(context, titleResourceId, rawNoticesResourceId, closeResourceId, showFullLicenseText,
+                includeOwnLicense, themeResourceId, 0);
     }
 
     public LicensesDialog(final Context context, final int titleResourceId, final int rawNoticesResourceId, final int closeResourceId,
                           final boolean showFullLicenseText, final boolean includeOwnLicense) {
-        mContext = context;
-        // Load defaults
-        final String style = context.getString(R.string.notices_default_style);
-        mTitleText = context.getString(titleResourceId);
-        try {
-            final Resources resources = context.getResources();
-            if ("raw".equals(resources.getResourceTypeName(rawNoticesResourceId))) {
-                final Notices notices = NoticesXmlParser.parse(resources.openRawResource(rawNoticesResourceId));
-                if (includeOwnLicense) {
-                    final List<Notice> noticeList = notices.getNotices();
-                    noticeList.add(LICENSES_DIALOG_NOTICE);
-                }
-                mLicensesText = NoticesHtmlBuilder.create(mContext).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style)
-                        .build();
-            } else {
-                throw new IllegalStateException("not a raw resource");
-            }
-        } catch (final Exception e) {
-            throw new IllegalStateException(e);
-        }
-        mCloseText = context.getString(closeResourceId);
+        this(context, titleResourceId, rawNoticesResourceId, closeResourceId, showFullLicenseText,
+                includeOwnLicense, 0, 0);
     }
 
     public LicensesDialog(final Context context, final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
-        this(context, R.string.notices_title, rawNoticesResourceId, R.string.notices_close, showFullLicenseText, includeOwnLicense);
+        this(context, R.string.notices_title, rawNoticesResourceId, R.string.notices_close, showFullLicenseText, includeOwnLicense, 0, 0);
     }
 
     public LicensesDialog(final Context context, final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense) {
@@ -154,7 +115,7 @@ public class LicensesDialog {
         mCloseText = closeText;
     }
 
-	public LicensesDialog(final Context context, final String titleText, final String licensesText, final String closeText,
+    public LicensesDialog(final Context context, final String titleText, final String licensesText, final String closeText,
                           final int themeResourceId) {
         mContext = context;
         mTitleText = titleText;
@@ -171,11 +132,6 @@ public class LicensesDialog {
         mCloseText = closeText;
         mThemeResourceId = themeResourceId;
         mDividerColor = dividerColor;
-    }
-
-    public LicensesDialog setOnDismissListener(final DialogInterface.OnDismissListener onDismissListener) {
-        mOnDismissListener = onDismissListener;
-        return this;
     }
 
     public Dialog create() {
@@ -208,9 +164,13 @@ public class LicensesDialog {
 	}
 
     public void show() {
+        Dialog dialog = create();
+        show(dialog);
+    }
+
+    public void show(Dialog dialog) {
+        dialog.show();
         if (mDividerColor != 0) {
-            Dialog dialog = create();
-            dialog.show();
             // Set title divider color
             int titleDividerId = mContext.getResources().getIdentifier("titleDivider", "id", "android");
             View titleDivider = dialog.findViewById(titleDividerId);
@@ -221,18 +181,9 @@ public class LicensesDialog {
     }
 
     public Dialog createAndShow() {
-        if (mDividerColor != 0) {
-            Dialog dialog = create();
-            dialog.show();
-            // Set title divider color
-            int titleDividerId = mContext.getResources().getIdentifier("titleDivider", "id", "android");
-            View titleDivider = dialog.findViewById(titleDividerId);
-            if (titleDivider != null) {
-                titleDivider.setBackgroundColor(mDividerColor);
-            }
-            return dialog;
-        }
-		return create();
+        Dialog dialog = create();
+        show(dialog);
+        return dialog;
     }
 	
     //
