@@ -134,6 +134,11 @@ public class LicensesDialog {
         mDividerColor = dividerColor;
     }
 
+    public LicensesDialog setOnDismissListener(final DialogInterface.OnDismissListener onDismissListener) {
+        mOnDismissListener = onDismissListener;
+        return this;
+    }
+
     public Dialog create() {
         //Get resources
         final WebView webView = new WebView(mContext);
