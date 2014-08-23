@@ -47,41 +47,55 @@ public class LicensesDialogFragment extends DialogFragment {
 
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId, final boolean includeOwnLicense) {
-        return newInstance(rawNoticesResourceId, false, includeOwnLicense, 0, 0);
+    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId) {
+        return newInstance(rawNoticesResourceId, false);
     }
 
-    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId,
-                                                     final boolean showFullLicenseText, final boolean includeOwnLicense) {
-        return newInstance(rawNoticesResourceId, showFullLicenseText, includeOwnLicense, 0, 0);
+    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId, final boolean showFullLicenseText) {
+        return newInstance(rawNoticesResourceId, showFullLicenseText, false);
     }
 
-    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId,
-                                                     final boolean showFullLicenseText, final boolean includeOwnLicense,
+    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense) {
+        return newInstance(rawNoticesResourceId, showFullLicenseText, includeOwnLicense, 0);
+    }
+
+    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense,
                                                      final int themeResourceId) {
         return newInstance(rawNoticesResourceId, showFullLicenseText, includeOwnLicense, themeResourceId, 0);
     }
 
-    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId,
-                                                     final boolean showFullLicenseText, final boolean includeOwnLicense,
+    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense,
                                                      final int themeResourceId, final int dividerColor) {
+        return newInstance(null, rawNoticesResourceId, showFullLicenseText, includeOwnLicense, themeResourceId, dividerColor);
+    }
+
+    public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense) {
+        return newInstance(notices, showFullLicenseText, includeOwnLicense, 0);
+    }
+
+    public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense,
+                                                     final int themeResourceId) {
+        return newInstance(notices, showFullLicenseText, includeOwnLicense, themeResourceId, 0);
+    }
+
+    public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense,
+                                                     final int themeResourceId, final int dividerColor) {
+        return newInstance(notices, -1, showFullLicenseText, includeOwnLicense, themeResourceId, dividerColor);
+    }
+
+    private static LicensesDialogFragment newInstance(final Notices notices, final int rawNoticesResourceId, final boolean showFullLicenseText,
+                                                      final boolean includeOwnLicense, final int themeResourceId, final int dividerColor) {
         final LicensesDialogFragment licensesDialogFragment = new LicensesDialogFragment();
         final Bundle args = new Bundle();
-        args.putInt(ARGUMENT_NOTICES_XML_ID, rawNoticesResourceId);
+        if (notices != null) {
+            args.putParcelable(ARGUMENT_NOTICES, notices);
+        } else {
+            args.putInt(ARGUMENT_NOTICES_XML_ID, rawNoticesResourceId);
+        }
         args.putBoolean(ARGUMENT_FULL_LICENSE_TEXT, showFullLicenseText);
         args.putBoolean(ARGUMENT_INCLUDE_OWN_LICENSE, includeOwnLicense);
         args.putInt(ARGUMENT_THEME_XML_ID, themeResourceId);
         args.putInt(ARGUMENT_DIVIDER_COLOR, dividerColor);
-        licensesDialogFragment.setArguments(args);
-        return licensesDialogFragment;
-    }
-
-    public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense) {
-        final LicensesDialogFragment licensesDialogFragment = new LicensesDialogFragment();
-        final Bundle args = new Bundle();
-        args.putParcelable(ARGUMENT_NOTICES, notices);
-        args.putBoolean(ARGUMENT_FULL_LICENSE_TEXT, showFullLicenseText);
-        args.putBoolean(ARGUMENT_INCLUDE_OWN_LICENSE, includeOwnLicense);
         licensesDialogFragment.setArguments(args);
         return licensesDialogFragment;
     }
@@ -162,18 +176,11 @@ public class LicensesDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(final Bundle savedInstanceState) {
-        if (mThemeResourceId != 0) {
-            if (mDividerColor != 0) {
-                return new LicensesDialog(getActivity(), mTitleText, mLicensesText,
-                        mCloseButtonText, mThemeResourceId, mDividerColor).createAndShow();
-            } else {
-                return new LicensesDialog(getActivity(), mTitleText, mLicensesText,
-                        mCloseButtonText, mThemeResourceId).create();
-            }
-        } else {
-            return new LicensesDialog(getActivity(), mTitleText, mLicensesText,
-                    mCloseButtonText).create();
-        }
+        return new LicensesDialog.Builder(getActivity())
+            .setNotices(mLicensesText)
+            .setTitle(mTitleText).setCloseText(mCloseButtonText)
+            .setThemeResourceId(mThemeResourceId).setDividerColorId(mDividerColor)
+            .build().create();
     }
 
     @Override
