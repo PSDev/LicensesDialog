@@ -74,6 +74,7 @@
         <robolectric.version>2.3</robolectric.version>
         <android.version>4.1.1.4</android.version>
         <android-support.version>r7</android-support.version>
+        <jsr305.version>3.0.0</jsr305.version>
 
         <!-- Plugin Versions -->
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
@@ -112,6 +113,13 @@
                 <groupId>com.google.android</groupId>
                 <artifactId>support-v4</artifactId>
                 <version>${android-support.version}</version>
+            </dependency>
+
+            <!-- Nullable support -->
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${jsr305.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
