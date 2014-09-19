@@ -88,4 +88,14 @@ public class SampleActivity extends FragmentActivity {
         final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(notices, false, true);
         fragment.show(getSupportFragmentManager(), null);
     }
+
+    public void onCustomThemeClick(final View view) {
+        new LicensesDialog.Builder(this).setNotices(R.raw.notices).setIncludeOwnLicense(true).setThemeResourceId(R.style.custom_theme)
+                .setDividerColorId(R.color.custom_divider_color).build().show();
+    }
+
+    public void onCustomThemeFragmentClick(final View view) {
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(R.raw.notices, false, true, R.style.custom_theme, R.color.custom_divider_color, this);
+        fragment.show(getSupportFragmentManager(), null);
+    }
 }

@@ -17,6 +17,7 @@
 package de.psdev.licensesdialog;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Build;
@@ -69,6 +70,11 @@ public class LicensesDialogFragment extends DialogFragment {
         return newInstance(null, rawNoticesResourceId, showFullLicenseText, includeOwnLicense, themeResourceId, dividerColor);
     }
 
+    public static LicensesDialogFragment newInstance(final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense,
+                                                     final int themeResourceId, final int dividerColorId, final Context context) {
+        return newInstance(null, rawNoticesResourceId, showFullLicenseText, includeOwnLicense, themeResourceId, context.getResources().getColor(dividerColorId));
+    }
+
     public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense) {
         return newInstance(notices, showFullLicenseText, includeOwnLicense, 0);
     }
@@ -81,6 +87,11 @@ public class LicensesDialogFragment extends DialogFragment {
     public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense,
                                                      final int themeResourceId, final int dividerColor) {
         return newInstance(notices, -1, showFullLicenseText, includeOwnLicense, themeResourceId, dividerColor);
+    }
+
+    public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense,
+                                                     final int themeResourceId, final int dividerColorId, final Context context) {
+        return newInstance(notices, -1, showFullLicenseText, includeOwnLicense, themeResourceId, context.getResources().getColor(dividerColorId));
     }
 
     private static LicensesDialogFragment newInstance(final Notices notices, final int rawNoticesResourceId, final boolean showFullLicenseText,
@@ -179,8 +190,8 @@ public class LicensesDialogFragment extends DialogFragment {
         return new LicensesDialog.Builder(getActivity())
             .setNotices(mLicensesText)
             .setTitle(mTitleText).setCloseText(mCloseButtonText)
-            .setThemeResourceId(mThemeResourceId).setDividerColorId(mDividerColor)
-            .build().create();
+            .setThemeResourceId(mThemeResourceId).setDividerColor(mDividerColor)
+            .build().show();
     }
 
     @Override
