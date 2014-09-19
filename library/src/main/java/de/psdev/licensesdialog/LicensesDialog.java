@@ -158,7 +158,7 @@ public class LicensesDialog {
         private boolean mShowFullLicenseText;
         private boolean mIncludeOwnLicense;
         private int mThemeResourceId;
-        private int mDividerColorId;
+        private int mDividerColor;
 
         public Builder(final Context context) {
             mContext = context;
@@ -168,7 +168,7 @@ public class LicensesDialog {
             mShowFullLicenseText = false;
             mIncludeOwnLicense = false;
             mThemeResourceId = 0;
-            mDividerColorId = 0;
+            mDividerColor = 0;
         }
 
         public Builder setTitle(final int titleId) {
@@ -239,8 +239,13 @@ public class LicensesDialog {
             return this;
         }
 
+        public Builder setDividerColor(final int dividerColor) {
+            mDividerColor = dividerColor;
+            return this;
+        }
+
         public Builder setDividerColorId(final int dividerColorId) {
-            mDividerColorId = dividerColorId;
+            mDividerColor = mContext.getResources().getColor(dividerColorId);
             return this;
         }
 
@@ -256,7 +261,7 @@ public class LicensesDialog {
                 throw new IllegalStateException("Notices have to be provided, see setNotices");
             }
 
-            return new LicensesDialog(mContext, licensesText, mTitleText, mCloseText, mThemeResourceId, mDividerColorId);
+            return new LicensesDialog(mContext, licensesText, mTitleText, mCloseText, mThemeResourceId, mDividerColor);
         }
 
     }
