@@ -75,4 +75,18 @@
         android:text="@string/multiple_programmatic_fragment"
         android:onClick="onMultipleProgrammaticFragmentClick"
         android:layout_weight="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/custom_theme"
+        android:onClick="onCustomThemeClick"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/custom_theme_fragment"
+        android:onClick="onCustomThemeFragmentClick"
+        android:layout_weight="1" />
 </LinearLayout>

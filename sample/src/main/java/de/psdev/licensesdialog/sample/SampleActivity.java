@@ -21,7 +21,6 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import de.psdev.licensesdialog.LicensesDialog;
 import de.psdev.licensesdialog.LicensesDialogFragment;
-import de.psdev.licensesdialog.SingleLicenseDialog;
 import de.psdev.licensesdialog.SingleLicenseDialogFragment;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense21;
@@ -42,15 +41,15 @@ public class SampleActivity extends FragmentActivity {
         final String copyright = "Copyright 2013 Philip Schiffer <admin@psdev.de>";
         final License license = new ApacheSoftwareLicense20();
         final Notice notice = new Notice(name, url, copyright, license);
-        new SingleLicenseDialog(this, notice, false).show();
+        new LicensesDialog.Builder(this).setNotices(notice).build().show();
     }
 
     public void onMultipleClick(final View view) {
-        new LicensesDialog(this, R.raw.notices, false, false).show();
+        new LicensesDialog.Builder(this).setNotices(R.raw.notices).build().show();
     }
 
     public void onMultipleIncludeOwnClick(final View view) {
-        new LicensesDialog(this, R.raw.notices, false, true).show();
+        new LicensesDialog.Builder(this).setNotices(R.raw.notices).setIncludeOwnLicense(true).build().show();
     }
 
     public void onMultipleProgrammaticClick(final View view) {
@@ -58,7 +57,7 @@ public class SampleActivity extends FragmentActivity {
         notices.addNotice(new Notice("Test 1", "http://example.org", "Example Person", new ApacheSoftwareLicense20()));
         notices.addNotice(new Notice("Test 2", "http://example.org", "Example Person 2", new GnuLesserGeneralPublicLicense21()));
 
-        new LicensesDialog(this, notices, false, true).show();
+        new LicensesDialog.Builder(this).setNotices(notices).setIncludeOwnLicense(true).build().show();
     }
 
     public void onSingleFragmentClick(final View view) {
@@ -77,7 +76,7 @@ public class SampleActivity extends FragmentActivity {
     }
 
     public void onMultipleIncludeOwnFragmentClick(final View view) {
-        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(R.raw.notices, true);
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(R.raw.notices, false, true);
         fragment.show(getSupportFragmentManager(), null);
     }
 
@@ -87,6 +86,16 @@ public class SampleActivity extends FragmentActivity {
         notices.addNotice(new Notice("Test 2", "http://example.org", "Example Person 2", new GnuLesserGeneralPublicLicense21()));
 
         final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(notices, false, true);
+        fragment.show(getSupportFragmentManager(), null);
+    }
+
+    public void onCustomThemeClick(final View view) {
+        new LicensesDialog.Builder(this).setNotices(R.raw.notices).setIncludeOwnLicense(true).setThemeResourceId(R.style.custom_theme)
+                .setDividerColorId(R.color.custom_divider_color).build().show();
+    }
+
+    public void onCustomThemeFragmentClick(final View view) {
+        final LicensesDialogFragment fragment = LicensesDialogFragment.newInstance(R.raw.notices, false, true, R.style.custom_theme, R.color.custom_divider_color, this);
         fragment.show(getSupportFragmentManager(), null);
     }
 }

@@ -1,11 +1,14 @@
 Change Log
 ==========
 
-Version 1.5.1 *(IN DEVELOPMENT)*
+Version 1.6.0 *(IN DEVELOPMENT)*
 --------------------------------
 
 * Added GNU GPLv2 / GPLv3 License (#28)
 * Improve NoticesHtmlBuilder speed (#29)
+* Added methods for customization (#30)
+* Replaced LicensesDialog constructors with builder, removed SingleLicenseDialog as it is now handled by the builder
+* **WARNING: The constructor arguments have changed. Please review your code!**
 
 Version 1.5.0 *(2014-06-01)*
 ----------------------------

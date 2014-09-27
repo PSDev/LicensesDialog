@@ -89,7 +89,7 @@ public class SingleLicenseDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(final Bundle savedInstanceState) {
-        return new SingleLicenseDialog(getActivity(), mTitleText, mLicenseText, mCloseButtonText).create();
+        return new LicensesDialog.Builder(getActivity()).setNotices(mLicenseText).setTitle(mTitleText).setCloseText(mCloseButtonText).build().create();
     }
 
     @Override

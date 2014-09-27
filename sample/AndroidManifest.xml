@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright 2013 Philip Schiffer
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +21,8 @@
     package="de.psdev.licensesdialog.sample">
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="16" />
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
 
     <application
         android:icon="@drawable/ic_launcher"
