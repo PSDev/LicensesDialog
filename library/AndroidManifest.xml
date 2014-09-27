@@ -21,7 +21,7 @@
     package="de.psdev.licensesdialog">
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="16" />
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
     <application />
 </manifest>

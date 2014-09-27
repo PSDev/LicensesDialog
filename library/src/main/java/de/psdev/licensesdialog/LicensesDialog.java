@@ -87,20 +87,25 @@ public class LicensesDialog {
                 }
             }
         });
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(final DialogInterface dialogInterface) {
+                if (mDividerColor != 0) {
+                    // Set title divider color
+                    final int titleDividerId = mContext.getResources().getIdentifier("titleDivider", "id", "android");
+                    final View titleDivider = dialog.findViewById(titleDividerId);
+                    if (titleDivider != null) {
+                        titleDivider.setBackgroundColor(mDividerColor);
+                    }
+                }
+            }
+        });
         return dialog;
     }
 
     public Dialog show() {
         final Dialog dialog = create();
         dialog.show();
-        if (mDividerColor != 0) {
-            // Set title divider color
-            final int titleDividerId = mContext.getResources().getIdentifier("titleDivider", "id", "android");
-            final View titleDivider = dialog.findViewById(titleDividerId);
-            if (titleDivider != null) {
-                titleDivider.setBackgroundColor(mDividerColor);
-            }
-        }
         return dialog;
     }
 

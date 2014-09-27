@@ -72,7 +72,7 @@ public class LicensesDialogFragment extends DialogFragment {
 
     public static LicensesDialogFragment newInstance(final int rawNoticesResourceId, final boolean showFullLicenseText, final boolean includeOwnLicense,
                                                      final int themeResourceId, final int dividerColorId, final Context context) {
-        return newInstance(null, rawNoticesResourceId, showFullLicenseText, includeOwnLicense, themeResourceId, context.getResources().getColor(dividerColorId));
+        return newInstance(null, rawNoticesResourceId, showFullLicenseText, includeOwnLicense, themeResourceId, getColor(dividerColorId, context));
     }
 
     public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense) {
@@ -91,7 +91,7 @@ public class LicensesDialogFragment extends DialogFragment {
 
     public static LicensesDialogFragment newInstance(final Notices notices, final boolean showFullLicenseText, final boolean includeOwnLicense,
                                                      final int themeResourceId, final int dividerColorId, final Context context) {
-        return newInstance(notices, -1, showFullLicenseText, includeOwnLicense, themeResourceId, context.getResources().getColor(dividerColorId));
+        return newInstance(notices, -1, showFullLicenseText, includeOwnLicense, themeResourceId, getColor(dividerColorId, context));
     }
 
     private static LicensesDialogFragment newInstance(final Notices notices, final int rawNoticesResourceId, final boolean showFullLicenseText,
@@ -109,6 +109,10 @@ public class LicensesDialogFragment extends DialogFragment {
         args.putInt(ARGUMENT_DIVIDER_COLOR, dividerColor);
         licensesDialogFragment.setArguments(args);
         return licensesDialogFragment;
+    }
+
+    private static int getColor(final int dividerColorId, final Context context) {
+        return context.getResources().getColor(dividerColorId);
     }
 
     public LicensesDialogFragment() {
@@ -191,7 +195,7 @@ public class LicensesDialogFragment extends DialogFragment {
             .setNotices(mLicensesText)
             .setTitle(mTitleText).setCloseText(mCloseButtonText)
             .setThemeResourceId(mThemeResourceId).setDividerColor(mDividerColor)
-            .build().show();
+            .build().create();
     }
 
     @Override
