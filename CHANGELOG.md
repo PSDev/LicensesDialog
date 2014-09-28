@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 1.6.0 *(IN DEVELOPMENT)*
+Version 1.6.0 *(2014-09-08)*
 --------------------------------
 
 * Added GNU GPLv2 / GPLv3 License (#28)
