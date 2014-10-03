@@ -40,6 +40,21 @@ Credits
 
 This library is inspired by [Inscription][2].
 
+Contributors
+------------
+
+Thank you to all the contributors of this project, namely:
+
+- [Peter Heisig](https://github.com/PSDev/LicensesDialog/commits?author=phdd)
+- [Jesus Otero](https://github.com/PSDev/LicensesDialog/commits?author=TheWizKid95)
+- [Scott Alexander-Bown](https://github.com/PSDev/LicensesDialog/commits?author=scottyab)
+- [barondem](https://github.com/PSDev/LicensesDialog/commits?author=barondem)
+- [Shaleen Jain](https://github.com/PSDev/LicensesDialog/commits?author=Shalzz)
+- [Zhang Hai](https://github.com/PSDev/LicensesDialog/commits?author=DreaminginCodeZH)
+- [Heinrich Reimer](https://github.com/PSDev/LicensesDialog/commits?author=HeinrichReimer)
+- [Juan Ramón González](https://github.com/PSDev/LicensesDialog/commits?author=jrgonzalezg)
+- [Taeho Kim](https://github.com/PSDev/LicensesDialog/commits?author=kunny)
+
 
 License
 -------
