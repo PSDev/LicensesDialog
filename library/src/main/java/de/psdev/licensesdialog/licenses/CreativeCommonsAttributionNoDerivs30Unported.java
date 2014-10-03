@@ -21,6 +21,9 @@ import de.psdev.licensesdialog.R;
 
 public class CreativeCommonsAttributionNoDerivs30Unported extends License {
 
+    private String cachedSummaryText = null;
+    private String cachedFullText = null;
+
     @Override
     public String getName() {
         return "Creative Commons Attribution-NoDerivs 3.0 Unported";
@@ -28,12 +31,19 @@ public class CreativeCommonsAttributionNoDerivs30Unported extends License {
 
     @Override
     public String getSummaryText(final Context context) {
-        return getContent(context, R.raw.ccand_30_summary);
+        if (cachedSummaryText == null) {
+            cachedSummaryText = getContent(context, R.raw.ccand_30_summary);
+        }
+
+        return cachedSummaryText;
     }
 
     @Override
     public String getFullText(final Context context) {
-        return getContent(context, R.raw.ccand_30_full);
+        if (cachedFullText == null) {
+            cachedFullText = getContent(context, R.raw.ccand_30_full);
+        }
+        return cachedFullText;
     }
 
     @Override

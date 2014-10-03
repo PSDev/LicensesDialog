@@ -22,6 +22,9 @@ import de.psdev.licensesdialog.R;
 public class ISCLicense extends License {
     private static final long serialVersionUID = -4636435634132169860L;
 
+    private String cachedSummaryText = null;
+    private String cachedFullText = null;
+
     @Override
     public String getName() {
         return "ISC License";
@@ -29,12 +32,19 @@ public class ISCLicense extends License {
 
     @Override
     public String getSummaryText(final Context context) {
-        return getContent(context, R.raw.isc_summary);
+        if (cachedSummaryText == null) {
+            cachedSummaryText = getContent(context, R.raw.isc_summary);
+        }
+
+        return cachedSummaryText;
     }
 
     @Override
     public String getFullText(final Context context) {
-        return getContent(context, R.raw.isc_full);
+        if (cachedFullText == null) {
+            cachedFullText = getContent(context, R.raw.isc_full);
+        }
+        return cachedFullText;
     }
 
     @Override

@@ -23,6 +23,9 @@ public class MITLicense extends License {
 
     private static final long serialVersionUID = 5673599951781482594L;
 
+    private String cachedSummaryText = null;
+    private String cachedFullText = null;
+
     @Override
     public String getName() {
         return "MIT License";
@@ -30,12 +33,19 @@ public class MITLicense extends License {
 
     @Override
     public String getSummaryText(final Context context) {
-        return getContent(context, R.raw.mit_summary);
+        if (cachedSummaryText == null) {
+            cachedSummaryText = getContent(context, R.raw.mit_summary);
+        }
+
+        return cachedSummaryText;
     }
 
     @Override
     public String getFullText(final Context context) {
-        return getContent(context, R.raw.mit_full);
+        if (cachedFullText == null) {
+            cachedFullText = getContent(context, R.raw.mit_full);
+        }
+        return cachedFullText;
     }
 
     @Override
