@@ -29,12 +29,12 @@ public class BSD3ClauseLicense extends License {
     }
 
     @Override
-    public String getSummaryText(final Context context) {
+    public String readSummaryTextFromResources(final Context context) {
         return getContent(context, R.raw.bsd3_summary);
     }
 
     @Override
-    public String getFullText(final Context context) {
+    public String readFullTextFromResources(final Context context) {
         return getContent(context, R.raw.bsd3_full);
     }
 

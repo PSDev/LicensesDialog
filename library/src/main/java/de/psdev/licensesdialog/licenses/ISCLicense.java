@@ -28,12 +28,12 @@ public class ISCLicense extends License {
     }
 
     @Override
-    public String getSummaryText(final Context context) {
+    public String readSummaryTextFromResources(final Context context) {
         return getContent(context, R.raw.isc_summary);
     }
 
     @Override
-    public String getFullText(final Context context) {
+    public String readFullTextFromResources(final Context context) {
         return getContent(context, R.raw.isc_full);
     }
 

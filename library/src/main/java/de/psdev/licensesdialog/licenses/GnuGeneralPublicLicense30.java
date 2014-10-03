@@ -27,12 +27,12 @@ public class GnuGeneralPublicLicense30 extends License {
     }
 
     @Override
-    public String getSummaryText(final Context context) {
+    public String readSummaryTextFromResources(final Context context) {
         return getContent(context, R.raw.gpl_30_summary);
     }
 
     @Override
-    public String getFullText(final Context context) {
+    public String readFullTextFromResources(final Context context) {
         return getContent(context, R.raw.gpl_30_full);
     }
 
