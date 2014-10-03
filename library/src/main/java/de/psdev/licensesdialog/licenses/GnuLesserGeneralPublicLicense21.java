@@ -22,29 +22,19 @@ import de.psdev.licensesdialog.R;
 
 public class GnuLesserGeneralPublicLicense21 extends License {
 
-    private String cachedSummaryText = null;
-    private String cachedFullText = null;
-
     @Override
     public String getName() {
         return "GNU Lesser General Public License 2.1";
     }
 
     @Override
-    public String getSummaryText(final Context context) {
-        if (cachedSummaryText == null) {
-            cachedSummaryText = getContent(context, R.raw.lgpl_21_summary);
-        }
-
-        return cachedSummaryText;
+    public String readSummaryTextFromResources(final Context context) {
+        return getContent(context, R.raw.lgpl_21_summary);
     }
 
     @Override
-    public String getFullText(final Context context) {
-        if (cachedFullText == null) {
-            cachedFullText = getContent(context, R.raw.lgpl_21_full);
-        }
-        return cachedFullText;
+    public String readFullTextFromResources(final Context context) {
+        return getContent(context, R.raw.lgpl_21_full);
     }
 
     @Override

@@ -21,29 +21,19 @@ import de.psdev.licensesdialog.R;
 
 public class GnuGeneralPublicLicense30 extends License {
 
-    private String cachedSummaryText = null;
-    private String cachedFullText = null;
-
     @Override
     public String getName() {
         return "GNU General Public License 3.0";
     }
 
     @Override
-    public String getSummaryText(final Context context) {
-        if (cachedSummaryText == null) {
-            cachedSummaryText = getContent(context, R.raw.gpl_30_summary);
-        }
-
-        return cachedSummaryText;
+    public String readSummaryTextFromResources(final Context context) {
+        return getContent(context, R.raw.gpl_30_summary);
     }
 
     @Override
-    public String getFullText(final Context context) {
-        if (cachedFullText == null) {
-            cachedFullText = getContent(context, R.raw.gpl_30_full);
-        }
-        return cachedFullText;
+    public String readFullTextFromResources(final Context context) {
+        return getContent(context, R.raw.gpl_30_full);
     }
 
     @Override

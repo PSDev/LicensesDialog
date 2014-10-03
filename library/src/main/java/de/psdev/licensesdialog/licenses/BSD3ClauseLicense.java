@@ -23,29 +23,19 @@ public class BSD3ClauseLicense extends License {
 
     private static final long serialVersionUID = -5205394619884057474L;
 
-    private String cachedSummaryText = null;
-    private String cachedFullText = null;
-
     @Override
     public String getName() {
         return "BSD 3-Clause License";
     }
 
     @Override
-    public String getSummaryText(final Context context) {
-        if (cachedSummaryText == null) {
-            cachedSummaryText = getContent(context, R.raw.bsd3_summary);
-        }
-
-        return cachedSummaryText;
+    public String readSummaryTextFromResources(final Context context) {
+        return getContent(context, R.raw.bsd3_summary);
     }
 
     @Override
-    public String getFullText(final Context context) {
-        if (cachedFullText == null) {
-            cachedFullText = getContent(context, R.raw.bsd3_full);
-        }
-        return cachedFullText;
+    public String readFullTextFromResources(final Context context) {
+        return getContent(context, R.raw.bsd3_full);
     }
 
     @Override

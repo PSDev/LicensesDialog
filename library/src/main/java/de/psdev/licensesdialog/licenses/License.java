@@ -16,29 +16,48 @@
 
 package de.psdev.licensesdialog.licenses;
 
+import android.content.Context;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 
-import android.content.Context;
-
 public abstract class License implements Serializable {
 
     private static final long serialVersionUID = 3100331505738956523L;
 
+    private String mCachedSummaryText = null;
+    private String mCachedFullText = null;
+
     public abstract String getName();
 
-    public abstract String getSummaryText(final Context context);
+    public abstract String readSummaryTextFromResources(final Context context);
 
-    public abstract String getFullText(final Context context);
+    public abstract String readFullTextFromResources(final Context context);
 
     public abstract String getVersion();
 
     public abstract String getUrl();
 
     //
+
+    public String getSummaryText(final Context context) {
+        if (mCachedSummaryText == null) {
+            mCachedSummaryText = readSummaryTextFromResources(context);
+        }
+
+        return mCachedSummaryText;
+    }
+
+    public String getFullText(final Context context) {
+        if (mCachedFullText == null) {
+            mCachedFullText = readFullTextFromResources(context);
+        }
+        
+        return mCachedFullText;
+    }
 
     protected String getContent(final Context context, final int contentResourceId) {
         BufferedReader reader = null;
@@ -64,7 +83,7 @@ public abstract class License implements Serializable {
 
     private String toString(final BufferedReader reader) throws IOException {
         final StringBuilder builder = new StringBuilder();
-        String lineSeparator = System.getProperty("line.separator");
+        final String lineSeparator = System.getProperty("line.separator");
         String line = null;
         while ((line = reader.readLine()) != null) {
             builder.append(line).append(lineSeparator);

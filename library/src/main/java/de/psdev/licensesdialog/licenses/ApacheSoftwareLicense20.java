@@ -23,29 +23,19 @@ public class ApacheSoftwareLicense20 extends License {
 
     private static final long serialVersionUID = 4854000061990891449L;
 
-    private String cachedSummaryText = null;
-    private String cachedFullText = null;
-
     @Override
     public String getName() {
         return "Apache Software License 2.0";
     }
 
     @Override
-    public String getSummaryText(final Context context) {
-        if (cachedSummaryText == null) {
-            cachedSummaryText = getContent(context, R.raw.asl_20_summary);
-        }
-
-        return cachedSummaryText;
+    public String readSummaryTextFromResources(final Context context) {
+        return getContent(context, R.raw.asl_20_summary);
     }
 
     @Override
-    public String getFullText(final Context context) {
-        if (cachedFullText == null) {
-            cachedFullText = getContent(context, R.raw.asl_20_full);
-        }
-        return cachedFullText;
+    public String readFullTextFromResources(final Context context) {
+        return getContent(context, R.raw.asl_20_full);
     }
 
     @Override
