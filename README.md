@@ -54,6 +54,7 @@ Thank you to all the contributors of this project, namely:
 - [Heinrich Reimer](https://github.com/PSDev/LicensesDialog/commits?author=HeinrichReimer)
 - [Juan Ramón González](https://github.com/PSDev/LicensesDialog/commits?author=jrgonzalezg)
 - [Taeho Kim](https://github.com/PSDev/LicensesDialog/commits?author=kunny)
+- [Nacho G. del Amo](https://github.com/PSDev/LicensesDialog/commits?author=ngdelamo)
 
 
 License
