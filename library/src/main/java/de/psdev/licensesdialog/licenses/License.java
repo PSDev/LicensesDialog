@@ -27,6 +27,7 @@ import java.io.Serializable;
 public abstract class License implements Serializable {
 
     private static final long serialVersionUID = 3100331505738956523L;
+    private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     private String mCachedSummaryText = null;
     private String mCachedFullText = null;
@@ -43,7 +44,7 @@ public abstract class License implements Serializable {
 
     //
 
-    public String getSummaryText(final Context context) {
+    public final String getSummaryText(final Context context) {
         if (mCachedSummaryText == null) {
             mCachedSummaryText = readSummaryTextFromResources(context);
         }
@@ -51,7 +52,7 @@ public abstract class License implements Serializable {
         return mCachedSummaryText;
     }
 
-    public String getFullText(final Context context) {
+    public final String getFullText(final Context context) {
         if (mCachedFullText == null) {
             mCachedFullText = readFullTextFromResources(context);
         }
@@ -83,10 +84,9 @@ public abstract class License implements Serializable {
 
     private String toString(final BufferedReader reader) throws IOException {
         final StringBuilder builder = new StringBuilder();
-        final String lineSeparator = System.getProperty("line.separator");
         String line = null;
         while ((line = reader.readLine()) != null) {
-            builder.append(line).append(lineSeparator);
+            builder.append(line).append(LINE_SEPARATOR);
         }
         return builder.toString();
     }
