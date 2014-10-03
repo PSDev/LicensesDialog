@@ -63,12 +63,12 @@ public class LicenseResolverTest {
         }
 
         @Override
-        public String getSummaryText(final Context context) {
+        public String readSummaryTextFromResources(final Context context) {
             return "Testing license";
         }
 
         @Override
-        public String getFullText(final Context context) {
+        public String readFullTextFromResources(final Context context) {
             return "Full testing license";
         }
 

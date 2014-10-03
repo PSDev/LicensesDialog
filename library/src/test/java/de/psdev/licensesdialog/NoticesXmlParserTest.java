@@ -17,7 +17,6 @@
 package de.psdev.licensesdialog;
 
 import de.psdev.licensesdialog.model.Notices;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -32,7 +31,6 @@ import static org.junit.Assert.assertNotNull;
 public class NoticesXmlParserTest {
 
     @Test
-    @Ignore("Will work with robolectric 2.3")
     public void testParse() throws Exception {
         final InputStream noticesXmlStream = getClass().getResourceAsStream("notices.xml");
         final Notices parse = NoticesXmlParser.parse(noticesXmlStream);
