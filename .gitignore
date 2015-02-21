@@ -1,6 +1,6 @@
 # Intellij #
 ############
-.idea
+.idea/
 *.iml
 *.ipr
 *.iws
@@ -13,12 +13,13 @@
 
 # Build Output #
 ################
-target
+target/
 bin
 
 # Android #
 ###########
-gen
+gen/
+gen-external-apklibs/
 
 # MacOsX #
 ##########

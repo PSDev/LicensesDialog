@@ -13,15 +13,13 @@ Download [the latest Release][1] or grab via Maven:
 <dependency>
   <groupId>de.psdev.licensesdialog</groupId>
   <artifactId>licensesdialog</artifactId>
-  <version>1.6.0</version>
+  <version>1.7.0</version>
   <type>aar</type>
 </dependency>
 ```  
 or Gradle:
 ```groovy
-compile('de.psdev.licensesdialog:licensesdialog:1.6.0') {
-    exclude module: 'support-v4'
-}
+compile('de.psdev.licensesdialog:licensesdialog:1.7.0')
 ```
 
 Usage
@@ -55,7 +53,7 @@ Thank you to all the contributors of this project, namely:
 - [Juan Ramón González](https://github.com/PSDev/LicensesDialog/commits?author=jrgonzalezg)
 - [Taeho Kim](https://github.com/PSDev/LicensesDialog/commits?author=kunny)
 - [Nacho G. del Amo](https://github.com/PSDev/LicensesDialog/commits?author=ngdelamo)
-
+- [Tatsuya Arai](https://github.com/PSDev/LicensesDialog/commits?author=cutmail)
 
 License
 -------

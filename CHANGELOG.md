@@ -1,8 +1,15 @@
 Change Log
 ==========
 
+Version 1.7.0 *(2015-02-21)*
+----------------------------
+
+* Add Japanese translation (#38)
+* Adding pre-cached loading of licenses text from resources (#35)
+* **WARNING: The API for licenses has changed. Please review your code!**
+
 Version 1.6.0 *(2014-09-08)*
---------------------------------
+----------------------------
 
 * Added GNU GPLv2 / GPLv3 License (#28)
 * Improve NoticesHtmlBuilder speed (#29)
