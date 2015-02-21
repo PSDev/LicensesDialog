@@ -16,7 +16,7 @@
     <description>LicensesDialog is an open source library to display licenses used by third-party libraries in an Android app.</description>
     <url>http://psdev.de/LicensesDialog</url>
     <inceptionYear>2013</inceptionYear>
-    <version>1.7.0</version>
+    <version>1.7.1-SNAPSHOT</version>
 
     <modules>
         <module>library</module>
@@ -27,7 +27,7 @@
         <url>https://github.com/PSDev/LicensesDialog</url>
         <connection>scm:git:git://github.com/PSDev/LicensesDialog.git</connection>
         <developerConnection>scm:git:git@github.com:PSDev/LicensesDialog.git</developerConnection>
-        <tag>1.7.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
