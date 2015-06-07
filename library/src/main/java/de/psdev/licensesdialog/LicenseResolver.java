@@ -25,6 +25,7 @@ import de.psdev.licensesdialog.licenses.CreativeCommonsAttributionNoDerivs30Unpo
 import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense20;
 import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense30;
 import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense21;
+import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense3;
 import de.psdev.licensesdialog.licenses.ISCLicense;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
@@ -45,6 +46,7 @@ public final class LicenseResolver {
         registerLicense(new ISCLicense());
         registerLicense(new MITLicense());
         registerLicense(new GnuLesserGeneralPublicLicense21());
+        registerLicense(new GnuLesserGeneralPublicLicense3());
         registerLicense(new CreativeCommonsAttributionNoDerivs30Unported());
         registerLicense(new GnuGeneralPublicLicense30());
         registerLicense(new GnuGeneralPublicLicense20());
