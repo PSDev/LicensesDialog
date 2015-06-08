@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.8.0 *(IN DEVELOPMENT)*
+------------------------------
+
+* added GNU LGPL 3 (#43)
+* Support Appcompat and alert dialogs in the support library (#42)
+
 Version 1.7.0 *(2015-02-21)*
 ----------------------------
 
