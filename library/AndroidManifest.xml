@@ -16,12 +16,12 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="1007000"
-    android:versionName="1.7.0-SNAPSHOT"
+    android:versionCode="1008000"
+    android:versionName="1.8.0-SNAPSHOT"
     package="de.psdev.licensesdialog">
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="22" />
     <application />
 </manifest>

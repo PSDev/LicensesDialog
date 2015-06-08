@@ -1,23 +1,7 @@
-/*
- * Copyright 2013 Philip Schiffer
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
- */
-
 package de.psdev.licensesdialog.sample;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import de.psdev.licensesdialog.LicensesDialog;
 import de.psdev.licensesdialog.LicensesDialogFragment;
@@ -27,7 +11,7 @@ import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
-public class SampleActivity extends FragmentActivity {
+public class AppCompatSampleActivity extends AppCompatActivity {
 
     // ==========================================================================================================================
     // Android Lifecycle
@@ -51,14 +35,14 @@ public class SampleActivity extends FragmentActivity {
         new LicensesDialog.Builder(this)
             .setNotices(notice)
             .build()
-            .show();
+            .showAppCompat();
     }
 
     public void onMultipleClick(final View view) {
         new LicensesDialog.Builder(this)
             .setNotices(R.raw.notices)
             .build()
-            .show();
+            .showAppCompat();
     }
 
     public void onMultipleIncludeOwnClick(final View view) {
@@ -66,7 +50,7 @@ public class SampleActivity extends FragmentActivity {
             .setNotices(R.raw.notices)
             .setIncludeOwnLicense(true)
             .build()
-            .show();
+            .showAppCompat();
     }
 
     public void onMultipleProgrammaticClick(final View view) {
@@ -78,7 +62,7 @@ public class SampleActivity extends FragmentActivity {
             .setNotices(notices)
             .setIncludeOwnLicense(true)
             .build()
-            .show();
+            .showAppCompat();
     }
 
     public void onSingleFragmentClick(final View view) {
@@ -91,6 +75,7 @@ public class SampleActivity extends FragmentActivity {
         final LicensesDialogFragment fragment = new LicensesDialogFragment.Builder(this)
             .setNotice(notice)
             .setIncludeOwnLicense(false)
+            .setUseAppCompat(true)
             .build();
 
         fragment.show(getSupportFragmentManager(), null);
@@ -99,6 +84,7 @@ public class SampleActivity extends FragmentActivity {
     public void onMultipleFragmentClick(final View view) throws Exception {
         final LicensesDialogFragment fragment = new LicensesDialogFragment.Builder(this)
             .setNotices(R.raw.notices)
+            .setUseAppCompat(true)
             .build();
 
         fragment.show(getSupportFragmentManager(), null);
@@ -109,6 +95,7 @@ public class SampleActivity extends FragmentActivity {
             .setNotices(R.raw.notices)
             .setShowFullLicenseText(false)
             .setIncludeOwnLicense(true)
+            .setUseAppCompat(true)
             .build();
 
         fragment.show(getSupportFragmentManager(), null);
@@ -123,6 +110,7 @@ public class SampleActivity extends FragmentActivity {
             .setNotices(notices)
             .setShowFullLicenseText(false)
             .setIncludeOwnLicense(true)
+            .setUseAppCompat(true)
             .build();
 
         fragment.show(getSupportFragmentManager(), null);
@@ -135,7 +123,7 @@ public class SampleActivity extends FragmentActivity {
             .setThemeResourceId(R.style.custom_theme)
             .setDividerColorId(R.color.custom_divider_color)
             .build()
-            .show();
+            .showAppCompat();
     }
 
     public void onCustomThemeFragmentClick(final View view) throws Exception {
@@ -145,8 +133,10 @@ public class SampleActivity extends FragmentActivity {
             .setIncludeOwnLicense(true)
             .setThemeResourceId(R.style.custom_theme)
             .setDividerColorRes(R.color.custom_divider_color)
+            .setUseAppCompat(true)
             .build();
 
         fragment.show(getSupportFragmentManager(), null);
     }
+
 }

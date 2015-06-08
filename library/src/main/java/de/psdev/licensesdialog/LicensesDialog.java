@@ -43,8 +43,11 @@ public class LicensesDialog {
     private final int mThemeResourceId;
     private final int mDividerColor;
 
-    //
     private DialogInterface.OnDismissListener mOnDismissListener;
+
+    // ==========================================================================================================================
+    // Constructor
+    // ==========================================================================================================================
 
     private LicensesDialog(final Context context, final String licensesText, final String titleText, final String closeText, final int themeResourceId,
                            final int dividerColor) {
@@ -55,6 +58,10 @@ public class LicensesDialog {
         mThemeResourceId = themeResourceId;
         mDividerColor = dividerColor;
     }
+
+    // ==========================================================================================================================
+    // Public API
+    // ==========================================================================================================================
 
     public LicensesDialog setOnDismissListener(final DialogInterface.OnDismissListener onDismissListener) {
         mOnDismissListener = onDismissListener;
@@ -103,13 +110,63 @@ public class LicensesDialog {
         return dialog;
     }
 
+    public Dialog createAppCompat() {
+        //Get resources
+        final WebView webView = new WebView(mContext);
+        webView.loadDataWithBaseURL(null, mLicensesText, "text/html", "utf-8", null);
+        final android.support.v7.app.AlertDialog.Builder builder;
+        if (mThemeResourceId != 0) {
+            builder = new android.support.v7.app.AlertDialog.Builder(new ContextThemeWrapper(mContext, mThemeResourceId));
+        } else {
+            builder = new android.support.v7.app.AlertDialog.Builder(mContext);
+        }
+        builder.setTitle(mTitleText)
+            .setView(webView)
+            .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
+                public void onClick(final DialogInterface dialogInterface, final int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+        final android.support.v7.app.AlertDialog dialog = builder.create();
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(final DialogInterface dialog) {
+                if (mOnDismissListener != null) {
+                    mOnDismissListener.onDismiss(dialog);
+                }
+            }
+        });
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(final DialogInterface dialogInterface) {
+                if (mDividerColor != 0) {
+                    // Set title divider color
+                    final int titleDividerId = mContext.getResources().getIdentifier("titleDivider", "id", "android");
+                    final View titleDivider = dialog.findViewById(titleDividerId);
+                    if (titleDivider != null) {
+                        titleDivider.setBackgroundColor(mDividerColor);
+                    }
+                }
+            }
+        });
+        return dialog;
+    }
+
     public Dialog show() {
         final Dialog dialog = create();
         dialog.show();
         return dialog;
     }
 
-    //
+    public Dialog showAppCompat() {
+        final Dialog dialog = createAppCompat();
+        dialog.show();
+        return dialog;
+    }
+
+    // ==========================================================================================================================
+    // Private API
+    // ==========================================================================================================================
 
     private static Notices getNotices(final Context context, final int rawNoticesResourceId) {
         try {
@@ -144,7 +201,9 @@ public class LicensesDialog {
         return notices;
     }
 
+    // ==========================================================================================================================
     // Inner classes
+    // ==========================================================================================================================
 
     public static final class Builder {
 

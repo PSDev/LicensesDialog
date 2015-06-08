@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2013 Philip Schiffer
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,24 +14,33 @@
   ~    limitations under the License.
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="1007000"
-    android:versionName="1.7.0-SNAPSHOT"
-    package="de.psdev.licensesdialog.sample">
+<manifest
+    package="de.psdev.licensesdialog.sample"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1008000"
+    android:versionName="1.8.0-SNAPSHOT">
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="22" />
 
     <application
+        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="LicensesDialog Sample"
-        android:allowBackup="true">
-        <activity android:name="de.psdev.licensesdialog.sample.SampleActivity">
+        android:label="LicensesDialog Sample">
+        <activity android:name="de.psdev.licensesdialog.sample.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="de.psdev.licensesdialog.sample.SampleActivity" />
+
+        <activity
+            android:name="de.psdev.licensesdialog.sample.AppCompatSampleActivity"
+            android:theme="@style/Theme.AppCompat" />
+
     </application>
 </manifest>
