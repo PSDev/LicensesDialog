@@ -54,6 +54,7 @@ Thank you to all the contributors of this project, namely:
 - [Taeho Kim](https://github.com/PSDev/LicensesDialog/commits?author=kunny)
 - [Nacho G. del Amo](https://github.com/PSDev/LicensesDialog/commits?author=ngdelamo)
 - [Tatsuya Arai](https://github.com/PSDev/LicensesDialog/commits?author=cutmail)
+- [Jakob Schrettenbrunner](https://github.com/PSDev/LicensesDialog/commits?author=schr3j)
 
 License
 -------
