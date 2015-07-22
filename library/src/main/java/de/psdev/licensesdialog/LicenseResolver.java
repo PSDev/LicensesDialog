@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
+import de.psdev.licensesdialog.licenses.BSD2ClauseLicense;
 import de.psdev.licensesdialog.licenses.BSD3ClauseLicense;
 import de.psdev.licensesdialog.licenses.CreativeCommonsAttributionNoDerivs30Unported;
 import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense20;
@@ -42,6 +43,7 @@ public final class LicenseResolver {
     static void registerDefaultLicenses() {
         sLicenses.clear();
         registerLicense(new ApacheSoftwareLicense20());
+        registerLicense(new BSD2ClauseLicense());
         registerLicense(new BSD3ClauseLicense());
         registerLicense(new ISCLicense());
         registerLicense(new MITLicense());

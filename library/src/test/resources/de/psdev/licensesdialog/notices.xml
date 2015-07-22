@@ -113,9 +113,15 @@
         <license>Apache Software License 2.0</license>
     </notice>
     <notice>
-        <name>Cool Project with BSD License</name>
-        <url>http://example.com</url>
-        <copyright>Author of Cool Project with BSD License</copyright>
+        <name>Cool Project with BSD 3-Clause License</name>
+        <url>http://example3.com</url>
+        <copyright>Author of Cool Project with BSD 3-Clause License</copyright>
         <license>BSD 3-Clause License</license>
+    </notice>
+    <notice>
+        <name>Cool Project with BSD 2-Clause License</name>
+        <url>http://example2.com</url>
+        <copyright>Author of Cool Project with BSD 2-Clause License</copyright>
+        <license>BSD 2-Clause License</license>
     </notice>
 </notices>
