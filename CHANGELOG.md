@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 1.8.0 *(IN DEVELOPMENT)*
+Version 1.8.0 *(2015-07-26)*
 ------------------------------
 
 * added BSD 2-Clause License (#47)
