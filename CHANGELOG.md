@@ -4,6 +4,7 @@ Change Log
 Version 1.8.0 *(IN DEVELOPMENT)*
 ------------------------------
 
+* added BSD 2-Clause License (#47)
 * added GNU LGPL 3 (#43)
 * Support Appcompat and alert dialogs in the support library (#42)
 
