@@ -16,20 +16,25 @@
 
 package de.psdev.licensesdialog;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Message;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
-
-import javax.annotation.Nullable;
-import java.util.List;
 
 public class LicensesDialog {
     public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog",
@@ -71,6 +76,18 @@ public class LicensesDialog {
     public Dialog create() {
         //Get resources
         final WebView webView = new WebView(mContext);
+        webView.getSettings().setSupportMultipleWindows(true);
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onCreateWindow(final WebView view, final boolean isDialog, final boolean isUserGesture, final Message resultMsg) {
+                final WebView.HitTestResult result = view.getHitTestResult();
+                final String data = result.getExtra();
+                final Context context = view.getContext();
+                final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(data));
+                context.startActivity(browserIntent);
+                return false;
+            }
+        });
         webView.loadDataWithBaseURL(null, mLicensesText, "text/html", "utf-8", null);
         final AlertDialog.Builder builder;
         if (mThemeResourceId != 0) {

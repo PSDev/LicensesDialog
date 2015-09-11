@@ -93,7 +93,11 @@ public final class NoticesHtmlBuilder {
         noticesHtmlBuilder.append("<ul><li>").append(notice.getName());
         final String currentNoticeUrl = notice.getUrl();
         if (currentNoticeUrl != null && currentNoticeUrl.length() > 0) {
-            noticesHtmlBuilder.append(" (<a href=\"").append(currentNoticeUrl).append("\">").append(currentNoticeUrl).append("</a>)");
+            noticesHtmlBuilder.append(" (<a href=\"")
+                .append(currentNoticeUrl)
+                .append("\" target=\"_blank\">")
+                .append(currentNoticeUrl)
+                .append("</a>)");
         }
         noticesHtmlBuilder.append("</li></ul>");
         noticesHtmlBuilder.append("<pre>");
