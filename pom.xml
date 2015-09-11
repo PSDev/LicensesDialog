@@ -65,13 +65,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.6</java.version>
-        <android.sdk.platform>22</android.sdk.platform>
+        <android.sdk.platform>23</android.sdk.platform>
 
         <!-- Dependency Versions -->
         <junit.version>4.12</junit.version>
         <robolectric.version>3.0</robolectric.version>
-        <android.version>5.1.1_r2</android.version>
-        <android-support.version>22.2.1</android-support.version>
+        <android.version>6.0_r1</android.version>
+        <android-support.version>23.0.1</android-support.version>
         <jsr305.version>3.0.0</jsr305.version>
 
         <!-- Plugin Versions -->
