@@ -30,6 +30,7 @@ import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense3;
 import de.psdev.licensesdialog.licenses.ISCLicense;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
+import de.psdev.licensesdialog.licenses.MozillaPublicLicense11;
 
 public final class LicenseResolver {
 
@@ -52,6 +53,7 @@ public final class LicenseResolver {
         registerLicense(new CreativeCommonsAttributionNoDerivs30Unported());
         registerLicense(new GnuGeneralPublicLicense30());
         registerLicense(new GnuGeneralPublicLicense20());
+        registerLicense(new MozillaPublicLicense11());
     }
 
     /**
