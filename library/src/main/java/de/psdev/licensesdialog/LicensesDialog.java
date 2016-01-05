@@ -54,7 +54,8 @@ public class LicensesDialog {
     // Constructor
     // ==========================================================================================================================
 
-    private LicensesDialog(final Context context, final String licensesText, final String titleText, final String closeText, final int themeResourceId,
+    private LicensesDialog(final Context context, final String licensesText, final String titleText, final String closeText,
+                           final int themeResourceId,
                            final int dividerColor) {
         mContext = context;
         mTitleText = titleText;
@@ -75,19 +76,7 @@ public class LicensesDialog {
 
     public Dialog create() {
         //Get resources
-        final WebView webView = new WebView(mContext);
-        webView.getSettings().setSupportMultipleWindows(true);
-        webView.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public boolean onCreateWindow(final WebView view, final boolean isDialog, final boolean isUserGesture, final Message resultMsg) {
-                final WebView.HitTestResult result = view.getHitTestResult();
-                final String data = result.getExtra();
-                final Context context = view.getContext();
-                final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(data));
-                context.startActivity(browserIntent);
-                return false;
-            }
-        });
+        final WebView webView = createWebView(mContext);
         webView.loadDataWithBaseURL(null, mLicensesText, "text/html", "utf-8", null);
         final AlertDialog.Builder builder;
         if (mThemeResourceId != 0) {
@@ -184,6 +173,22 @@ public class LicensesDialog {
     // ==========================================================================================================================
     // Private API
     // ==========================================================================================================================
+
+    private static WebView createWebView(final Context context) {
+        final WebView webView = new WebView(context);
+        webView.getSettings().setSupportMultipleWindows(true);
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onCreateWindow(final WebView view, final boolean isDialog, final boolean isUserGesture, final Message resultMsg) {
+                final WebView.HitTestResult result = view.getHitTestResult();
+                final String data = result.getExtra();
+                final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(data));
+                context.startActivity(browserIntent);
+                return false;
+            }
+        });
+        return webView;
+    }
 
     private static Notices getNotices(final Context context, final int rawNoticesResourceId) {
         try {
@@ -335,7 +340,8 @@ public class LicensesDialog {
             if (mNotices != null) {
                 licensesText = getLicensesText(mContext, mNotices, mShowFullLicenseText, mIncludeOwnLicense, mNoticesStyle);
             } else if (mRawNoticesId != null) {
-                licensesText = getLicensesText(mContext, getNotices(mContext, mRawNoticesId), mShowFullLicenseText, mIncludeOwnLicense, mNoticesStyle);
+                licensesText = getLicensesText(mContext, getNotices(mContext, mRawNoticesId), mShowFullLicenseText, mIncludeOwnLicense,
+                    mNoticesStyle);
             } else if (mNoticesText != null) {
                 licensesText = mNoticesText;
             } else {
