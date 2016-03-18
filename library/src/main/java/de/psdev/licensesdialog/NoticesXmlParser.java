@@ -122,6 +122,21 @@ public final class NoticesXmlParser {
         return result;
     }
 
-    private static void skip(final XmlPullParser parser) {
+    private static void skip(final XmlPullParser parser) throws XmlPullParserException, IOException {
+        // http://stackoverflow.com/a/23365815/1474113
+        if (parser.getEventType() != XmlPullParser.START_TAG) {
+            throw new IllegalStateException("Tried to not-start tag.");
+        }
+        int depth = 1;
+        while (depth != 0) {
+            switch (parser.next()) {
+                case XmlPullParser.END_TAG:
+                    depth--;
+                    break;
+                case XmlPullParser.START_TAG:
+                    depth++;
+                    break;
+            }
+        }
     }
 }
