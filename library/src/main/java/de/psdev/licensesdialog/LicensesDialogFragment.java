@@ -272,7 +272,7 @@ public class LicensesDialogFragment extends DialogFragment {
             return this;
         }
 
-        public Builder setNotices(@RawRes final int rawNoticesResourceId) throws Exception {
+        public Builder setNotices(@RawRes final int rawNoticesResourceId) {
             mRawNoticesResourceId = rawNoticesResourceId;
             return this;
         }
