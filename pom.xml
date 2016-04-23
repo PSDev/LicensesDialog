@@ -200,6 +200,29 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>${maven-javadoc-plugin.version}</version>
+                    <configuration>
+                        <sourceFileExcludes>
+                            <sourceFileExclude>**/R.java</sourceFileExclude>
+                        </sourceFileExcludes>
+                        <failOnError>false</failOnError>
+                        <tags>
+                            <tag>
+                                <name>attr</name>
+                                <placement>t</placement>
+                                <head>Attribute:</head>
+                            </tag>
+                            <tag>
+                                <name>hide</name>
+                                <placement>x</placement>
+                            </tag>
+                            <tag>
+                                <name>note</name>
+                                <placement>a</placement>
+                                <head>Note:</head>
+                            </tag>
+                        </tags>
+                        <quiet>true</quiet>
+                    </configuration>
                 </plugin>
 
                 <plugin>
