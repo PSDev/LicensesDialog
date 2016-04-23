@@ -56,6 +56,9 @@ Thank you to all the contributors of this project, namely:
 - [Tatsuya Arai](https://github.com/PSDev/LicensesDialog/commits?author=cutmail)
 - [Jakob Schrettenbrunner](https://github.com/PSDev/LicensesDialog/commits?author=schr3j)
 - [Sam Duke](https://github.com/PSDev/LicensesDialog/commits?author=samskiter)
+- [Kai Winter](https://github.com/PSDev/LicensesDialog/commits?author=kaiwinter)
+- [Oleg Kan](https://github.com/PSDev/LicensesDialog/commits?author=simplaapliko)
+- [Rafa Vázquez](https://github.com/PSDev/LicensesDialog/commits?author=Sloy)
 
 License
 -------

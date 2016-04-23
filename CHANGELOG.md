@@ -1,6 +1,16 @@
 Change Log
 ==========
 
+Version 1.8.1 *(2016-04-23)*
+------------------------------
+
+* **FIXED**: Removed unused throws declaration (#62)
+* **ADDED**: Creative Commons Attribution-Share Alike 3.0 Unported (#56)
+* **ADDED**: SIL Open Font License v1.1 (#54)
+* **ADDED**: Russian translation (#53)
+* **ADDED**: Mozilla Public License 1.1 (#52)
+* **FIXED**: Opening license url in browser instead of webview on Android 5.x (#45)
+
 Version 1.8.0 *(2015-07-26)*
 ------------------------------
 
