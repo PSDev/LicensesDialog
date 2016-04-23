@@ -38,7 +38,7 @@ import de.psdev.licensesdialog.model.Notices;
 
 public class LicensesDialog {
     public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog",
-        "Copyright 2013 Philip Schiffer",
+        "Copyright 2013-2016 Philip Schiffer",
         new ApacheSoftwareLicense20());
 
     private final Context mContext;
