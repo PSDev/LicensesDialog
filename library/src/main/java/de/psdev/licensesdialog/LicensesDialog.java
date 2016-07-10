@@ -182,8 +182,10 @@ public class LicensesDialog {
             public boolean onCreateWindow(final WebView view, final boolean isDialog, final boolean isUserGesture, final Message resultMsg) {
                 final WebView.HitTestResult result = view.getHitTestResult();
                 final String data = result.getExtra();
-                final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(data));
-                context.startActivity(browserIntent);
+                if (data != null) {
+                    final Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(data));
+                    context.startActivity(browserIntent);
+                }
                 return false;
             }
         });
