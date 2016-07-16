@@ -59,6 +59,7 @@ Thank you to all the contributors of this project, namely:
 - [Kai Winter](https://github.com/PSDev/LicensesDialog/commits?author=kaiwinter)
 - [Oleg Kan](https://github.com/PSDev/LicensesDialog/commits?author=simplaapliko)
 - [Rafa Vázquez](https://github.com/PSDev/LicensesDialog/commits?author=Sloy)
+- [David Pintarič](https://github.com/PSDev/LicensesDialog/commits?author=dpint)
 
 License
 -------

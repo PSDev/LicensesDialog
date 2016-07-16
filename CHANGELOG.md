@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.8.1 *(IN DEVELOPMENT)*
+------------------------------
+
+* **ADDED**: Mozilla Public License 2.0 (#65)
+* **FIXED**: NullPointerException on Android 4.4 (#65)
+
 Version 1.8.1 *(2016-04-23)*
 ------------------------------
 
