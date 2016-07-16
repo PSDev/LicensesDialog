@@ -32,6 +32,7 @@ import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
 import de.psdev.licensesdialog.licenses.MozillaPublicLicense11;
 import de.psdev.licensesdialog.licenses.SILOpenFontLicense11;
+import de.psdev.licensesdialog.licenses.MozillaPublicLicense20;
 
 public final class LicenseResolver {
 
@@ -56,6 +57,7 @@ public final class LicenseResolver {
         registerLicense(new GnuGeneralPublicLicense20());
         registerLicense(new MozillaPublicLicense11());
         registerLicense(new SILOpenFontLicense11());
+        registerLicense(new MozillaPublicLicense20());
     }
 
     /**
