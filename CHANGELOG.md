@@ -2,14 +2,14 @@ Change Log
 ==========
 
 Version 1.8.2 *(IN DEVELOPMENT)*
-------------------------------
+--------------------------------
 
 * **ADDED**: Mozilla Public License 2.0 (#65)
 * **ADDED**: Creative Commons Attribution 3.0 Unported (#68)
 * **FIXED**: NullPointerException on Android 4.4 (#65)
 
 Version 1.8.1 *(2016-04-23)*
-------------------------------
+----------------------------
 
 * **FIXED**: Removed unused throws declaration (#62)
 * **ADDED**: Creative Commons Attribution-Share Alike 3.0 Unported (#56)
@@ -19,7 +19,7 @@ Version 1.8.1 *(2016-04-23)*
 * **FIXED**: Opening license url in browser instead of webview on Android 5.x (#45)
 
 Version 1.8.0 *(2015-07-26)*
-------------------------------
+----------------------------
 
 * added BSD 2-Clause License (#47)
 * added GNU LGPL 3 (#43)
