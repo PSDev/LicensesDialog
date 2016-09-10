@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 1.8.1 *(IN DEVELOPMENT)*
+Version 1.8.2 *(IN DEVELOPMENT)*
 ------------------------------
 
 * **ADDED**: Mozilla Public License 2.0 (#65)
