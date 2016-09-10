@@ -60,6 +60,7 @@ Thank you to all the contributors of this project, namely:
 - [Oleg Kan](https://github.com/PSDev/LicensesDialog/commits?author=simplaapliko)
 - [Rafa Vázquez](https://github.com/PSDev/LicensesDialog/commits?author=Sloy)
 - [David Pintarič](https://github.com/PSDev/LicensesDialog/commits?author=dpint)
+- [Martin Herrmann](https://github.com/PSDev/LicensesDialog/commits?author=st0rmi)
 
 License
 -------
