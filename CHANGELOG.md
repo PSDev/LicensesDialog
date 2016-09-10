@@ -5,6 +5,7 @@ Version 1.8.1 *(IN DEVELOPMENT)*
 ------------------------------
 
 * **ADDED**: Mozilla Public License 2.0 (#65)
+* **ADDED**: Creative Commons Attribution 3.0 Unported (#68)
 * **FIXED**: NullPointerException on Android 4.4 (#65)
 
 Version 1.8.1 *(2016-04-23)*
