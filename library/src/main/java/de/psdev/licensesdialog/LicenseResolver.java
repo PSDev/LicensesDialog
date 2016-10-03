@@ -24,6 +24,7 @@ import de.psdev.licensesdialog.licenses.BSD2ClauseLicense;
 import de.psdev.licensesdialog.licenses.BSD3ClauseLicense;
 import de.psdev.licensesdialog.licenses.CreativeCommonsAttribution30Unported;
 import de.psdev.licensesdialog.licenses.CreativeCommonsAttributionNoDerivs30Unported;
+import de.psdev.licensesdialog.licenses.EclipsePublicLicense10;
 import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense20;
 import de.psdev.licensesdialog.licenses.GnuGeneralPublicLicense30;
 import de.psdev.licensesdialog.licenses.GnuLesserGeneralPublicLicense21;
@@ -60,6 +61,7 @@ public final class LicenseResolver {
         registerLicense(new SILOpenFontLicense11());
         registerLicense(new MozillaPublicLicense20());
         registerLicense(new CreativeCommonsAttribution30Unported());
+        registerLicense(new EclipsePublicLicense10());
     }
 
     /**
