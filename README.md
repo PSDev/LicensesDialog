@@ -31,7 +31,11 @@ from the sample module for examples on how to create the dialogs.
 Sample
 ------
 
-You can get the latest sample from [Jenkins][3]  
+You can get the latest sample from [Jenkins][3]
+
+Screenshot
+------
+
 ![Screenshot](screenshot.png)
 
 Credits
