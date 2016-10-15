@@ -33,6 +33,11 @@ Sample
 
 You can get the latest sample from [Jenkins][3]
 
+Screenshot
+------
+
+![Screenshot](screenshot.png)
+
 Credits
 -------
 
