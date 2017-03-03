@@ -16,10 +16,6 @@
 
 package de.psdev.licensesdialog;
 
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -28,10 +24,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+
+import java.util.List;
+
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
@@ -196,8 +196,7 @@ public class LicensesDialog {
         try {
             final Resources resources = context.getResources();
             if ("raw".equals(resources.getResourceTypeName(rawNoticesResourceId))) {
-                final Notices notices = NoticesXmlParser.parse(resources.openRawResource(rawNoticesResourceId));
-                return notices;
+                return NoticesXmlParser.parse(resources.openRawResource(rawNoticesResourceId));
             } else {
                 throw new IllegalStateException("not a raw resource");
             }

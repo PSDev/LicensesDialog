@@ -16,17 +16,20 @@
 
 package de.psdev.licensesdialog;
 
+
 import android.content.Context;
-import de.psdev.licensesdialog.licenses.License;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import de.psdev.licensesdialog.licenses.License;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class LicenseResolverTest {
 
-    public static final String TEST_LICENSE_NAME = "TestLicense";
+    private static final String TEST_LICENSE_NAME = "TestLicense";
 
     @Before
     public void setUp() throws Exception {

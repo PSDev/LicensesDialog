@@ -188,6 +188,7 @@ public class LicensesDialogFragment extends DialogFragment {
         }
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(final Bundle savedInstanceState) {
         final LicensesDialog.Builder builder = new LicensesDialog.Builder(getActivity())

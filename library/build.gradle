@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+apply plugin: 'net.researchgate.release'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 25
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    // Android
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-compat:25.3.1'
+    compile 'com.android.support:support-fragment:25.3.1'
+
+    // Testing
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.robolectric:robolectric:3.3.1'
+}

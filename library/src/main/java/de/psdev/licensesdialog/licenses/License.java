@@ -84,7 +84,7 @@ public abstract class License implements Serializable {
 
     private String toString(final BufferedReader reader) throws IOException {
         final StringBuilder builder = new StringBuilder();
-        String line = null;
+        String line;
         while ((line = reader.readLine()) != null) {
             builder.append(line).append(LINE_SEPARATOR);
         }

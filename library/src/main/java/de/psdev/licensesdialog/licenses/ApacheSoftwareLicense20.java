@@ -17,9 +17,10 @@
 package de.psdev.licensesdialog.licenses;
 
 import android.content.Context;
+
 import de.psdev.licensesdialog.R;
 
-public class ApacheSoftwareLicense20 extends License {
+public class ApacheSoftwareLicense20 extends de.psdev.licensesdialog.licenses.License {
 
     private static final long serialVersionUID = 4854000061990891449L;
 
@@ -47,6 +48,5 @@ public class ApacheSoftwareLicense20 extends License {
     public String getUrl() {
         return "http://www.apache.org/licenses/LICENSE-2.0.txt";
     }
-
 
 }

@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+
 import de.psdev.licensesdialog.LicensesDialog;
 import de.psdev.licensesdialog.LicensesDialogFragment;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
@@ -155,13 +156,13 @@ public class SampleActivity extends FragmentActivity {
     public void onCustomCssStyleClick(final View view) {
         new LicensesDialog.Builder(this)
             .setNotices(R.raw.notices)
-            .setNoticesCssStyle(R.string.coustom_notices_default_style)
+            .setNoticesCssStyle(R.string.custom_notices_default_style)
             .build()
             .show();
     }
 
     public void onCustomCssStyleFragmentClick(final View view) throws Exception {
-        String formatString = getString(R.string.coustom_notices_format_style);
+        String formatString = getString(R.string.custom_notices_format_style);
         String pBg = getRGBAString(Color.parseColor("#9E9E9E"));
         String bodyBg = getRGBAString(Color.parseColor("#424242"));
         String preBg = getRGBAString(Color.parseColor("#BDBDBD"));

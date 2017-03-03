@@ -33,13 +33,13 @@ import de.psdev.licensesdialog.licenses.ISCLicense;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.licenses.MITLicense;
 import de.psdev.licensesdialog.licenses.MozillaPublicLicense11;
-import de.psdev.licensesdialog.licenses.SILOpenFontLicense11;
 import de.psdev.licensesdialog.licenses.MozillaPublicLicense20;
+import de.psdev.licensesdialog.licenses.SILOpenFontLicense11;
 
 public final class LicenseResolver {
 
     private static final int INITIAL_LICENSES_COUNT = 4;
-    private static final Map<String, License> sLicenses = new HashMap<String, License>(INITIAL_LICENSES_COUNT);
+    private static final Map<String, License> sLicenses = new HashMap<>(INITIAL_LICENSES_COUNT);
 
     static {
         registerDefaultLicenses();
