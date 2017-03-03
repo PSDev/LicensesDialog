@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 1.8.3 *(IN DEVELOPMENT)*
+--------------------------------
+
+* minApi is now 11
+* Converted project to gradle
+
 Version 1.8.2 *(2017-03-17)*
 --------------------------------
 

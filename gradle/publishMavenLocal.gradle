@@ -1,0 +1,131 @@
+apply plugin: 'maven-publish'
+
+project.afterEvaluate {
+    def androidExtension = project.extensions.findByName("android")
+    if (androidExtension.hasProperty('libraryVariants')) {
+        androidExtension.libraryVariants.all { variant ->
+            final JavaCompile javaCompile = variant.javaCompile
+            task("${variant.name}Javadoc", type: Javadoc) { Javadoc javadocTask ->
+                javadocTask.description "Generates Javadoc for ${variant.name}."
+                javadocTask.failOnError = false
+                javadocTask.source = javaCompile.source.files
+                javadocTask.classpath += project.files(javaCompile.classpath.files, androidExtension.getBootClasspath().join(File.pathSeparator))
+                javadocTask.exclude '**/BuildConfig.java'
+                javadocTask.exclude '**/R.java'
+            }
+        }
+    }
+    task androidJavadocsJar(type: Jar, dependsOn: 'releaseJavadoc') {
+        classifier = 'javadoc'
+        from {
+            releaseJavadoc.destinationDir
+        }
+    }
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from androidExtension.sourceSets.main.java.srcDirs
+    }
+    publishing.publications {
+        release(MavenPublication) { MavenPublication mavenPublication ->
+            mavenPublication.groupId project.group
+            mavenPublication.artifactId project.name
+            mavenPublication.version project.version
+
+            mavenPublication.artifact bundleRelease
+            mavenPublication.artifact androidJavadocsJar
+            mavenPublication.artifact androidSourcesJar
+
+            mavenPublication.pom.withXml {
+                final Node projectNode = asNode()
+
+                def parent = projectNode.appendNode("parent")
+                parent.appendNode("groupId", "org.sonatype.oss")
+                parent.appendNode("artifactId", "oss-parent")
+                parent.appendNode("version", "9")
+
+                projectNode.appendNode('name').value = projectName
+                projectNode.appendNode('description').value = projectDescription
+                projectNode.appendNode('url').value = projectUrl
+                projectNode.appendNode('inceptionYear').value = projectInceptionYear
+
+                def scmNode = projectNode.appendNode('scm')
+                scmNode.appendNode('url').value = projectScmUrl
+                scmNode.appendNode('connection').value = projectScmConnection
+                scmNode.appendNode('developerConnection').value = projectScmDeveloperConnection
+
+                def developerNode = projectNode.appendNode('developers').appendNode('developer')
+                developerNode.appendNode('name').value = projectDeveloperName
+                developerNode.appendNode('email').value = projectDeveloperEmail
+
+                def organizationNode = projectNode.appendNode('organization')
+                organizationNode.appendNode('name').value = projectOrganizationName
+                organizationNode.appendNode('url').value = projectOrganizationUrl
+
+                def licenseNode = projectNode.appendNode('licenses').appendNode('license')
+                licenseNode.appendNode('name').value = projectLicesenseName
+                licenseNode.appendNode('url').value = projectLicesenseUrl
+                licenseNode.appendNode('distribution').value = "repo"
+
+                def issueManagementNode = projectNode.appendNode('issueManagement')
+                issueManagementNode.appendNode('system').value = projectIssueManagementSystem
+                issueManagementNode.appendNode('url').value = projectIssueManagementUrl
+
+                def ciManagementNode = projectNode.appendNode('ciManagement')
+                ciManagementNode.appendNode('system').value = projectCiManagementSystem
+                ciManagementNode.appendNode('url').value = projectCiManagementUrl
+
+                // List all compile dependencies and write to POM
+                final Node dependenciesNode = projectNode.appendNode('dependencies')
+                final compileConfiguration = configurations.getByName('compile')
+                compileConfiguration.allDependencies.each { final Dependency dependency ->
+                    final noGroup = dependency.group == null
+                    final noVersion = dependency.version == null
+                    final noName = dependency.name == null
+                    final invalidName = dependency.name == "unspecified"
+                    final invalidDependency = noGroup || noVersion || noName || invalidName
+                    if (invalidDependency) {
+                        // ignore invalid dependencies
+                        return
+                    }
+                    final dependencyFiles = compileConfiguration.files(dependency)
+                    final firstFile = dependencyFiles.first()
+                    final firstFileName = firstFile.name
+                    final firstFileNameExtension = firstFileName.substring(firstFileName.lastIndexOf(".") + 1)
+
+                    final dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', dependency.group)
+                    dependencyNode.appendNode('artifactId', dependency.name)
+                    dependencyNode.appendNode('version', dependency.version)
+                    if (firstFileNameExtension != "jar") {
+                        dependencyNode.appendNode('type', firstFileNameExtension)
+                    }
+
+                    if (!dependency.transitive) {
+                        // If this dependency is transitive, we should force exclude all its dependencies them from the POM
+                        final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+                        exclusionNode.appendNode('groupId', '*')
+                        exclusionNode.appendNode('artifactId', '*')
+                    } else if (!dependency.properties.excludeRules.empty) {
+                        // Otherwise add specified exclude rules
+                        final exclusionsNode = dependencyNode.appendNode('exclusions')
+                        dependency.properties.excludeRules.each { final ExcludeRule rule ->
+                            final exclusionNode = exclusionsNode.appendNode('exclusion')
+                            exclusionNode.appendNode('groupId', rule.group ?: '*')
+                            exclusionNode.appendNode('artifactId', rule.module ?: '*')
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+publishing {
+    repositories {
+        maven {
+            url "$rootProject.buildDir/m2repository"
+        }
+        if (System.properties['remotePublish'] == "true") {
+            // No remote repository
+        }
+    }
+}

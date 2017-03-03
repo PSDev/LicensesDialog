@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply from: rootProject.file('gradle/jacoco.gradle')
+apply from: rootProject.file('gradle/publishMavenLocal.gradle')
+
+project.description = "LicensesDialog (Library)"
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 25
+
+        versionName project.version
+        versionCode buildVersionCode()
+
+        buildConfigField 'String', 'BUILD_TIME', "\"${getBuildTime()}\""
+        buildConfigField 'String', 'GIT_SHA', "\"${gitScmVersion()}\""
+    }
+
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    // Testing
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.robolectric:robolectric:3.3.2'
+
+    // Android
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-compat:25.3.1'
+    compile 'com.android.support:support-fragment:25.3.1'
+
+}

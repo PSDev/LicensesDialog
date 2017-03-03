@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'net.researchgate:gradle-release:2.6.0'
+    }
+}
+
+allprojects {
+    group "de.psdev.licensesdialog"
+    version "1.8.3-SNAPSHOT"
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    apply from: rootProject.file('gradle/versioning.gradle')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
