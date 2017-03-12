@@ -26,4 +26,6 @@
     <string name="multiple_programmatic_fragment">Multiple programmaticly (Fragment)</string>
     <string name="custom_theme">Custom theme</string>
     <string name="custom_theme_fragment">Custom theme (Fragment)</string>
+    <string name="custom_css_style">Custom CSS Style</string>
+    <string name="custom_css_style_fragment">Custom CSS Style (Fragment)</string>
 </resources>
