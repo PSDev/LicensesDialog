@@ -28,4 +28,6 @@
     <string name="custom_theme_fragment">Custom theme (Fragment)</string>
     <string name="custom_css_style">Custom CSS Style</string>
     <string name="custom_css_style_fragment">Custom CSS Style (Fragment)</string>
+
+    <string name="rgba_background_format">background-color:rgba(%1$d,%2$d,%3$d,%4$1f);</string>
 </resources>

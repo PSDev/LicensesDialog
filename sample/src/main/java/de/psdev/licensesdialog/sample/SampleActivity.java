@@ -179,6 +179,10 @@ public class SampleActivity extends FragmentActivity {
     }
 
     private String getRGBAString(@ColorInt int color) {
-        return "background-color: rgba(" + Color.red(color) + "," + Color.green(color) + "," + Color.blue(color) + "," + ((float) Color.alpha(color) / 255) + ");";
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        float alpha = ((float) Color.alpha(color) / 255);
+        return String.format(getString(R.string.rgba_background_format), red, green, blue, alpha);
     }
 }
