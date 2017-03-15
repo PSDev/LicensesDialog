@@ -15,78 +15,97 @@
   ~    limitations under the License.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
+    <LinearLayout 
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/single"
-        android:onClick="onSingleClick"
-        android:layout_weight="1" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/multiple"
-        android:onClick="onMultipleClick"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/single"
+            android:onClick="onSingleClick"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/multiple_include_own"
-        android:onClick="onMultipleIncludeOwnClick"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/multiple"
+            android:onClick="onMultipleClick"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/multiple_programmatic"
-        android:onClick="onMultipleProgrammaticClick"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/multiple_include_own"
+            android:onClick="onMultipleIncludeOwnClick"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/single_fragment"
-        android:onClick="onSingleFragmentClick"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/multiple_programmatic"
+            android:onClick="onMultipleProgrammaticClick"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/multiple_fragment"
-        android:onClick="onMultipleFragmentClick"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/single_fragment"
+            android:onClick="onSingleFragmentClick"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/multiple_include_own_fragment"
-        android:onClick="onMultipleIncludeOwnFragmentClick"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/multiple_fragment"
+            android:onClick="onMultipleFragmentClick"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/multiple_programmatic_fragment"
-        android:onClick="onMultipleProgrammaticFragmentClick"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/multiple_include_own_fragment"
+            android:onClick="onMultipleIncludeOwnFragmentClick"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/custom_theme"
-        android:onClick="onCustomThemeClick"
-        android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/multiple_programmatic_fragment"
+            android:onClick="onMultipleProgrammaticFragmentClick"
+            android:layout_weight="1" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/custom_theme_fragment"
-        android:onClick="onCustomThemeFragmentClick"
-        android:layout_weight="1" />
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_theme"
+            android:onClick="onCustomThemeClick"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_theme_fragment"
+            android:onClick="onCustomThemeFragmentClick"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_css_style"
+            android:onClick="onCustomCssStyleClick"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_css_style_fragment"
+            android:onClick="onCustomCssStyleFragmentClick"
+            android:layout_weight="1" />
+    </LinearLayout>
+</ScrollView>

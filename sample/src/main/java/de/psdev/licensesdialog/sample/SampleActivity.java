@@ -16,7 +16,9 @@
 
 package de.psdev.licensesdialog.sample;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import de.psdev.licensesdialog.LicensesDialog;
@@ -148,5 +150,39 @@ public class SampleActivity extends FragmentActivity {
             .build();
 
         fragment.show(getSupportFragmentManager(), null);
+    }
+
+    public void onCustomCssStyleClick(final View view) {
+        new LicensesDialog.Builder(this)
+            .setNotices(R.raw.notices)
+            .setNoticesCssStyle(R.string.coustom_notices_default_style)
+            .build()
+            .show();
+    }
+
+    public void onCustomCssStyleFragmentClick(final View view) throws Exception {
+        String formatString = getString(R.string.coustom_notices_format_style);
+        String pBg = getRGBAString(Color.parseColor("#9E9E9E"));
+        String bodyBg = getRGBAString(Color.parseColor("#424242"));
+        String preBg = getRGBAString(Color.parseColor("#BDBDBD"));
+        String liColor = "color: #ffffff";
+        String linkColor = "color: #1976D2";
+
+        String style = String.format(formatString, pBg, bodyBg, preBg, liColor, linkColor);
+
+        final LicensesDialogFragment fragment = new LicensesDialogFragment.Builder(this)
+            .setNotices(R.raw.notices)
+            .setNoticesCssStyle(style)
+            .build();
+
+        fragment.show(getSupportFragmentManager(), null);
+    }
+
+    private String getRGBAString(@ColorInt int color) {
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        float alpha = ((float) Color.alpha(color) / 255);
+        return String.format(getString(R.string.rgba_background_format), red, green, blue, alpha);
     }
 }
