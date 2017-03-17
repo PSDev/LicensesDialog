@@ -1,11 +1,12 @@
 Change Log
 ==========
 
-Version 1.8.2 *(IN DEVELOPMENT)*
+Version 1.8.2 *(2017-03-17)*
 --------------------------------
 
 * **ADDED**: Mozilla Public License 2.0 (#65)
 * **ADDED**: Creative Commons Attribution 3.0 Unported (#68)
+* **ADDED**: Make the LicensesDialogFragment's licenses text styleable (#75)
 * **FIXED**: NullPointerException on Android 4.4 (#65)
 
 Version 1.8.1 *(2016-04-23)*
