@@ -37,31 +37,33 @@ import de.psdev.licensesdialog.licenses.MozillaPublicLicense20;
 import de.psdev.licensesdialog.licenses.SILOpenFontLicense11;
 
 public final class LicenseResolver {
+    private static Map<String, License> sLicenses;
 
-    private static final int INITIAL_LICENSES_COUNT = 4;
-    private static final Map<String, License> sLicenses = new HashMap<>(INITIAL_LICENSES_COUNT);
-
-    static {
-        registerDefaultLicenses();
+    private LicenseResolver() {
     }
 
-    static void registerDefaultLicenses() {
-        sLicenses.clear();
-        registerLicense(new ApacheSoftwareLicense20());
-        registerLicense(new BSD2ClauseLicense());
-        registerLicense(new BSD3ClauseLicense());
-        registerLicense(new ISCLicense());
-        registerLicense(new MITLicense());
-        registerLicense(new GnuLesserGeneralPublicLicense21());
-        registerLicense(new GnuLesserGeneralPublicLicense3());
-        registerLicense(new CreativeCommonsAttributionNoDerivs30Unported());
-        registerLicense(new GnuGeneralPublicLicense30());
-        registerLicense(new GnuGeneralPublicLicense20());
-        registerLicense(new MozillaPublicLicense11());
-        registerLicense(new SILOpenFontLicense11());
-        registerLicense(new MozillaPublicLicense20());
-        registerLicense(new CreativeCommonsAttribution30Unported());
-        registerLicense(new EclipsePublicLicense10());
+    private static Map<String, License> getLicenses() {
+        if (sLicenses == null) {
+            sLicenses = new HashMap<>();
+
+            // Register default licenses
+            registerLicense(new ApacheSoftwareLicense20());
+            registerLicense(new BSD2ClauseLicense());
+            registerLicense(new BSD3ClauseLicense());
+            registerLicense(new ISCLicense());
+            registerLicense(new MITLicense());
+            registerLicense(new GnuLesserGeneralPublicLicense21());
+            registerLicense(new GnuLesserGeneralPublicLicense3());
+            registerLicense(new CreativeCommonsAttributionNoDerivs30Unported());
+            registerLicense(new GnuGeneralPublicLicense30());
+            registerLicense(new GnuGeneralPublicLicense20());
+            registerLicense(new MozillaPublicLicense11());
+            registerLicense(new SILOpenFontLicense11());
+            registerLicense(new MozillaPublicLicense20());
+            registerLicense(new CreativeCommonsAttribution30Unported());
+            registerLicense(new EclipsePublicLicense10());
+        }
+        return sLicenses;
     }
 
     /**
@@ -70,7 +72,7 @@ public final class LicenseResolver {
      * @param license the license to register
      */
     public static void registerLicense(final License license) {
-        sLicenses.put(license.getName(), license);
+        getLicenses().put(license.getName(), license);
     }
 
     /**
@@ -82,13 +84,10 @@ public final class LicenseResolver {
      */
     public static License read(final String license) {
         final String trimmedLicense = license.trim();
-        if (sLicenses.containsKey(trimmedLicense)) {
-            return sLicenses.get(trimmedLicense);
+        if (getLicenses().containsKey(trimmedLicense)) {
+            return getLicenses().get(trimmedLicense);
         } else {
             throw new IllegalStateException(String.format("no such license available: %s, did you forget to register it?", trimmedLicense));
         }
-    }
-
-    private LicenseResolver() {
     }
 }

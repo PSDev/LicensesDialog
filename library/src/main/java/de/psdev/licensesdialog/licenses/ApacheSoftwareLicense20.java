@@ -20,7 +20,7 @@ import android.content.Context;
 
 import de.psdev.licensesdialog.R;
 
-public class ApacheSoftwareLicense20 extends de.psdev.licensesdialog.licenses.License {
+public class ApacheSoftwareLicense20 extends License {
 
     private static final long serialVersionUID = 4854000061990891449L;
 
