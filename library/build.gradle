@@ -21,10 +21,8 @@ android {
 dependencies {
     // Android
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:support-compat:25.3.1'
-    compile 'com.android.support:support-fragment:25.3.1'
 
     // Testing
     testCompile 'junit:junit:4.12'
-    testCompile 'org.robolectric:robolectric:3.3.1'
+    testCompile 'org.robolectric:robolectric:3.3.2'
 }
