@@ -16,7 +16,8 @@
 
 package de.psdev.licensesdialog;
 
-import java.util.HashMap;
+import android.support.v4.util.ArrayMap;
+
 import java.util.Map;
 
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
@@ -44,7 +45,7 @@ public final class LicenseResolver {
 
     private static Map<String, License> getLicenses() {
         if (sLicenses == null) {
-            sLicenses = new HashMap<>();
+            sLicenses = new ArrayMap<>();
 
             // Register default licenses
             registerLicense(new ApacheSoftwareLicense20());
@@ -84,8 +85,9 @@ public final class LicenseResolver {
      */
     public static License read(final String license) {
         final String trimmedLicense = license.trim();
-        if (getLicenses().containsKey(trimmedLicense)) {
-            return getLicenses().get(trimmedLicense);
+        Map<String, License> licenses = getLicenses();
+        if (licenses.containsKey(trimmedLicense)) {
+            return licenses.get(trimmedLicense);
         } else {
             throw new IllegalStateException(String.format("no such license available: %s, did you forget to register it?", trimmedLicense));
         }

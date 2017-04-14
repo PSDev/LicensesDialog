@@ -29,6 +29,7 @@ import android.support.annotation.RawRes;
 import android.support.annotation.StringRes;
 import android.support.annotation.StyleRes;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
@@ -317,7 +318,7 @@ public class LicensesDialogFragment extends DialogFragment {
         }
 
         public Builder setDividerColorRes(@ColorRes final int dividerColor) {
-            mDividerColor = mContext.getResources().getColor(dividerColor);
+            mDividerColor = ContextCompat.getColor(mContext, dividerColor);
             return this;
         }
 

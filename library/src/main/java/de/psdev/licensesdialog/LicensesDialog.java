@@ -24,7 +24,13 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Message;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.RawRes;
+import android.support.annotation.StringRes;
+import android.support.annotation.StyleRes;
+import android.support.v4.content.ContextCompat;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -38,8 +44,7 @@ import de.psdev.licensesdialog.model.Notices;
 
 public class LicensesDialog {
     public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog",
-        "Copyright 2013-2016 Philip Schiffer",
-        new ApacheSoftwareLicense20());
+        "Copyright 2013-2016 Philip Schiffer", new ApacheSoftwareLicense20());
 
     private final Context mContext;
     private final String mTitleText;
@@ -55,8 +60,7 @@ public class LicensesDialog {
     // ==========================================================================================================================
 
     private LicensesDialog(final Context context, final String licensesText, final String titleText, final String closeText,
-                           final int themeResourceId,
-                           final int dividerColor) {
+                           @StyleRes final int themeResourceId, @ColorInt final int dividerColor) {
         mContext = context;
         mTitleText = titleText;
         mLicensesText = licensesText;
@@ -192,7 +196,7 @@ public class LicensesDialog {
         return webView;
     }
 
-    private static Notices getNotices(final Context context, final int rawNoticesResourceId) {
+    private static Notices getNotices(final Context context, @RawRes final int rawNoticesResourceId) {
         try {
             final Resources resources = context.getResources();
             if ("raw".equals(resources.getResourceTypeName(rawNoticesResourceId))) {
@@ -236,8 +240,6 @@ public class LicensesDialog {
         private String mTitleText;
         private String mCloseText;
         @Nullable
-        private Integer mRawNoticesId;
-        @Nullable
         private Notices mNotices;
         @Nullable
         private String mNoticesText;
@@ -258,7 +260,7 @@ public class LicensesDialog {
             mDividerColor = 0;
         }
 
-        public Builder setTitle(final int titleId) {
+        public Builder setTitle(@StringRes final int titleId) {
             mTitleText = mContext.getString(titleId);
             return this;
         }
@@ -268,7 +270,7 @@ public class LicensesDialog {
             return this;
         }
 
-        public Builder setCloseText(final int closeId) {
+        public Builder setCloseText(@StringRes final int closeId) {
             mCloseText = mContext.getString(closeId);
             return this;
         }
@@ -278,15 +280,13 @@ public class LicensesDialog {
             return this;
         }
 
-        public Builder setNotices(final int rawNoticesId) {
-            mRawNoticesId = rawNoticesId;
-            mNotices = null;
+        public Builder setNotices(@RawRes final int rawNoticesId) {
+            mNotices = getNotices(mContext, rawNoticesId);
             return this;
         }
 
         public Builder setNotices(final Notices notices) {
             mNotices = notices;
-            mRawNoticesId = null;
             return this;
         }
 
@@ -296,12 +296,11 @@ public class LicensesDialog {
 
         Builder setNotices(final String notices) {
             mNotices = null;
-            mRawNoticesId = null;
             mNoticesText = notices;
             return this;
         }
 
-        public Builder setNoticesCssStyle(final int cssStyleTextId) {
+        public Builder setNoticesCssStyle(@StringRes final int cssStyleTextId) {
             mNoticesStyle = mContext.getString(cssStyleTextId);
             return this;
         }
@@ -321,18 +320,18 @@ public class LicensesDialog {
             return this;
         }
 
-        public Builder setThemeResourceId(final int themeResourceId) {
+        public Builder setThemeResourceId(@StyleRes final int themeResourceId) {
             mThemeResourceId = themeResourceId;
             return this;
         }
 
-        public Builder setDividerColor(final int dividerColor) {
+        public Builder setDividerColor(@ColorInt final int dividerColor) {
             mDividerColor = dividerColor;
             return this;
         }
 
-        public Builder setDividerColorId(final int dividerColorId) {
-            mDividerColor = mContext.getResources().getColor(dividerColorId);
+        public Builder setDividerColorId(@ColorRes final int dividerColorId) {
+            mDividerColor = ContextCompat.getColor(mContext, dividerColorId);
             return this;
         }
 
@@ -340,9 +339,6 @@ public class LicensesDialog {
             final String licensesText;
             if (mNotices != null) {
                 licensesText = getLicensesText(mContext, mNotices, mShowFullLicenseText, mIncludeOwnLicense, mNoticesStyle);
-            } else if (mRawNoticesId != null) {
-                licensesText = getLicensesText(mContext, getNotices(mContext, mRawNoticesId), mShowFullLicenseText, mIncludeOwnLicense,
-                    mNoticesStyle);
             } else if (mNoticesText != null) {
                 licensesText = mNoticesText;
             } else {
