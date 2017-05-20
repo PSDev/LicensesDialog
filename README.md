@@ -67,6 +67,7 @@ Thank you to all the contributors of this project, namely:
 - [David Pintarič](https://github.com/PSDev/LicensesDialog/commits?author=dpint)
 - [Martin Herrmann](https://github.com/PSDev/LicensesDialog/commits?author=st0rmi)
 - [Chaos Leong](https://github.com/PSDev/LicensesDialog/commits?author=ChaosLeong)
+- [Vladyslav Pohrebniakov](https://github.com/PSDev/LicensesDialog/commits?author=personaljesusua)
 - [Chris Pick](https://github.com/PSDev/LicensesDialog/commits?author=chrispix99)
 
 License
