@@ -28,6 +28,6 @@ public class EclipsePublicLicense10 extends License {
 
     @Override
     public String getUrl() {
-        return "http://www.eclipse.org/legal/epl-v10.html";
+        return "https://www.eclipse.org/legal/epl-v10.html";
     }
 }

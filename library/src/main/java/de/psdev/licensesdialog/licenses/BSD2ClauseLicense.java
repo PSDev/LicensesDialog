@@ -45,7 +45,7 @@ public class BSD2ClauseLicense extends License {
 
     @Override
     public String getUrl() {
-        return "http://opensource.org/licenses/BSD-2-Clause";
+        return "https://opensource.org/licenses/BSD-2-Clause";
     }
 
 }

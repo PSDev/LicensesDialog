@@ -45,7 +45,7 @@ public class MITLicense extends License {
 
     @Override
     public String getUrl() {
-        return "http://opensource.org/licenses/MIT";
+        return "https://opensource.org/licenses/MIT";
     }
 
 }

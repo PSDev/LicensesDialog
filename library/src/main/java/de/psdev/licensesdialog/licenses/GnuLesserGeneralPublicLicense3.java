@@ -45,7 +45,7 @@ public class GnuLesserGeneralPublicLicense3 extends License {
 
     @Override
     public String getUrl() {
-        return "http://www.gnu.org/licenses/lgpl.html";
+        return "https://www.gnu.org/licenses/lgpl.html";
     }
 
 }

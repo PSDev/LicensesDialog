@@ -44,6 +44,6 @@ public class ISCLicense extends License {
 
     @Override
     public String getUrl() {
-        return "http://opensource.org/licenses/isc-license.txt";
+        return "https://opensource.org/licenses/isc-license.txt";
     }
 }

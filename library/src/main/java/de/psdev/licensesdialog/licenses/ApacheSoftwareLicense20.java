@@ -45,7 +45,7 @@ public class ApacheSoftwareLicense20 extends License {
 
     @Override
     public String getUrl() {
-        return "http://www.apache.org/licenses/LICENSE-2.0.txt";
+        return "https://www.apache.org/licenses/LICENSE-2.0.txt";
     }
 
 

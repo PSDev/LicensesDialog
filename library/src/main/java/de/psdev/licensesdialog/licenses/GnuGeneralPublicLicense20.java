@@ -43,6 +43,6 @@ public class GnuGeneralPublicLicense20 extends License {
 
     @Override
     public String getUrl() {
-        return "http://www.gnu.org/licenses/";
+        return "https://www.gnu.org/licenses/";
     }
 }

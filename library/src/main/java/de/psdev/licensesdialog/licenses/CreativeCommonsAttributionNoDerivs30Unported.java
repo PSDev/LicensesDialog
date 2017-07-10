@@ -43,7 +43,7 @@ public class CreativeCommonsAttributionNoDerivs30Unported extends License {
 
     @Override
     public String getUrl() {
-        return "http://creativecommons.org/licenses/by-nd/3.0/";
+        return "https://creativecommons.org/licenses/by-nd/3.0/";
     }
 
 }

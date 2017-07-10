@@ -44,7 +44,7 @@ public class SILOpenFontLicense11 extends License {
 
     @Override
     public String getUrl() {
-        return "http://opensource.org/licenses/OFL-1.1";
+        return "https://opensource.org/licenses/OFL-1.1";
     }
 
 }
