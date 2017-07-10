@@ -15,13 +15,4 @@
   ~    limitations under the License.
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="1008002"
-    android:versionName="1.8.2-SNAPSHOT"
-    package="de.psdev.licensesdialog">
-
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="23" />
-    <application />
-</manifest>
+<manifest package="de.psdev.licensesdialog"/>

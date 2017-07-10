@@ -16,22 +16,20 @@
 
 package de.psdev.licensesdialog;
 
+
 import android.content.Context;
-import de.psdev.licensesdialog.licenses.License;
-import org.junit.Before;
+
 import org.junit.Test;
+
+import de.psdev.licensesdialog.licenses.License;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class LicenseResolverTest {
 
-    public static final String TEST_LICENSE_NAME = "TestLicense";
-
-    @Before
-    public void setUp() throws Exception {
-        LicenseResolver.registerDefaultLicenses();
-    }
+    private static final String TEST_LICENSE_NAME = "TestLicense";
+    private static final String UNKNOWN_TEST_LICENSE_NAME = "UnknownTestLicense";
 
     @Test
     public void testRegisterLicense() throws Exception {
@@ -43,7 +41,7 @@ public class LicenseResolverTest {
 
     @Test(expected = IllegalStateException.class)
     public void testReadUnknownLicense() throws Exception {
-        LicenseResolver.read(TEST_LICENSE_NAME);
+        LicenseResolver.read(UNKNOWN_TEST_LICENSE_NAME);
     }
 
     @Test

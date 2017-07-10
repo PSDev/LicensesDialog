@@ -17,6 +17,7 @@
 package de.psdev.licensesdialog.licenses;
 
 import android.content.Context;
+
 import de.psdev.licensesdialog.R;
 
 public class ApacheSoftwareLicense20 extends License {
@@ -47,6 +48,5 @@ public class ApacheSoftwareLicense20 extends License {
     public String getUrl() {
         return "https://www.apache.org/licenses/LICENSE-2.0.txt";
     }
-
 
 }

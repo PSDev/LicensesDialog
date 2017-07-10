@@ -16,10 +16,11 @@
 
 package de.psdev.licensesdialog;
 
-import java.util.HashMap;
+import android.content.Context;
+import android.support.v4.util.ArrayMap;
+
 import java.util.Map;
 
-import android.content.Context;
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
@@ -27,7 +28,7 @@ import de.psdev.licensesdialog.model.Notices;
 public final class NoticesHtmlBuilder {
 
     private final Context mContext;
-    private final Map<License, String> mLicenseTextCache = new HashMap<License, String>();
+    private final Map<License, String> mLicenseTextCache = new ArrayMap<>();
     private Notices mNotices;
     private Notice mNotice;
     private String mStyle;

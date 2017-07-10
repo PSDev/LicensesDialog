@@ -1,31 +1,6 @@
-# Intellij #
-############
-.idea/
-*.iml
-*.ipr
-*.iws
-
-# Eclipse #
-###########
-.settings
-.project
-.classpath
-
-# Build Output #
-################
-target/
-bin
-
-# Android #
-###########
-gen/
-gen-external-apklibs/
-
-# MacOsX #
-##########
+.gradle
+/local.properties
+/.idea
 .DS_Store
-
-# Other #
-#########
-.~lock*
-tmp
+/build
+*.iml
