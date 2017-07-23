@@ -1,8 +1,19 @@
 Change Log
 ==========
 
-Version 1.8.2 *(2017-03-17)*
+Version 1.8.3 *(IN DEVELOPMENT)*
 --------------------------------
+
+Version 1.8.2 *(2017-07-23)*
+----------------------------
+
+* **CHANGED**: Switch license URLs to https (#82)
+* **ADDED**: Add Traditional Chinese translation (#81)
+* **ADDED**: Add Portuguese translation (#79)
+* **ADDED**: Add Ukrainian translation (#77)
+
+Version 1.8.2 *(2017-03-17)*
+----------------------------
 
 * **ADDED**: Mozilla Public License 2.0 (#65)
 * **ADDED**: Creative Commons Attribution 3.0 Unported (#68)
