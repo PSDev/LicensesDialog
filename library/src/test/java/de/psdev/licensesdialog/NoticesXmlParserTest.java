@@ -17,6 +17,7 @@
 package de.psdev.licensesdialog;
 
 import de.psdev.licensesdialog.model.Notices;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;

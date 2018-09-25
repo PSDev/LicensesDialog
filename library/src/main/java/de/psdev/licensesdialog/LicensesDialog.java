@@ -32,14 +32,15 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
 public class LicensesDialog {
-    public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog",
-        "Copyright 2013-2016 Philip Schiffer",
-        new ApacheSoftwareLicense20());
+    public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "https://github.psdev.de/LicensesDialog/",
+            "Copyright 2013-2016 Philip Schiffer",
+            new ApacheSoftwareLicense20());
 
     private final Context mContext;
     private final String mTitleText;
@@ -85,12 +86,12 @@ public class LicensesDialog {
             builder = new AlertDialog.Builder(mContext);
         }
         builder.setTitle(mTitleText)
-            .setView(webView)
-            .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
-                public void onClick(final DialogInterface dialogInterface, final int i) {
-                    dialogInterface.dismiss();
-                }
-            });
+                .setView(webView)
+                .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
+                    public void onClick(final DialogInterface dialogInterface, final int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
         final AlertDialog dialog = builder.create();
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -127,12 +128,12 @@ public class LicensesDialog {
             builder = new android.support.v7.app.AlertDialog.Builder(mContext);
         }
         builder.setTitle(mTitleText)
-            .setView(webView)
-            .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
-                public void onClick(final DialogInterface dialogInterface, final int i) {
-                    dialogInterface.dismiss();
-                }
-            });
+                .setView(webView)
+                .setPositiveButton(mCloseText, new Dialog.OnClickListener() {
+                    public void onClick(final DialogInterface dialogInterface, final int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
         final android.support.v7.app.AlertDialog dialog = builder.create();
         dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -343,7 +344,7 @@ public class LicensesDialog {
                 licensesText = getLicensesText(mContext, mNotices, mShowFullLicenseText, mIncludeOwnLicense, mNoticesStyle);
             } else if (mRawNoticesId != null) {
                 licensesText = getLicensesText(mContext, getNotices(mContext, mRawNoticesId), mShowFullLicenseText, mIncludeOwnLicense,
-                    mNoticesStyle);
+                        mNoticesStyle);
             } else if (mNoticesText != null) {
                 licensesText = mNoticesText;
             } else {
