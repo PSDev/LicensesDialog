@@ -19,7 +19,7 @@ Download [the latest Release][1] or grab via Maven:
 ```  
 or Gradle:
 ```groovy
-compile('de.psdev.licensesdialog:licensesdialog:1.8.3')
+implementation 'de.psdev.licensesdialog:licensesdialog:1.8.4'
 ```
 
 Usage

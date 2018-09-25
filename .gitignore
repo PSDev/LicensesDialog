@@ -29,3 +29,6 @@ gen-external-apklibs/
 #########
 .~lock*
 tmp
+.gradle/
+build/
+local.properties
