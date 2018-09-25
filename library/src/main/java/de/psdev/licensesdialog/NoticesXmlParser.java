@@ -23,6 +23,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.util.Xml;
+
 import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
@@ -63,7 +64,7 @@ public final class NoticesXmlParser {
     }
 
     private static Notice readNotice(final XmlPullParser parser) throws IOException,
-        XmlPullParserException {
+            XmlPullParserException {
         parser.require(XmlPullParser.START_TAG, null, "notice");
         String name = null;
         String url = null;

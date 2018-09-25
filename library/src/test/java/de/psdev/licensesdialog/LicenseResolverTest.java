@@ -17,7 +17,9 @@
 package de.psdev.licensesdialog;
 
 import android.content.Context;
+
 import de.psdev.licensesdialog.licenses.License;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -79,7 +81,7 @@ public class LicenseResolverTest {
 
         @Override
         public String getUrl() {
-            return "http://example.org";
+            return "https://example.org";
         }
     }
 }

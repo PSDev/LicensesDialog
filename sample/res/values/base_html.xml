@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2017 Chaos Leong
   ~ Copyright 2013 Philip Schiffer
   ~
@@ -17,7 +16,7 @@
   -->
 
 <resources>
-    <string name="coustom_notices_default_style" translatable="false">
+    <string name="custom_notices_default_style" translatable="false">
         p.license {
         background:grey;
         }
@@ -32,7 +31,7 @@
         white-space: pre-wrap;
         }
     </string>
-    <string name="coustom_notices_format_style" translatable="false">
+    <string name="custom_notices_format_style" translatable="false">
         p.license {
         %1$s
         }

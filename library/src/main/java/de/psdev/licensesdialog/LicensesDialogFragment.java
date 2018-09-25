@@ -191,9 +191,9 @@ public class LicensesDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(final Bundle savedInstanceState) {
         final LicensesDialog.Builder builder = new LicensesDialog.Builder(getActivity())
-            .setNotices(mLicensesText)
-            .setTitle(mTitleText).setCloseText(mCloseButtonText)
-            .setThemeResourceId(mThemeResourceId).setDividerColor(mDividerColor);
+                .setNotices(mLicensesText)
+                .setTitle(mTitleText).setCloseText(mCloseButtonText)
+                .setThemeResourceId(mThemeResourceId).setDividerColor(mDividerColor);
         final LicensesDialog licensesDialog = builder.build();
         if (getArguments().getBoolean(ARGUMENT_USE_APPCOMPAT, false)) {
             return licensesDialog.createAppCompat();

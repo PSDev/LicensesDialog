@@ -56,7 +56,7 @@ public abstract class License implements Serializable {
         if (mCachedFullText == null) {
             mCachedFullText = readFullTextFromResources(context);
         }
-        
+
         return mCachedFullText;
     }
 

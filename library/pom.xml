@@ -1,10 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>de.psdev.licensesdialog</groupId>
         <artifactId>parent</artifactId>
-        <version>1.8.4-SNAPSHOT</version>
+        <version>1.8.4</version>
     </parent>
 
     <artifactId>licensesdialog</artifactId>
@@ -44,8 +46,8 @@
 
         <!-- Nullable support -->
         <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs</artifactId>
         </dependency>
     </dependencies>
 
@@ -106,7 +108,6 @@
             </plugin>
         </plugins>
     </build>
-
 
     <profiles>
         <profile>

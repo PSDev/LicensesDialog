@@ -17,6 +17,7 @@
 package de.psdev.licensesdialog.licenses;
 
 import android.content.Context;
+
 import de.psdev.licensesdialog.R;
 
 public class BSD3ClauseLicense extends License {
