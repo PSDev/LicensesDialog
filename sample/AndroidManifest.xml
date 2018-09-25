@@ -14,15 +14,14 @@
   ~    limitations under the License.
   -->
 
-<manifest
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.psdev.licensesdialog.sample"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="1008000"
-    android:versionName="1.8.0-SNAPSHOT">
+    android:versionCode="1008004"
+    android:versionName="1.8.4">
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="22" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="28" />
 
     <application
         android:allowBackup="true"
@@ -35,8 +34,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="de.psdev.licensesdialog.sample.SampleActivity" />
+        <activity android:name="de.psdev.licensesdialog.sample.SampleActivity" />
 
         <activity
             android:name="de.psdev.licensesdialog.sample.AppCompatSampleActivity"
