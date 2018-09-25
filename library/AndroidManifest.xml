@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2013 Philip Schiffer
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +15,12 @@
   -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionCode="1008002"
-    android:versionName="1.8.2-SNAPSHOT"
-    package="de.psdev.licensesdialog">
+    package="de.psdev.licensesdialog"
+    android:versionCode="1008004"
+    android:versionName="1.8.4">
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="23" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="28" />
     <application />
 </manifest>
