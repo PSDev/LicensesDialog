@@ -1,0 +1,66 @@
+apply plugin: 'com.android.library'
+apply plugin: "org.sonarqube"
+apply from: rootProject.file('gradle/jacoco.gradle')
+
+project.description = "LicensesDialog (Library)"
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 28
+
+        versionName project.version
+        versionCode buildVersionCode()
+
+        buildConfigField 'String', 'GIT_SHA', "\"${gitScmVersion()}\""
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    // Testing
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:3.8'
+
+    // Android
+    implementation "com.android.support:appcompat-v7:$appcompatVersion"
+
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "$project.group"
+        property "sonar.projectName", "LicensesDialog"
+        property "sonar.exclusions", [].join(',')
+        property "sonar.scm.provider", "git"
+        property "sonar.android.lint.report", "build/reports/lint-results.xml"
+        property "sonar.junit.reportPaths", "build/test-results/testDebugUnitTest"
+        property "sonar.jacoco.reportPaths", "build/jacoco/testDebugUnitTest.exec"
+    }
+}
+
+apply from: rootProject.file('gradle/publishMavenLocal.gradle')

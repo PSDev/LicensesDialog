@@ -1,10 +1,15 @@
 Change Log
 ==========
 
-Version 1.8.3 *(IN DEVELOPMENT)*
+Version 1.9.0 *(IN DEVELOPMENT)*
 --------------------------------
 
-Version 1.8.2 *(2017-07-23)*
+* **CHANGED**: minSdkVersion is now 14
+* **CHANGED**: Converted project to Gradle
+* **REMOVED**: Removed support for non-AppCompat Dialogs
+* **CHANGED**: Compile with Java 8 syntax
+
+Version 1.8.3 *(2017-07-23)*
 ----------------------------
 
 * **CHANGED**: Switch license URLs to https (#82)

@@ -1,0 +1,40 @@
+buildscript {
+    ext {
+        // Plugin versions
+        androidGradlePluginVersion = "3.2.0"
+        sonarqubeGradlePluginVersion = "2.6.2"
+        // Dependency versions
+        appcompatVersion = "28.0.0"
+    }
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:$sonarqubeGradlePluginVersion"
+    }
+}
+
+allprojects {
+    group "de.psdev.licensesdialog"
+    version "1.9.0-SNAPSHOT"
+
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+
+    apply from: rootProject.file('gradle/versioning.gradle')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.10.2'
+    distributionType = "all"
+}

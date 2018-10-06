@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        applicationId 'de.psdev.licensesdialog.sample'
+        minSdkVersion 14
+        targetSdkVersion 28
+
+        versionName project.version
+        versionCode buildVersionCode()
+
+        buildConfigField 'String', 'GIT_SHA', "\"${gitScmVersion()}\""
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        lintConfig rootProject.file('lint.xml')
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':licensesdialog')
+
+    implementation "com.android.support:appcompat-v7:$appcompatVersion"
+}
