@@ -39,8 +39,10 @@ captures/
 .idea/dictionaries
 .idea/libraries
 .idea/caches
+.idea/.name
 .idea/assetWizardSettings.xml
 .idea/encodings.xml
+.idea/compiler.xml
 .idea/gradle.xml
 .idea/misc.xml
 .idea/modules.xml
