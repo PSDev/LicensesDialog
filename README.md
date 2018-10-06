@@ -90,4 +90,4 @@ License
 
 [1]: https://github.com/PSDev/LicensesDialog/releases
 [2]: https://github.com/MartinvanZ/Inscription
-[3]: https://ci.psdev.de/job/PSDevLicensesDialog/lastSuccessfulBuild/artifact/sample/target/
+[3]: https://ci.psdev.de/job/PSDevLicensesDialog/lastSuccessfulBuild/artifact/sample/build/outputs/apk/debug/
