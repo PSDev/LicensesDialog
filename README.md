@@ -69,6 +69,7 @@ Thank you to all the contributors of this project, namely:
 - [Chaos Leong](https://github.com/PSDev/LicensesDialog/commits?author=ChaosLeong)
 - [Vladyslav Pohrebniakov](https://github.com/PSDev/LicensesDialog/commits?author=personaljesusua)
 - [Chris Pick](https://github.com/PSDev/LicensesDialog/commits?author=chrispix99)
+- [Yuya Tanaka](https://github.com/PSDev/LicensesDialog/commits?author=ypresto)
 
 License
 -------
