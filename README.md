@@ -1,4 +1,4 @@
-LicensesDialog  [![Build Status](https://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](https://ci.psdev.de/job/PSDevLicensesDialog/) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog)
+LicensesDialog [![Build Status](https://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](https://ci.psdev.de/job/PSDevLicensesDialog/) [![Coverage](https://sonar.psdev.de/api/project_badges/measure?project=de.psdev.licensesdialog&metric=coverage)](https://sonar.psdev.de/dashboard?id=de.psdev.licensesdialog) [![Lines of Code](https://sonar.psdev.de/api/project_badges/measure?project=de.psdev.licensesdialog&metric=ncloc)](https://sonar.psdev.de/dashboard?id=de.psdev.licensesdialog) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog)   
 ==============
 
 LicensesDialog is an open source library to display licenses of third-party libraries in an Android app.
@@ -13,19 +13,19 @@ Download [the latest Release][1] or grab via Maven:
 <dependency>
   <groupId>de.psdev.licensesdialog</groupId>
   <artifactId>licensesdialog</artifactId>
-  <version>1.8.3</version>
+  <version>1.8.4</version>
   <type>aar</type>
 </dependency>
 ```  
 or Gradle:
 ```groovy
-compile('de.psdev.licensesdialog:licensesdialog:1.8.3')
+implementation 'de.psdev.licensesdialog:licensesdialog:1.8.4'
 ```
 
 Usage
 -----
 
-You can take a look at the [SampleActivity.java](sample/src/main/java/de/psdev/licensesdialog/sample/SampleActivity.java) 
+You can take a look at the [MainActivity.java](sample/src/main/java/de/psdev/licensesdialog/sample/MainActivity.java) 
 from the sample module for examples on how to create the dialogs. 
 
 Sample
@@ -74,7 +74,7 @@ Thank you to all the contributors of this project, namely:
 License
 -------
 
-    Copyright 2013-2017 Philip Schiffer
+    Copyright 2013 Philip Schiffer
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

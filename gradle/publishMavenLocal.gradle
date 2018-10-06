@@ -1,0 +1,129 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+project.afterEvaluate {
+    task androidSourcesJar(type: Jar) {
+        from android.sourceSets.main.java.srcDirs
+        classifier "sources"
+    }
+
+    publishing {
+        publications {
+            release(MavenPublication) { final MavenPublication mavenPublication ->
+                groupId project.group
+                artifactId project.name
+                version project.version
+
+                artifact bundleReleaseAar
+                artifact androidSourcesJar
+
+                mavenPublication.pom { pom ->
+                    pom.name = projectName
+                    pom.description = projectDescription
+                    pom.url = projectUrl
+                    pom.inceptionYear = projectInceptionYear
+                    pom.scm { scm ->
+                        scm.url = projectScmUrl
+                        scm.connection = projectScmConnection
+                        scm.developerConnection = projectScmDeveloperConnection
+                    }
+                    pom.developers {
+                        developer {
+                            name = projectDeveloperName
+                            email = projectDeveloperEmail
+                        }
+                    }
+                    pom.organization {
+                        name = projectOrganizationName
+                        url = projectOrganizationUrl
+                    }
+                    pom.licenses {
+                        license {
+                            name = projectLicesenseName
+                            url = projectLicesenseUrl
+                            distribution = "repo"
+                        }
+                    }
+                    pom.issueManagement {
+                        system = projectIssueManagementSystem
+                        url = projectIssueManagementUrl
+                    }
+                    pom.ciManagement {
+                        system = projectCiManagementSystem
+                        url = projectCiManagementUrl
+                    }
+                    pom.withXml {
+                        final Node projectNode = asNode()
+                        // List all compile dependencies and write to POM
+                        final Node dependenciesNode = projectNode.appendNode('dependencies')
+                        final compileConfiguration = configurations.getByName('releaseRuntimeClasspath')
+                        compileConfiguration.allDependencies.each { final Dependency dependency ->
+                            final noGroup = dependency.group == null
+                            final noVersion = dependency.version == null
+                            final noName = dependency.name == null
+                            final invalidName = dependency.name == "unspecified"
+                            final invalidDependency = noGroup || noVersion || noName || invalidName
+                            if (invalidDependency) {
+                                // ignore invalid dependencies
+                                return
+                            }
+
+                            final dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', dependency.group)
+                            dependencyNode.appendNode('artifactId', dependency.name)
+                            dependencyNode.appendNode('version', dependency.version)
+                            def firstFileNameExtension = "jar"
+                            if (dependency instanceof ExternalModuleDependency) {
+                                final dependencyFiles = compileConfiguration.files(dependency)
+                                final firstFile = dependencyFiles.first()
+                                final firstFileName = firstFile.name
+                                firstFileNameExtension = firstFileName.substring(firstFileName.lastIndexOf(".") + 1)
+                            } else if (dependency instanceof ProjectDependency) {
+                                firstFileNameExtension = "aar"
+                            }
+                            if (firstFileNameExtension != "jar") {
+                                dependencyNode.appendNode('type', firstFileNameExtension)
+                            }
+
+                            if (!dependency.transitive) {
+                                // If this dependency is transitive, we should force exclude all its dependencies them from the POM
+                                final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
+                                exclusionNode.appendNode('groupId', '*')
+                                exclusionNode.appendNode('artifactId', '*')
+                            } else if (!dependency.properties.excludeRules.empty) {
+                                // Otherwise add specified exclude rules
+                                final exclusionsNode = dependencyNode.appendNode('exclusions')
+                                dependency.properties.excludeRules.each { final ExcludeRule rule ->
+                                    final exclusionNode = exclusionsNode.appendNode('exclusion')
+                                    exclusionNode.appendNode('groupId', rule.group ?: '*')
+                                    exclusionNode.appendNode('artifactId', rule.module ?: '*')
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+        repositories {
+            maven {
+                url "$rootProject.buildDir/m2repository"
+            }
+            maven {
+                credentials {
+                    username rootProject.properties['sonatypeUsername']
+                    password rootProject.properties['sonatypePassword']
+                }
+                if (project.version.endsWith('-SNAPSHOT')) {
+                    url "https://oss.sonatype.org/content/repositories/snapshots/"
+                } else {
+                    url "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                }
+            }
+        }
+    }
+    signing {
+        useGpgCmd()
+        sign publishing.publications
+    }
+}
