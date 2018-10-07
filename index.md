@@ -1,4 +1,4 @@
-LicensesDialog  [![Build Status](http://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](http://ci.psdev.de/job/PSDevLicensesDialog/) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog)
+LicensesDialog [![Build Status](https://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](https://ci.psdev.de/job/PSDevLicensesDialog/) [![Coverage](https://sonar.psdev.de/api/project_badges/measure?project=de.psdev.licensesdialog&metric=coverage)](https://sonar.psdev.de/dashboard?id=de.psdev.licensesdialog) [![Lines of Code](https://sonar.psdev.de/api/project_badges/measure?project=de.psdev.licensesdialog&metric=ncloc)](https://sonar.psdev.de/dashboard?id=de.psdev.licensesdialog) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog)   
 ==============
 
 LicensesDialog is an open source library to display licenses of third-party libraries in an Android app.
@@ -13,25 +13,30 @@ Download [the latest Release][1] or grab via Maven:
 <dependency>
   <groupId>de.psdev.licensesdialog</groupId>
   <artifactId>licensesdialog</artifactId>
-  <version>1.7.0</version>
+  <version>1.9.0</version>
   <type>aar</type>
 </dependency>
 ```  
 or Gradle:
 ```groovy
-compile('de.psdev.licensesdialog:licensesdialog:1.7.0')
+implementation 'de.psdev.licensesdialog:licensesdialog:1.9.0'
 ```
 
 Usage
 -----
 
-You can take a look at the [SampleActivity.java](sample/src/main/java/de/psdev/licensesdialog/sample/SampleActivity.java) 
+You can take a look at the [MainActivity.java](sample/src/main/java/de/psdev/licensesdialog/sample/MainActivity.java) 
 from the sample module for examples on how to create the dialogs. 
 
 Sample
 ------
 
 You can get the latest sample from [Jenkins][3]
+
+Screenshot
+----------
+
+![Screenshot](screenshot.png)
 
 Credits
 -------
@@ -54,6 +59,17 @@ Thank you to all the contributors of this project, namely:
 - [Taeho Kim](https://github.com/PSDev/LicensesDialog/commits?author=kunny)
 - [Nacho G. del Amo](https://github.com/PSDev/LicensesDialog/commits?author=ngdelamo)
 - [Tatsuya Arai](https://github.com/PSDev/LicensesDialog/commits?author=cutmail)
+- [Jakob Schrettenbrunner](https://github.com/PSDev/LicensesDialog/commits?author=schr3j)
+- [Sam Duke](https://github.com/PSDev/LicensesDialog/commits?author=samskiter)
+- [Kai Winter](https://github.com/PSDev/LicensesDialog/commits?author=kaiwinter)
+- [Oleg Kan](https://github.com/PSDev/LicensesDialog/commits?author=simplaapliko)
+- [Rafa Vázquez](https://github.com/PSDev/LicensesDialog/commits?author=Sloy)
+- [David Pintarič](https://github.com/PSDev/LicensesDialog/commits?author=dpint)
+- [Martin Herrmann](https://github.com/PSDev/LicensesDialog/commits?author=st0rmi)
+- [Chaos Leong](https://github.com/PSDev/LicensesDialog/commits?author=ChaosLeong)
+- [Vladyslav Pohrebniakov](https://github.com/PSDev/LicensesDialog/commits?author=personaljesusua)
+- [Chris Pick](https://github.com/PSDev/LicensesDialog/commits?author=chrispix99)
+- [Yuya Tanaka](https://github.com/PSDev/LicensesDialog/commits?author=ypresto)
 
 License
 -------
@@ -74,4 +90,4 @@ License
 
 [1]: https://github.com/PSDev/LicensesDialog/releases
 [2]: https://github.com/MartinvanZ/Inscription
-[3]: https://ci.psdev.de/job/PSDevLicensesDialog/lastSuccessfulBuild/artifact/sample/target/
+[3]: https://ci.psdev.de/job/PSDevLicensesDialog/lastSuccessfulBuild/artifact/sample/build/outputs/apk/debug/
