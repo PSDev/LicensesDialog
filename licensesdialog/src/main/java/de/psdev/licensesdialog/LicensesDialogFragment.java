@@ -22,13 +22,14 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.RawRes;
-import android.support.annotation.StringRes;
-import android.support.annotation.StyleRes;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.RawRes;
+import androidx.annotation.StringRes;
+import androidx.annotation.StyleRes;
+import androidx.fragment.app.DialogFragment;
+
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 

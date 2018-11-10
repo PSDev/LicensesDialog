@@ -23,12 +23,12 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import java.util.List;
 

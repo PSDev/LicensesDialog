@@ -1,10 +1,14 @@
 buildscript {
     ext {
         // Plugin versions
-        androidGradlePluginVersion = "3.2.0"
+        androidGradlePluginVersion = "3.2.1"
+        gradleVersionsPluginVersion = "0.20.0"
         sonarqubeGradlePluginVersion = "2.6.2"
         // Dependency versions
-        appcompatVersion = "28.0.0"
+        appcompatVersion = "1.0.2"
+        androidXTestVersion = "1.0.0"
+        junitVersion = "4.12"
+        robolectricVersion = "4.0.2"
     }
     repositories {
         google()
@@ -13,13 +17,16 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
+        classpath "com.github.ben-manes:gradle-versions-plugin:$gradleVersionsPluginVersion"
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:$sonarqubeGradlePluginVersion"
     }
 }
 
+apply plugin: 'com.github.ben-manes.versions'
+
 allprojects {
     group "de.psdev.licensesdialog"
-    version "1.9.1-SNAPSHOT"
+    version "2.0.0-SNAPSHOT"
 
     repositories {
         google()

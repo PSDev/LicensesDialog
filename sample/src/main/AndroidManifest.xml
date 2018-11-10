@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2013 Philip Schiffer
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +22,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="LicensesDialog Sample"
-        android:theme="@style/Theme.AppCompat.Light"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name="de.psdev.licensesdialog.sample.MainActivity">
             <intent-filter>

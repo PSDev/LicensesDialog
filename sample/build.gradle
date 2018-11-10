@@ -35,5 +35,5 @@ android {
 dependencies {
     implementation project(':licensesdialog')
 
-    implementation "com.android.support:appcompat-v7:$appcompatVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
 }

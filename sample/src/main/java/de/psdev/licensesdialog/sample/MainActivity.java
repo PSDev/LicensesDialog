@@ -18,9 +18,10 @@ package de.psdev.licensesdialog.sample;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import androidx.annotation.ColorInt;
+import androidx.appcompat.app.AppCompatActivity;
+
 import de.psdev.licensesdialog.LicensesDialog;
 import de.psdev.licensesdialog.LicensesDialogFragment;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
@@ -29,7 +30,7 @@ import de.psdev.licensesdialog.licenses.License;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
 
     // ==========================================================================================================================
     // Android Lifecycle

@@ -43,11 +43,12 @@ android {
 
 dependencies {
     // Testing
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "androidx.test:core:$androidXTestVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
 
     // Android
-    implementation "com.android.support:appcompat-v7:$appcompatVersion"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
 
 }
 

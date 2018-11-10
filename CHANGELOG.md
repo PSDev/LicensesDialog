@@ -1,8 +1,10 @@
 Change Log
 ==========
 
-Version 1.9.1 *(IN DEVELOPMENT)*
+Version 2.0.0 *(IN DEVELOPMENT)*
 --------------------------------
+
+* **BREAKING**: Update to AndroidX
 
 Version 1.9.0 *(2018-10-07)*
 ----------------------------
