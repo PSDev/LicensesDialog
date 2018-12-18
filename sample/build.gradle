@@ -35,5 +35,7 @@ android {
 dependencies {
     implementation project(':licensesdialog')
 
+    implementation "androidx.annotation:annotation:${annotationVersion}"
     implementation "androidx.appcompat:appcompat:${appcompatVersion}"
+    implementation "androidx.fragment:fragment:${fragmentVersion}"
 }
