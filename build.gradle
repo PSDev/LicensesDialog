@@ -42,5 +42,7 @@ ext {
     minSdk = 14
     targetSdk = 28
 
+    annotationVersion = "1.0.1"
     appcompatVersion = "1.1.0-alpha01"
+    fragmentVersion = "1.1.0-alpha03"
 }

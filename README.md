@@ -31,7 +31,7 @@ from the sample module for examples on how to create the dialogs.
 Sample
 ------
 
-You can get the latest sample from [Jenkins][3]
+You can get the latest sample from [Jenkins][3].
 
 Screenshot
 ----------
@@ -74,7 +74,7 @@ Thank you to all the contributors of this project, namely:
 License
 -------
 
-    Copyright 2013 Philip Schiffer
+    Copyright 2013-2018 Philip Schiffer
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
