@@ -17,6 +17,7 @@
 package de.psdev.licensesdialog.licenses;
 
 import android.content.Context;
+
 import de.psdev.licensesdialog.R;
 
 public class GnuGeneralPublicLicense20 extends License {
@@ -43,6 +44,6 @@ public class GnuGeneralPublicLicense20 extends License {
 
     @Override
     public String getUrl() {
-        return "https://www.gnu.org/licenses/";
+        return "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html";
     }
 }

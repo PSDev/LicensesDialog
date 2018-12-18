@@ -44,7 +44,7 @@ public class MozillaPublicLicense20 extends License {
 
     @Override
     public String getUrl() {
-        return "https://mozilla.org/MPL/2.0/";
+        return "https://www.mozilla.org/MPL/2.0/";
     }
 
 }

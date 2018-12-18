@@ -46,7 +46,7 @@ public class MozillaPublicLicense11 extends License {
 
     @Override
     public String getUrl() {
-        return "https://mozilla.org/MPL/1.1/";
+        return "https://www.mozilla.org/MPL/1.1/";
     }
 
 }

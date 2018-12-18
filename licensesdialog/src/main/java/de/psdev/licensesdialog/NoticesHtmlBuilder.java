@@ -86,8 +86,8 @@ public final class NoticesHtmlBuilder {
 
     private void appendNoticesContainerStart(final StringBuilder noticesHtmlBuilder) {
         noticesHtmlBuilder.append("<!DOCTYPE html><html><head>")
-            .append("<style type=\"text/css\">").append(mStyle).append("</style>")
-            .append("</head><body>");
+                .append("<style type=\"text/css\">").append(mStyle).append("</style>")
+                .append("</head><body>");
     }
 
     private void appendNoticeBlock(final StringBuilder noticesHtmlBuilder, final Notice notice) {
@@ -95,10 +95,10 @@ public final class NoticesHtmlBuilder {
         final String currentNoticeUrl = notice.getUrl();
         if (currentNoticeUrl != null && currentNoticeUrl.length() > 0) {
             noticesHtmlBuilder.append(" (<a href=\"")
-                .append(currentNoticeUrl)
-                .append("\" target=\"_blank\">")
-                .append(currentNoticeUrl)
-                .append("</a>)");
+                    .append(currentNoticeUrl)
+                    .append("\" target=\"_blank\">")
+                    .append(currentNoticeUrl)
+                    .append("</a>)");
         }
         noticesHtmlBuilder.append("</li></ul>");
         noticesHtmlBuilder.append("<pre>");

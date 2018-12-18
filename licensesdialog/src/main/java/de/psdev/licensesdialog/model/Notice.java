@@ -18,6 +18,7 @@ package de.psdev.licensesdialog.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import de.psdev.licensesdialog.licenses.License;
 
 public class Notice implements Parcelable {
@@ -26,8 +27,6 @@ public class Notice implements Parcelable {
     private String mUrl;
     private String mCopyright;
     private License mLicense;
-
-    //
 
     public Notice() {
     }

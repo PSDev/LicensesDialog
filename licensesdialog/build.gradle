@@ -43,7 +43,9 @@ android {
 
 dependencies {
     // Android
+    implementation "androidx.annotation:annotation:${annotationVersion}"
     implementation "androidx.appcompat:appcompat:${appcompatVersion}"
+    implementation "androidx.fragment:fragment:${fragmentVersion}"
 
     // Testing
     testImplementation 'junit:junit:4.13-beta-1'

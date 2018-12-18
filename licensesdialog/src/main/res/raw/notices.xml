@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2013 Philip Schiffer
   ~
   ~    Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +17,8 @@
 <notices>
     <notice>
         <name>Apache Commons IO</name>
-        <url>http://commons.apache.org/io/</url>
-        <copyright>Copyright 2002-2012 The Apache Software Foundation</copyright>
+        <url>https://commons.apache.org/proper/commons-io/</url>
+        <copyright>Copyright © 2002-2017 The Apache Software Foundation</copyright>
         <license>Apache Software License 2.0</license>
     </notice>
 </notices>

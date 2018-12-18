@@ -27,19 +27,20 @@ import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
 public class LicensesDialog {
-    public static final Notice LICENSES_DIALOG_NOTICE = new Notice("LicensesDialog", "http://psdev.de/LicensesDialog",
-        "Copyright 2013-2016 Philip Schiffer",
-        new ApacheSoftwareLicense20());
+    public static final Notice LICENSES_DIALOG_NOTICE =
+            new Notice("LicensesDialog", "https://github.psdev.de/LicensesDialog/",
+                    "Copyright 2013-2018 Philip Schiffer",
+                    new ApacheSoftwareLicense20());
 
     private final Context mContext;
     private final String mTitleText;
@@ -50,11 +51,14 @@ public class LicensesDialog {
 
     private DialogInterface.OnDismissListener mOnDismissListener;
 
-    // ==========================================================================================================================
+    // =============================================================================================
     // Constructor
-    // ==========================================================================================================================
+    // =============================================================================================
 
-    private LicensesDialog(final Context context, final String licensesText, final String titleText, final String closeText,
+    private LicensesDialog(final Context context,
+                           final String licensesText,
+                           final String titleText,
+                           final String closeText,
                            final int themeResourceId,
                            final int dividerColor) {
         mContext = context;
@@ -65,9 +69,9 @@ public class LicensesDialog {
         mDividerColor = dividerColor;
     }
 
-    // ==========================================================================================================================
+    // =============================================================================================
     // Public API
-    // ==========================================================================================================================
+    // =============================================================================================
 
     public LicensesDialog setOnDismissListener(final DialogInterface.OnDismissListener onDismissListener) {
         mOnDismissListener = onDismissListener;
@@ -85,8 +89,8 @@ public class LicensesDialog {
             builder = new AlertDialog.Builder(mContext);
         }
         builder.setTitle(mTitleText)
-            .setView(webView)
-            .setPositiveButton(mCloseText, (dialogInterface, i) -> dialogInterface.dismiss());
+                .setView(webView)
+                .setPositiveButton(mCloseText, (dialogInterface, i) -> dialogInterface.dismiss());
         final AlertDialog dialog = builder.create();
         dialog.setOnDismissListener(dialog1 -> {
             if (mOnDismissListener != null) {
@@ -96,7 +100,9 @@ public class LicensesDialog {
         dialog.setOnShowListener(dialogInterface -> {
             if (mDividerColor != 0) {
                 // Set title divider color
-                final int titleDividerId = mContext.getResources().getIdentifier("titleDivider", "id", "android");
+                final int titleDividerId = mContext
+                        .getResources()
+                        .getIdentifier("titleDivider", "id", "android");
                 final View titleDivider = dialog.findViewById(titleDividerId);
                 if (titleDivider != null) {
                     titleDivider.setBackgroundColor(mDividerColor);
@@ -112,16 +118,19 @@ public class LicensesDialog {
         return dialog;
     }
 
-    // ==========================================================================================================================
+    // =============================================================================================
     // Private API
-    // ==========================================================================================================================
+    // =============================================================================================
 
     private static WebView createWebView(final Context context) {
         final WebView webView = new WebView(context);
         webView.getSettings().setSupportMultipleWindows(true);
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
-            public boolean onCreateWindow(final WebView view, final boolean isDialog, final boolean isUserGesture, final Message resultMsg) {
+            public boolean onCreateWindow(final WebView view,
+                                          final boolean isDialog,
+                                          final boolean isUserGesture,
+                                          final Message resultMsg) {
                 final WebView.HitTestResult result = view.getHitTestResult();
                 final String data = result.getExtra();
                 if (data != null) {
@@ -134,9 +143,9 @@ public class LicensesDialog {
         return webView;
     }
 
-    // ==========================================================================================================================
+    // =============================================================================================
     // Inner classes
-    // ==========================================================================================================================
+    // =============================================================================================
 
     public static final class Builder {
 
@@ -252,7 +261,7 @@ public class LicensesDialog {
                 licensesText = getLicensesText(mContext, mNotices, mShowFullLicenseText, mIncludeOwnLicense, mNoticesStyle);
             } else if (mRawNoticesId != null) {
                 licensesText = getLicensesText(mContext, getNotices(mContext, mRawNoticesId), mShowFullLicenseText, mIncludeOwnLicense,
-                    mNoticesStyle);
+                        mNoticesStyle);
             } else if (mNoticesText != null) {
                 licensesText = mNoticesText;
             } else {
@@ -282,7 +291,11 @@ public class LicensesDialog {
                     final List<Notice> noticeList = notices.getNotices();
                     noticeList.add(LICENSES_DIALOG_NOTICE);
                 }
-                return NoticesHtmlBuilder.create(context).setShowFullLicenseText(showFullLicenseText).setNotices(notices).setStyle(style).build();
+                return NoticesHtmlBuilder
+                        .create(context)
+                        .setShowFullLicenseText(showFullLicenseText)
+                        .setNotices(notices).setStyle(style)
+                        .build();
             } catch (final Exception e) {
                 throw new IllegalStateException(e);
             }
@@ -293,6 +306,5 @@ public class LicensesDialog {
             notices.addNotice(notice);
             return notices;
         }
-
     }
 }

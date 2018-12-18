@@ -31,12 +31,12 @@ public class LicenseResolverTest {
     private static final String TEST_LICENSE_NAME = "TestLicense";
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         LicenseResolver.registerDefaultLicenses();
     }
 
     @Test
-    public void testRegisterLicense() throws Exception {
+    public void testRegisterLicense() {
         LicenseResolver.registerLicense(new TestLicense());
         final License license = LicenseResolver.read(TEST_LICENSE_NAME);
         assertNotNull(license);
@@ -44,12 +44,12 @@ public class LicenseResolverTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    public void testReadUnknownLicense() throws Exception {
+    public void testReadUnknownLicense() {
         LicenseResolver.read(TEST_LICENSE_NAME);
     }
 
     @Test
-    public void testReadKnownLicense() throws Exception {
+    public void testReadKnownLicense() {
         final License license = LicenseResolver.read("MIT License");
         assertNotNull(license);
         assertEquals("MIT License", license.getName());
@@ -81,7 +81,7 @@ public class LicenseResolverTest {
 
         @Override
         public String getUrl() {
-            return "http://example.org";
+            return "https://example.org/";
         }
     }
 }

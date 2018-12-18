@@ -22,14 +22,9 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.RawRes;
-import androidx.annotation.StringRes;
-import androidx.annotation.StyleRes;
-import androidx.fragment.app.DialogFragment;
 
+import androidx.annotation.*;
+import androidx.fragment.app.DialogFragment;
 import de.psdev.licensesdialog.model.Notice;
 import de.psdev.licensesdialog.model.Notices;
 
@@ -180,9 +175,11 @@ public class LicensesDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(final Bundle savedInstanceState) {
         final LicensesDialog.Builder builder = new LicensesDialog.Builder(requireContext())
-            .setNotices(mLicensesText)
-            .setTitle(mTitleText).setCloseText(mCloseButtonText)
-            .setThemeResourceId(mThemeResourceId).setDividerColor(mDividerColor);
+                .setNotices(mLicensesText)
+                .setTitle(mTitleText)
+                .setCloseText(mCloseButtonText)
+                .setThemeResourceId(mThemeResourceId)
+                .setDividerColor(mDividerColor);
         final LicensesDialog licensesDialog = builder.build();
         return licensesDialog.create();
     }

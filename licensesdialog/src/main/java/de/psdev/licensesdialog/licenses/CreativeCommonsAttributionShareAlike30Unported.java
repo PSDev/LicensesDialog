@@ -26,7 +26,7 @@ public class CreativeCommonsAttributionShareAlike30Unported extends License {
 
     @Override
     public String getName() {
-        return "Creative Commons Attribution-Share Alike 3.0 Unported";
+        return "Creative Commons Attribution-ShareAlike 3.0 Unported";
     }
 
     @Override
