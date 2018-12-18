@@ -11,7 +11,7 @@ android {
         versionName project.version
         versionCode buildVersionCode()
 
-//        buildConfigField 'String', 'GIT_SHA', "\"${gitScmVersion()}\""
+        buildConfigField 'String', 'GIT_SHA', "\"${gitScmVersion()}\""
     }
 
     compileOptions {
