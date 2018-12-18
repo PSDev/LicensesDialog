@@ -1,5 +1,3 @@
-import java.text.SimpleDateFormat
-
 ext {
     gitScmVersion = {
         final cmd = "git rev-parse --verify --short=7 HEAD"
@@ -12,6 +10,6 @@ ext {
 
         (major, minor, patch) = [major, minor, patch].collect { it.toInteger() }
 
-        (major * 1000000) + (minor * 1000) + (patch);
+        (major * 1000000) + (minor * 1000) + (patch)
     }
 }

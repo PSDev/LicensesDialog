@@ -36,20 +36,7 @@ captures/
 
 # IntelliJ
 *.iml
-.idea/dictionaries
-.idea/libraries
-.idea/caches
-.idea/.name
-.idea/assetWizardSettings.xml
-.idea/encodings.xml
-.idea/compiler.xml
-.idea/gradle.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/runConfigurations.xml
-.idea/tasks.xml
-.idea/vcs.xml
-.idea/workspace.xml
+.idea
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.
@@ -73,3 +60,8 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
+.idea/codeStyles/
+.idea/dbnavigator.xml
+.idea/kotlinc.xml
+.idea/markdown-navigator.xml
+.idea/markdown-navigator/

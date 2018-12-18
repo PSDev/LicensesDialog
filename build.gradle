@@ -1,24 +1,14 @@
 buildscript {
-    ext {
-        // Plugin versions
-        androidGradlePluginVersion = "3.2.1"
-        gradleVersionsPluginVersion = "0.20.0"
-        sonarqubeGradlePluginVersion = "2.6.2"
-        // Dependency versions
-        appcompatVersion = "1.0.2"
-        androidXTestVersion = "1.0.0"
-        junitVersion = "4.12"
-        robolectricVersion = "4.0.2"
-    }
     repositories {
+        jcenter()
         google()
         mavenCentral()
-        jcenter()
     }
+
     dependencies {
-        classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
-        classpath "com.github.ben-manes:gradle-versions-plugin:$gradleVersionsPluginVersion"
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:$sonarqubeGradlePluginVersion"
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.20.0'
+        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2'
     }
 }
 
@@ -29,9 +19,9 @@ allprojects {
     version "2.0.0-SNAPSHOT"
 
     repositories {
+        jcenter()
         google()
         mavenCentral()
-        jcenter()
     }
 
     apply from: rootProject.file('gradle/versioning.gradle')
@@ -42,6 +32,15 @@ task clean(type: Delete) {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.2'
+    gradleVersion = '4.10.3'
     distributionType = "all"
+}
+
+ext {
+    compileSdk = 28
+    buildTools = "28.0.3"
+    minSdk = 14
+    targetSdk = 28
+
+    appcompatVersion = "1.1.0-alpha01"
 }
