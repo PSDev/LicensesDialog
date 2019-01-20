@@ -1,14 +1,14 @@
 buildscript {
     ext {
         // Plugin versions
-        androidGradlePluginVersion = "3.2.1"
+        androidGradlePluginVersion = "3.3.0"
         gradleVersionsPluginVersion = "0.20.0"
-        sonarqubeGradlePluginVersion = "2.6.2"
+        sonarqubeGradlePluginVersion = "2.7.0.1622"
         // Dependency versions
         appcompatVersion = "1.0.2"
-        androidXTestVersion = "1.0.0"
+        androidXTestVersion = "1.1.0"
         junitVersion = "4.12"
-        robolectricVersion = "4.0.2"
+        robolectricVersion = "4.1"
     }
     repositories {
         google()
@@ -41,7 +41,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.2'
+wrapper {
+    gradleVersion = '5.1.1'
     distributionType = "all"
 }
