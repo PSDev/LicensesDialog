@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 2.0.0 *(IN DEVELOPMENT)*
+Version 2.0.0 *(2019-01-20)*
 --------------------------------
 
 * **BREAKING**: Update to AndroidX
