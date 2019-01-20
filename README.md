@@ -13,13 +13,13 @@ Download [the latest Release][1] or grab via Maven:
 <dependency>
   <groupId>de.psdev.licensesdialog</groupId>
   <artifactId>licensesdialog</artifactId>
-  <version>1.9.0</version>
+  <version>2.0.0</version>
   <type>aar</type>
 </dependency>
 ```  
 or Gradle:
 ```groovy
-implementation 'de.psdev.licensesdialog:licensesdialog:1.9.0'
+implementation 'de.psdev.licensesdialog:licensesdialog:2.0.0'
 ```
 
 Usage
