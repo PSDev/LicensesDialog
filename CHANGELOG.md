@@ -1,6 +1,20 @@
 Change Log
 ==========
 
+Version 2.1.0 *(IN DEVELOPMENT)*
+--------------------------------
+
+* **ADDED**: Add Bulgarian translation (#93)
+* **ADDED**: Add Czech translation (#93)
+* **ADDED**: Add French translation (#93)
+* **ADDED**: Add Greek translation (#93)
+* **ADDED**: Add Hungarian translation (#93)
+* **ADDED**: Add Italian translation (#93)
+* **ADDED**: Add Polish translation (#93)
+* **ADDED**: Add Romanian translation (#93)
+* **ADDED**: Add Spanish translation (#93)
+* **ADDED**: Add Turkish translation (#93)
+
 Version 2.0.0 *(2019-01-20)*
 --------------------------------
 
