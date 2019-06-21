@@ -1,14 +1,14 @@
 buildscript {
     ext {
         // Plugin versions
-        androidGradlePluginVersion = "3.3.0"
-        gradleVersionsPluginVersion = "0.20.0"
-        sonarqubeGradlePluginVersion = "2.7.0.1622"
+        androidGradlePluginVersion = "3.4.1"
+        gradleVersionsPluginVersion = "0.21.0"
+        sonarqubeGradlePluginVersion = "2.7.1"
         // Dependency versions
         appcompatVersion = "1.0.2"
-        androidXTestVersion = "1.1.0"
+        androidXTestVersion = "1.2.0"
         junitVersion = "4.12"
-        robolectricVersion = "4.1"
+        robolectricVersion = "4.3"
     }
     repositories {
         google()
@@ -35,6 +35,19 @@ allprojects {
     }
 
     apply from: rootProject.file('gradle/versioning.gradle')
+
+    dependencyUpdates.resolutionStrategy {
+        componentSelection { rules ->
+            rules.all { ComponentSelection selection ->
+                boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm', 'preview', 'b', 'ea'].any { qualifier ->
+                    selection.candidate.version ==~ /(?i).*[.-]$qualifier[.\d-+]*/
+                }
+                if (rejected) {
+                    selection.reject('Release candidate')
+                }
+            }
+        }
+    }
 }
 
 task clean(type: Delete) {
