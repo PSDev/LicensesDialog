@@ -1,8 +1,8 @@
 Change Log
 ==========
 
-Version 2.1.0 *(IN DEVELOPMENT)*
---------------------------------
+Version 2.1.0 *(2019-06-21)*
+----------------------------
 
 * **ADDED**: Add Bulgarian translation (#93)
 * **ADDED**: Add Czech translation (#93)
