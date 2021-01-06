@@ -27,6 +27,7 @@
     <string name="custom_theme_fragment" translatable="false">Custom theme (Fragment)</string>
     <string name="custom_css_style" translatable="false">Custom CSS Style</string>
     <string name="custom_css_style_fragment" translatable="false">Custom CSS Style (Fragment)</string>
+    <string name="single_disable_darkmode" translatable="false">Single (Disable Dark Mode)</string>
 
     <string name="rgba_background_format" translatable="false">background-color:rgba(%1$d,%2$d,%3$d,%4$1f);</string>
 </resources>

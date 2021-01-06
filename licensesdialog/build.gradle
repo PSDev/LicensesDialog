@@ -5,12 +5,12 @@ apply from: rootProject.file('gradle/jacoco.gradle')
 project.description = "LicensesDialog (Library)"
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 30
 
         versionName project.version
         versionCode buildVersionCode()
@@ -49,7 +49,7 @@ dependencies {
 
     // Android
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
-
+    implementation "androidx.webkit:webkit:$androidXWebKitVersion"
 }
 
 sonarqube {

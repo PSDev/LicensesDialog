@@ -20,15 +20,19 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Message;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.webkit.WebSettingsCompat;
+import androidx.webkit.WebViewFeature;
 
 import java.util.List;
 
@@ -47,6 +51,7 @@ public class LicensesDialog {
     private final String mCloseText;
     private final int mThemeResourceId;
     private final int mDividerColor;
+    private final boolean mEnableDarkMode;
 
     private DialogInterface.OnDismissListener mOnDismissListener;
 
@@ -54,15 +59,14 @@ public class LicensesDialog {
     // Constructor
     // ==========================================================================================================================
 
-    private LicensesDialog(final Context context, final String licensesText, final String titleText, final String closeText,
-                           final int themeResourceId,
-                           final int dividerColor) {
+    LicensesDialog(final Context context, final String licensesText, final String titleText, final String closeText, final int themeResourceId, final int dividerColor, final boolean enableDarkMode) {
         mContext = context;
         mTitleText = titleText;
         mLicensesText = licensesText;
         mCloseText = closeText;
         mThemeResourceId = themeResourceId;
         mDividerColor = dividerColor;
+        mEnableDarkMode = enableDarkMode;
     }
 
     // ==========================================================================================================================
@@ -76,7 +80,7 @@ public class LicensesDialog {
 
     public Dialog create() {
         //Get resources
-        final WebView webView = createWebView(mContext);
+        final WebView webView = createWebView(mContext, mEnableDarkMode);
         webView.loadDataWithBaseURL(null, mLicensesText, "text/html", "utf-8", null);
         final AlertDialog.Builder builder;
         if (mThemeResourceId != 0) {
@@ -116,9 +120,21 @@ public class LicensesDialog {
     // Private API
     // ==========================================================================================================================
 
-    private static WebView createWebView(final Context context) {
+    private static WebView createWebView(final Context context, final boolean mEnableDarkMode) {
         final WebView webView = new WebView(context);
         webView.getSettings().setSupportMultipleWindows(true);
+
+        if(mEnableDarkMode) {
+            if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
+                final int nightFlag = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                if (nightFlag == Configuration.UI_MODE_NIGHT_YES) {
+                    WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
+                } else {
+                    WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_OFF);
+                }
+            }
+        }
+
         webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onCreateWindow(final WebView view, final boolean isDialog, final boolean isUserGesture, final Message resultMsg) {
@@ -156,6 +172,7 @@ public class LicensesDialog {
         private boolean mIncludeOwnLicense;
         private int mThemeResourceId;
         private int mDividerColor;
+        private boolean mEnableDarkMode;
 
         public Builder(final Context context) {
             mContext = context;
@@ -166,6 +183,7 @@ public class LicensesDialog {
             mIncludeOwnLicense = false;
             mThemeResourceId = 0;
             mDividerColor = 0;
+            mEnableDarkMode = true;
         }
 
         public Builder setTitle(final int titleId) {
@@ -246,6 +264,11 @@ public class LicensesDialog {
             return this;
         }
 
+        public Builder setEnableDarkMode(final boolean enableDarkMode) {
+            mEnableDarkMode = enableDarkMode;
+            return this;
+        }
+
         public LicensesDialog build() {
             final String licensesText;
             if (mNotices != null) {
@@ -259,7 +282,7 @@ public class LicensesDialog {
                 throw new IllegalStateException("Notices have to be provided, see setNotices");
             }
 
-            return new LicensesDialog(mContext, licensesText, mTitleText, mCloseText, mThemeResourceId, mDividerColor);
+            return new LicensesDialog(mContext, licensesText, mTitleText, mCloseText, mThemeResourceId, mDividerColor, mEnableDarkMode);
         }
 
         private static Notices getNotices(final Context context, final int rawNoticesResourceId) {
