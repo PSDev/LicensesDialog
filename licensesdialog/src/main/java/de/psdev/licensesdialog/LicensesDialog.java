@@ -27,6 +27,7 @@ import android.os.Message;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -121,15 +122,16 @@ public class LicensesDialog {
 
     private static WebView createWebView(final Context context, final boolean mEnableDarkMode) {
         final WebView webView = new WebView(context);
-        webView.getSettings().setSupportMultipleWindows(true);
+        final WebSettings webSettings = webView.getSettings();
+        webSettings.setSupportMultipleWindows(true);
 
-        if(mEnableDarkMode) {
+        if (mEnableDarkMode) {
             if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
                 final int nightFlag = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
                 if (nightFlag == Configuration.UI_MODE_NIGHT_YES) {
-                    WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
+                    WebSettingsCompat.setForceDark(webSettings, WebSettingsCompat.FORCE_DARK_ON);
                 } else {
-                    WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_OFF);
+                    WebSettingsCompat.setForceDark(webSettings, WebSettingsCompat.FORCE_DARK_OFF);
                 }
             }
         }

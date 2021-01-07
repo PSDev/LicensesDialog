@@ -16,6 +16,7 @@
 
 <resources>
     <string name="single" translatable="false">Single</string>
+    <string name="single_disable_darkmode" translatable="false">Single (Disabled Dark Mode)</string>
     <string name="multiple" translatable="false">Multiple</string>
     <string name="multiple_include_own" translatable="false">Multiple with own License</string>
     <string name="multiple_programmatic" translatable="false">Multiple programmatically</string>
@@ -27,7 +28,6 @@
     <string name="custom_theme_fragment" translatable="false">Custom theme (Fragment)</string>
     <string name="custom_css_style" translatable="false">Custom CSS Style</string>
     <string name="custom_css_style_fragment" translatable="false">Custom CSS Style (Fragment)</string>
-    <string name="single_disable_darkmode" translatable="false">Single (Disable Dark Mode)</string>
 
     <string name="rgba_background_format" translatable="false">background-color:rgba(%1$d,%2$d,%3$d,%4$1f);</string>
 </resources>
