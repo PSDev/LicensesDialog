@@ -70,6 +70,7 @@ Thank you to all the contributors of this project, namely:
 - [Vladyslav Pohrebniakov](https://github.com/PSDev/LicensesDialog/commits?author=personaljesusua)
 - [Chris Pick](https://github.com/PSDev/LicensesDialog/commits?author=chrispix99)
 - [Yuya Tanaka](https://github.com/PSDev/LicensesDialog/commits?author=ypresto)
+- [Minjae Seon](https://github.com/PSDev/LicensesDialog/commits?author=Aftermoon-dev)
 
 License
 -------

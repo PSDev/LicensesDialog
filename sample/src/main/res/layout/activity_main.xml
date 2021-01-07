@@ -34,6 +34,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/single_disable_darkmode"
+            android:onClick="onSingleDisableDarkModeClick"
+            android:layout_weight="1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/multiple"
             android:onClick="onMultipleClick"
             android:layout_weight="1" />

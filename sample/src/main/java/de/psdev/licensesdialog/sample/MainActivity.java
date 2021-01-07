@@ -179,6 +179,19 @@ public class MainActivity extends AppCompatActivity {
         fragment.show(getSupportFragmentManager(), null);
     }
 
+    public void onSingleDisableDarkModeClick(final View view) {
+        final String name = "LicensesDialog";
+        final String url = "http://psdev.de";
+        final String copyright = "Copyright 2013 Philip Schiffer <admin@psdev.de>";
+        final License license = new ApacheSoftwareLicense20();
+        final Notice notice = new Notice(name, url, copyright, license);
+        new LicensesDialog.Builder(this)
+                .setNotices(notice)
+                .setEnableDarkMode(false)
+                .build()
+                .show();
+    }
+
     private String getRGBAString(@ColorInt int color) {
         int red = Color.red(color);
         int green = Color.green(color);
