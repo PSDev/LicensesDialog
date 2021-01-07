@@ -48,7 +48,7 @@ dependencies {
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
 
     // Android
-    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.appcompat:appcompat:$androidXAppCompatVersion"
     implementation "androidx.webkit:webkit:$androidXWebKitVersion"
 }
 
