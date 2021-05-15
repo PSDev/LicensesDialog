@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 2.2.0 *(IN DEVELOPMENT)*
+Version 2.2.0 *(2021-05-15)*
 --------------------------------
 
 * **ADDED**: Support for Dark Mode (#105)
