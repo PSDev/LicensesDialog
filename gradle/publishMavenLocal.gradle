@@ -3,8 +3,8 @@ apply plugin: 'signing'
 
 project.afterEvaluate {
     task androidSourcesJar(type: Jar) {
+        archiveClassifier.set('sources')
         from android.sourceSets.main.java.srcDirs
-        classifier "sources"
     }
 
     publishing {
@@ -14,7 +14,7 @@ project.afterEvaluate {
                 artifactId project.name
                 version project.version
 
-                artifact bundleReleaseAar
+                from components.release
                 artifact androidSourcesJar
 
                 mavenPublication.pom { pom ->
@@ -52,56 +52,6 @@ project.afterEvaluate {
                         system = projectCiManagementSystem
                         url = projectCiManagementUrl
                     }
-                    pom.withXml {
-                        final Node projectNode = asNode()
-                        // List all compile dependencies and write to POM
-                        final Node dependenciesNode = projectNode.appendNode('dependencies')
-                        final compileConfiguration = configurations.getByName('releaseRuntimeClasspath')
-                        compileConfiguration.allDependencies.each { final Dependency dependency ->
-                            final noGroup = dependency.group == null
-                            final noVersion = dependency.version == null
-                            final noName = dependency.name == null
-                            final invalidName = dependency.name == "unspecified"
-                            final invalidDependency = noGroup || noVersion || noName || invalidName
-                            if (invalidDependency) {
-                                // ignore invalid dependencies
-                                return
-                            }
-
-                            final dependencyNode = dependenciesNode.appendNode('dependency')
-                            dependencyNode.appendNode('groupId', dependency.group)
-                            dependencyNode.appendNode('artifactId', dependency.name)
-                            dependencyNode.appendNode('version', dependency.version)
-                            def firstFileNameExtension = "jar"
-                            if (dependency instanceof ExternalModuleDependency) {
-                                final dependencyFiles = compileConfiguration.files(dependency)
-                                final firstFile = dependencyFiles.first()
-                                final firstFileName = firstFile.name
-                                firstFileNameExtension = firstFileName.substring(firstFileName.lastIndexOf(".") + 1)
-                            } else if (dependency instanceof ProjectDependency) {
-                                firstFileNameExtension = "aar"
-                            }
-                            if (firstFileNameExtension != "jar") {
-                                dependencyNode.appendNode('type', firstFileNameExtension)
-                            }
-
-                            if (!dependency.transitive) {
-                                // If this dependency is transitive, we should force exclude all its dependencies them from the POM
-                                final exclusionNode = dependencyNode.appendNode('exclusions').appendNode('exclusion')
-                                exclusionNode.appendNode('groupId', '*')
-                                exclusionNode.appendNode('artifactId', '*')
-                            } else if (!dependency.properties.excludeRules.empty) {
-                                // Otherwise add specified exclude rules
-                                final exclusionsNode = dependencyNode.appendNode('exclusions')
-                                dependency.properties.excludeRules.each { final ExcludeRule rule ->
-                                    final exclusionNode = exclusionsNode.appendNode('exclusion')
-                                    exclusionNode.appendNode('groupId', rule.group ?: '*')
-                                    exclusionNode.appendNode('artifactId', rule.module ?: '*')
-                                }
-                            }
-                        }
-                    }
-
                 }
             }
         }
