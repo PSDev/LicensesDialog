@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Prepare environment') {
             steps {
-                sh "yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses > /dev/null"
+                sh "yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null"
             }
         }
         stage('Build') {
