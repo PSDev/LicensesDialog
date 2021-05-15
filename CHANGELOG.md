@@ -4,6 +4,8 @@ Change Log
 Version 2.2.0 *(IN DEVELOPMENT)*
 --------------------------------
 
+* **ADDED**: Support for Dark Mode (#105)
+
 Version 2.1.0 *(2019-06-21)*
 ----------------------------
 
