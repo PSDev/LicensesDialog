@@ -9,7 +9,8 @@ android {
         unitTests.all {
             jacoco {
                 includeNoLocationClasses = true
-                excludes = ['**/R.class',
+                excludes = ['jdk.internal.*',
+                            '**/R.class',
                             '**/R$*.class',
                             '**/BuildConfig.*',
                             '**/Manifest*.*',
