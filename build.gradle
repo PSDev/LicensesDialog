@@ -5,7 +5,7 @@ buildscript {
         gradleVersionsPluginVersion = "0.36.0"
         sonarqubeGradlePluginVersion = "3.2.0"
         // Dependency versions
-        androidXAppCompatVersion = "1.2.0"
+        androidXAppCompatVersion = "1.3.0"
         androidXWebKitVersion = "1.4.0"
         androidXTestVersion = "1.3.0"
         junitVersion = "4.13.2"
