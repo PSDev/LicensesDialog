@@ -1,7 +1,7 @@
 buildscript {
     ext {
         // Plugin versions
-        androidGradlePluginVersion = "4.2.1"
+        androidGradlePluginVersion = "8.7.1"
         gradleVersionsPluginVersion = "0.36.0"
         sonarqubeGradlePluginVersion = "3.2.0"
         // Dependency versions
