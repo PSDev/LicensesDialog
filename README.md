@@ -1,4 +1,6 @@
-LicensesDialog [![Build Status](https://ci.psdev.de/job/PSDevLicensesDialog/badge/icon)](https://ci.psdev.de/job/PSDevLicensesDialog/) [![Coverage](https://sonar.psdev.de/api/project_badges/measure?project=de.psdev.licensesdialog&metric=coverage)](https://sonar.psdev.de/dashboard?id=de.psdev.licensesdialog) [![Lines of Code](https://sonar.psdev.de/api/project_badges/measure?project=de.psdev.licensesdialog&metric=ncloc)](https://sonar.psdev.de/dashboard?id=de.psdev.licensesdialog) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog)   
+LicensesDialog  
+[![License](https://img.shields.io/github/license/PSDev/LicensesDialog)](https://github.com/PSDev/LicensesDialog/blob/master/LICENSE.txt)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog/badge.svg)](https://maven-badges.herokuapp.com/maven-central/de.psdev.licensesdialog/licensesdialog)   
 ==============
 
 LicensesDialog is an open source library to display licenses of third-party libraries in an Android app.
